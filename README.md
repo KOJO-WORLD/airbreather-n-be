@@ -1,8 +1,15 @@
 # API-project
 
+Totally Original Idea AirBnB
+
+Database Schema Design
 <p align="center">
   <img src="airbnb schema copy.png">
 </p>
+
+API Documentation
+
+USER AUTHENTICATION/AUTHORIZATION
 
 All endpoints that require authentication
 
