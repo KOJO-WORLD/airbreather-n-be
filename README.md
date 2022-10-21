@@ -1,6 +1,6 @@
 # API-project
 
-Totally Original Idea AirBnB
+Totally Original Idea: AirBnB
 
 Database Schema Design
 <p align="center">
@@ -8,11 +8,8 @@ Database Schema Design
 </p>
 
 API Documentation
-
 USER AUTHENTICATION/AUTHORIZATION
-
 All endpoints that require authentication
-
 All endpoints that require a current user to be logged in.
 
 Request: endpoints that require authentication
@@ -51,8 +48,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /api/session
 Body: none
 Successful Response
 
@@ -77,9 +74,9 @@ Require Authentication: false
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /api/session
 
 Headers:
 
@@ -144,9 +141,9 @@ Require Authentication: false
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /api/users
 
 Headers:
 
@@ -236,8 +233,8 @@ Require Authentication: false
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /api/spots
 Body: none
 Successful Response
 
@@ -276,8 +273,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /api/spots/current
 Body: none
 Successful Response
 
@@ -316,8 +313,8 @@ Require Authentication: false
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /api/spots/:spotId
 Body: none
 Successful Response
 
@@ -382,9 +379,9 @@ Require Authentication: true
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /api/spots
 
 Headers:
 
@@ -459,9 +456,9 @@ Require proper authorization: Spot must belong to the current user
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /api/spots/:spotId/images
 
 Headers:
 
@@ -508,9 +505,9 @@ Require proper authorization: Spot must belong to the current user
 
 Request
 
-Method: ?
+Method: PUT
 
-URL: ?
+URL: /api/spots/:spotId
 
 Headers:
 
@@ -598,8 +595,8 @@ Require proper authorization: Spot must belong to the current user
 
 Request
 
-Method: ?
-URL: ?
+Method: DELETE
+URL: /api/spots/:spotId
 Body: none
 Successful Response
 
@@ -635,8 +632,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /api/reviews/current
 Body: none
 Successful Response
 
@@ -691,8 +688,8 @@ Require Authentication: false
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /api/spots/:spotId/reviews
 Body: none
 Successful Response
 
@@ -747,9 +744,9 @@ Require Authentication: true
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /api/spots/:spotId/reviews
 
 Headers:
 
@@ -830,9 +827,9 @@ Require proper authorization: Review must belong to the current user
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /api/reviews/:reviewId/images
 
 Headers:
 
@@ -890,9 +887,9 @@ Require proper authorization: Review must belong to the current user
 
 Request
 
-Method: ?
+Method: PUT
 
-URL: ?
+URL: /api/reviews/:reviewId
 
 Headers:
 
@@ -960,8 +957,8 @@ Require proper authorization: Review must belong to the current user
 
 Request
 
-Method: ?
-URL: ?
+Method: DELETE
+URL: /api/reviews/:reviewId
 Body: none
 Successful Response
 
@@ -997,8 +994,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /api/bookings/current
 Body: none
 Successful Response
 
@@ -1042,8 +1039,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /api/spots/:spotId/bookings
 Body: none
 Successful Response: If you ARE NOT the owner of the spot.
 
@@ -1112,9 +1109,9 @@ Require proper authorization: Spot must NOT belong to the current user
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /api/spots/:spotId/bookings
 
 Body:
 
@@ -1195,9 +1192,9 @@ Require proper authorization: Booking must belong to the current user
 
 Request
 
-Method: ?
+Method: PUT
 
-URL: ?
+URL: /api/bookings/:bookingId
 
 Headers:
 
@@ -1294,8 +1291,8 @@ Require proper authorization: Booking must belong to the current user or the Spo
 
 Request
 
-Method: ?
-URL: ?
+Method: DELETE
+URL: /api/bookings/:bookingId
 Body: none
 Successful Response
 
@@ -1346,8 +1343,8 @@ Require proper authorization: Spot must belong to the current user
 
 Request
 
-Method: ?
-URL: ?
+Method: DELETE
+URL: /api/spot-images/:imageId
 Body: none
 Successful Response
 
@@ -1384,8 +1381,8 @@ Require proper authorization: Review must belong to the current user
 
 Request
 
-Method: ?
-URL: ?
+Method: DELETE
+URL: /api/review-images/:imageId
 Body: none
 Successful Response
 
@@ -1420,11 +1417,11 @@ Require Authentication: false
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /api/spots
 Query Parameters
-page: integer, minimum: 0, maximum: 10, default: 0
-size: integer, minimum: 0, maximum: 20, default: 20
+page: integer, minimum: 1, maximum: 10, default: 1
+size: integer, minimum: 1, maximum: 20, default: 20
 minLat: decimal, optional
 maxLat: decimal, optional
 minLng: decimal, optional
@@ -1476,8 +1473,8 @@ Body:
   "message": "Validation Error",
   "statusCode": 400,
   "errors": {
-    "page": "Page must be greater than or equal to 0",
-    "size": "Size must be greater than or equal to 0",
+    "page": "Page must be greater than or equal to 1",
+    "size": "Size must be greater than or equal to 1",
     "maxLat": "Maximum latitude is invalid",
     "minLat": "Minimum latitude is invalid",
     "minLng": "Maximum longitude is invalid",
