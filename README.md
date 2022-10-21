@@ -4,7 +4,7 @@ Totally Original Idea AirBnB
 
 Database Schema Design
 <p align="center">
-  <img src="airbnb schema copy.png">
+  <img src="airbnb_dbdiagram.png">
 </p>
 
 API Documentation
