@@ -1,0 +1,119 @@
+Bookings:
+npx sequelize-cli model:generate --name Booking --attributes spotId:integer,userId:integer,startDate:date,endDate:date
+
+validations/constraints:
+spotId:
+- allowNull: false
+-
+
+userId:
+- allowNull: false
+-
+
+startDate:
+- allowNull: false
+- isDate: true
+
+endDate:
+- allowNull: false
+- isDate: true
+
+///////////////////
+Spots:
+npx sequelize-cli model:generate --name Spot --attributes ownerId:integer,address:string,city:string,state:string,country:string,lat:decimal,lng:decimal,name:string,description:string,price:decimal
+
+validations/constraints:
+ownerId:
+- allowNull: false
+- unique: true
+
+address:
+- allowNull: false
+- ??isValidAddress??
+
+city:
+- allowNull: false
+-
+
+state:
+- allowNull: false
+-
+
+country:
+- allowNull: false
+- ??isValidCountry??
+-
+
+lat:
+- allowNull: false
+-
+
+lng:
+- allowNull: false
+-
+
+name:
+- allowNull: false
+-
+
+description:
+-
+
+price:
+- allowNull: false
+-
+
+///////////////////
+reviewImages:
+npx sequelize-cli model:generate --name ReviewImage --attributes reviewId:integer,url:string
+
+reviewId:
+- allowNull: false
+- unique: true
+
+url:
+- isUrl: true
+
+///////////////////
+reviews:
+npx sequelize-cli model:generate --name Review --attributes spotId:integer,userId:integer,review:string,stars:integer
+
+spotId:
+- allowNull: false
+-
+
+userId:
+- allowNull: false
+-
+
+review:
+- allowNull: false
+
+stars:
+- allowNull: false
+min: 0
+max: 5
+
+///////////////////
+SpotImages:
+npx sequelize-cli model:generate --name SpotImage --attributes spotId:integer,url:string,preview:boolean
+
+spotId:
+- allowNull: false
+-
+
+url:
+- isUrl: true
+-
+
+preview:
+- defaultValue: false
+
+///////////////////
+Seeders:
+
+SpotImage:
+
+SpotId:
+
+
