@@ -1,0 +1,20 @@
+{
+  "firstName": "Trevor",
+  "lastName": "Moo",
+  "email": "Trev.Moo@gmail.com",
+  "username": "TrevyMoo",
+  "password": "secret password"
+}
+
+{
+  "credentials": "demo@user.io",
+  "password": "secret password"
+}
+
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "email": "john.smith@gmail.com",
+  "username": "johnnysmith",
+  "password": "secret password"
+}

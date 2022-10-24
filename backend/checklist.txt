@@ -1,0 +1,35 @@
+//////////SPOTS//////////
+
+- Get all Spots ✅
+Method: GET
+URL: /api/spots
+
+- Get all Spots owned by the Current User ✅
+Method: GET
+URL: /api/spots/current
+
+- Get details of a Spot from an id ✅
+Method: GET
+URL: /api/spots/:spotId
+
+//////////REVIEWS//////////
+
+- Get all Reviews of the Current User ✅
+Method: GET
+URL: /api/reviews/current
+
+- Get all Reviews by a Spot's id ✅
+Method: GET
+URL: /api/spots/:spotId/reviews
+
+//////////BOOKINGS//////////
+
+- Get all of the Current User's Bookings ✅
+Method: GET
+URL: /api/bookings/current
+
+- Get all Bookings for a Spot based on the Spot's id*
+*If you ARE NOT the owner of the spot ✅
+*If you ARE the owner of the spot ✅
+Method: GET
+URL: /api/spots/:spotId/bookings

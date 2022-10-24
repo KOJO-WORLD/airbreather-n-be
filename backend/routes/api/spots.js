@@ -5,7 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 
-const { Spot, User, SpotImage, Review, ReviewImage, sequelize } = require('../../db/models');
+const { Spot, User, SpotImage, Review, ReviewImage, Booking, sequelize } = require('../../db/models');
 
 const router = express.Router();
 
@@ -29,23 +29,100 @@ const router = express.Router();
 //     handleValidationErrors
 // ];
 
-// get all spots
-router.get('/', async (req, res) => {
+// check and validate username/email and user password
+const validateLogin = [
+    check('credential')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Please provide a valid email or username.'),
+    check('password')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a password.'),
+    handleValidationErrors
+];
 
-    const allSpots = await Spot.findAll();
 
-    return res.json(allSpots);
+// Get all Spots owned by the Current User
+router.get('/current', requireAuth, async (req, res) => {
+
+    const userId = req.user.id
+
+    const spots = await Spot.findAll({
+        where: {
+            ownerId: userId
+        },
+        include: [
+            {
+                model: SpotImage,
+                where: {
+                    preview: true
+                },
+                attributes: []
+            },
+            {
+                model: Review,
+                attributes: []
+            }
+        ],
+        attributes: {
+            //aliasing column
+            include: [
+                [
+                    sequelize.fn("AVG", sequelize.col("Reviews.stars")),
+                    "avgStarRating"
+                ],
+                [
+                    sequelize.col("SpotImages.url"), "previewImage"
+                ]
+            ]
+        },
+        group: ['Spot.id']
+    });
+
+    res.json({ 'Spots': spots });
 });
 
 // get spot by id
 router.get('/:id', async (req, res) => {
 
-    const spot = await Spot.findByPk(req.params.id);
+    const spotId = req.params.id
+
+    const spot = await Spot.findByPk(req.params.id, {
+        include: [
+            {
+                model: SpotImage,
+                where: { spotId },
+                attributes: ['id', 'url', 'preview']
+            },
+            {
+                model: User,
+                as: 'Owner',
+                attributes: ['id', 'firstName', 'lastName']
+            },
+            {
+                model: Review,
+                where: {
+                    spotId,
+                },
+                attributes: []
+            }
+        ],
+        attributes: {
+            include: [
+                [
+                    sequelize.fn('COUNT', sequelize.col('Reviews.id')), 'numReviews'
+                ],
+                [
+                    sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgStarRating"
+                ]
+            ]
+        }
+    });
 
     return res.json(spot);
 });
 
-// get reviews for spot
+// Get all Reviews by a Spot's id
 router.get('/:spotId/reviews', async (req, res) => {
 
     const { spotId } = req.params
@@ -66,32 +143,90 @@ router.get('/:spotId/reviews', async (req, res) => {
         ]
     });
 
-    return res.json(reviews);
+    return res.json({ 'Reviews': reviews });
 });
 
 // get bookings for spot
-router.get('/:spotId/bookings', async (req, res) => {
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
-    const spot = await Spot.findByPk(req.params.id, {
-        include: [
-            {
-                model: Booking
-            }
-        ]
-    });
+    const spot = await Spot.findByPk(req.params.spotId)
 
-    return res.json({
-        // spot.Bookings,
-        'message': 'If you ARE the owner of the spot'
-    });
+    const userId = req.user.id
+
+    if (spot.ownerId === userId) {
+
+        const bookings = await Spot.findByPk(req.params.spotId, {
+
+            attributes: [],
+            include: [
+                {
+                    model: Booking,
+                    include:
+                    {
+                        model: User,
+                        attributes: ['id', 'firstName', 'lastName']
+                    }
+                }
+            ]
+        });
+        return res.json(bookings);
+    } else {
+        const bookings = await Spot.findByPk(req.params.spotId, {
+
+            attributes: [],
+            include: [
+                {
+                    model: Booking,
+                    attributes: ['spotId', 'startDate', 'endDate'],
+                }
+            ]
+        });
+        return res.json(bookings);
+    }
 });
 
 // get all spots pagination
-router.get('/', async (req, res) => {
+// router.get('/', async (req, res) => {
 
-    const allSpots = await Spot.findAll();
+//     const allSpots = await Spot.findAll();
 
-    return res.json(allSpots);
+//     return res.json(allSpots);
+// });
+
+// get all spots
+router.get('/', async (req, res, next) => {
+
+    const spots = await Spot.findAll({
+
+        include: [
+            {
+                model: SpotImage,
+                where: {
+                    preview: true
+                },
+                attributes: []
+            },
+            {
+                model: Review,
+                attributes: []
+            }
+        ],
+        attributes: {
+            //aliasing column
+            include: [
+                [
+                    sequelize.fn("AVG", sequelize.col("Reviews.stars")),
+                    "avgStarRating"
+                ],
+                [
+                    sequelize.col("SpotImages.url"), "previewImage"
+                ]
+            ]
+        },
+        group: ['Spot.id']
+    });
+
+    res.json({ 'Spots': spots });
 });
 
 module.exports = router;
