@@ -4,3 +4,4 @@ build
 .DS_Store
 *.db
 checklist.txt
+database.txt

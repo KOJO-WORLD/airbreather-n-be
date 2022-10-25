@@ -4,6 +4,10 @@
 Method: GET
 URL: /api/spots
 
+- Add Query Filters to Get All Spots
+Method: GET
+URL: /api/spots
+
 - Get all Spots owned by the Current User ✅
 Method: GET
 URL: /api/spots/current

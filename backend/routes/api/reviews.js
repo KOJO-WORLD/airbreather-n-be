@@ -70,14 +70,11 @@ router.get('/current', requireAuth, async (req, res) => {
                 exclude: ['description', 'createdAt', 'updatedAt']
             }
         })
-        console.log("REALSHIT?", review.dataValues);
+        // console.log(review.dataValues);
         review.dataValues.User = user;
         review.dataValues.Spot = spot;
     }
     res.json({ 'Reviews': reviews });
 });
-
-
-
 
 module.exports = router;

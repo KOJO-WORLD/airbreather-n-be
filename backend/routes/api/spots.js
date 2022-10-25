@@ -185,48 +185,90 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     }
 });
 
-// get all spots pagination
-// router.get('/', async (req, res) => {
-
-//     const allSpots = await Spot.findAll();
-
-//     return res.json(allSpots);
-// });
-
 // get all spots
 router.get('/', async (req, res, next) => {
 
-    const spots = await Spot.findAll({
+    if (!Object.keys(req.query).length) {
 
-        include: [
-            {
-                model: SpotImage,
-                where: {
-                    preview: true
-                },
-                attributes: []
-            },
-            {
-                model: Review,
-                attributes: []
-            }
-        ],
-        attributes: {
-            //aliasing column
+        const spots = await Spot.findAll({
+
             include: [
-                [
-                    sequelize.fn("AVG", sequelize.col("Reviews.stars")),
-                    "avgStarRating"
+                {
+                    model: SpotImage,
+                    where: {
+                        preview: true
+                    },
+                    attributes: []
+                },
+                {
+                    model: Review,
+                    attributes: []
+                },
+            ],
+            attributes: {
+                //aliasing column
+                include: [
+                    [
+                        sequelize.fn("AVG", sequelize.col("stars")),
+                        "avgStarRating"
+                    ],
+                    [
+                        sequelize.col("SpotImages.url"), "previewImage"
+                    ]
                 ],
-                [
-                    sequelize.col("SpotImages.url"), "previewImage"
-                ]
-            ]
-        },
-        group: ['Spot.id']
-    });
+            },
+            group: ['Spot.id'],
+        });
 
-    res.json({ 'Spots': spots });
+        res.json({ 'Spots': spots });
+    }
+    else {
+
+        // Return spots filtered by query parameters.
+        let { page, size, minLat, maxLat,
+            minLng, maxLng, minPrice, maxPrice } = req.query;
+
+        // set page and size of results
+        if (page && (Number(page) > 0)) {
+            if (Number(page) > 10) page = 10
+            page = parseInt(page);
+        } else page = 1
+
+        if (size && Number(size) > 0) {
+            if (Number(size) > 20) size = 20
+            size = parseInt(size);
+        } else size = 20
+
+        console.log('this are test', size)
+
+        // console.log('HEYYYYYYYYYYYYY', typeof minLat);
+        // if (page && (Number(page) > 0)) {
+        //     if (Number(page) > 10) page = 10
+        //     page = parseInt(page);
+        // } else page = 1
+
+        const spots = await Spot.findAll(
+            {
+                limit: size,
+                offset: (size * (page - 1)),
+
+                group: ['Spot.id'],
+            }
+        );
+
+        for (let spot of spots) {
+
+            const spotImages = await SpotImage.findAll({
+                where: {
+                    spotId: spot.id
+                }
+            })
+            const prevImg = spotImages[0].dataValues.url
+
+            spot.dataValues.previewImage = prevImg;
+        }
+        res.json({ 'Spots': spots, page, size });
+    }
 });
 
 module.exports = router;
