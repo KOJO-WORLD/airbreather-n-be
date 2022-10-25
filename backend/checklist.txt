@@ -1,10 +1,16 @@
+//////////OTHER//////////
+- Get the Current User ✅
+Method: GET
+URL: /api/session
+
 //////////SPOTS//////////
 
 - Get all Spots ✅
 Method: GET
 URL: /api/spots
 
-- Add Query Filters to Get All Spots
+- Add Query Filters to Get All Spots *needs to be decimal friendly for lat lng/
+needs to acount for negative lat and lng*
 Method: GET
 URL: /api/spots
 
@@ -37,3 +43,9 @@ URL: /api/bookings/current
 *If you ARE the owner of the spot ✅
 Method: GET
 URL: /api/spots/:spotId/bookings
+
+
+//////////ERRORS//////////
+
+Request: endpoints that require authentication
+-

@@ -37,7 +37,7 @@ router.get('/current', requireAuth, async (req, res) => {
         where: {
             userId
         },
-        // attributes: ['id', 'spotId']
+        attributes: ['id', 'spotId']
     })
 
     for (let booking of bookings) {
@@ -57,11 +57,7 @@ router.get('/current', requireAuth, async (req, res) => {
             ],
             attributes: {
                 //aliasing column
-                include: [
-                    [
-                        sequelize.col("SpotImages.url"), "previewImage"
-                    ]
-                ],
+                include: [[sequelize.col("SpotImages.url"), "previewImage"]],
                 exclude: ['description', 'createdAt', 'updatedAt']
             }
         })

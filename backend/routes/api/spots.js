@@ -3,7 +3,7 @@ const express = require('express')
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-
+const { Op } = require("sequelize");
 
 const { Spot, User, SpotImage, Review, ReviewImage, Booking, sequelize } = require('../../db/models');
 
@@ -239,16 +239,46 @@ router.get('/', async (req, res, next) => {
             size = parseInt(size);
         } else size = 20
 
-        console.log('this are test', size)
+        // set min & max latitude of results
+        if (minLat) {
+            minLat = parseInt(minLat);
+        } else minLat = 1 // change later?
 
-        // console.log('HEYYYYYYYYYYYYY', typeof minLat);
-        // if (page && (Number(page) > 0)) {
-        //     if (Number(page) > 10) page = 10
-        //     page = parseInt(page);
-        // } else page = 1
+        if (maxLat) {
+            maxLat = parseInt(maxLat);
+        } else maxLat = 1000 // change later?
+
+        // set min & max longitude of results
+        if (minLng) {
+            minLng = parseInt(minLng);
+        } else minLng = 1 // change later?
+
+        if (maxLng) {
+            maxLng = parseInt(maxLng);
+        } else maxLng = 180 // change later?
+
+        // set min & max price of results
+        if (minPrice && (Number(minPrice) > 0)) {
+            minPrice = parseInt(minPrice);
+        }
+
+        if (maxPrice && (Number(maxPrice) > 0)) {
+            maxPrice = parseInt(maxPrice);
+        }
 
         const spots = await Spot.findAll(
             {
+                where: {
+                    // lat: {
+                    //     [Op.between]: [minLat, maxLat]
+                    // },
+                    // lng: {
+                    //     [Op.between]: [minLng, maxLng]
+                    // },
+                    price: {
+                        [Op.between]: [minPrice, maxPrice]
+                    }
+                },
                 limit: size,
                 offset: (size * (page - 1)),
 
