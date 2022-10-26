@@ -21,6 +21,57 @@ const router = express.Router();
 //     handleValidationErrors
 // ];
 
+// Add an Image to a Review based on the Review's id
+router.post('/:reviewId/images', async (req, res) => {
+
+    const { url } = req.body;
+
+    const checkReview = await Review.findByPk(req.params.reviewId)
+
+    if (!checkReview) {
+        res.status(404);
+        res.json({
+            "message": "Review couldn't be found",
+            "statusCode": 404
+        })
+    } else {
+
+        const allReviewImages = await ReviewImage.findAll()
+
+        let count = 0
+        for (let reviewImage of allReviewImages) {
+            if (reviewImage.reviewId === checkReview.id)
+                count++
+        }
+
+        if (count >= 10) {
+            res.status(403)
+            res.json({
+                "message": "Maximum number of images for this resource was reached",
+                "statusCode": 403
+            })
+        } else {
+
+
+            const newReviewImage = await ReviewImage.create({
+                reviewId: checkReview.id,
+                url
+            })
+
+            const returnReviewImage = await ReviewImage.findOne({
+                where: {
+                    reviewId: checkReview.id,
+                    url
+                },
+                attributes: {
+                    exclude: ['reviewId', 'createdAt', 'updatedAt']
+                }
+            })
+            res.json(returnReviewImage);
+        }
+    }
+});
+
 // Get all Reviews of the Current User
 router.get('/current', requireAuth, async (req, res) => {
 
@@ -76,5 +127,25 @@ router.get('/current', requireAuth, async (req, res) => {
     }
     res.json({ 'Reviews': reviews });
 });
+
+// Delete a Review
+router.delete('/:reviewId', requireAuth, async (req, res) => {
+    const review = await Review.findByPk(req.params.reviewId)
+
+    if (!review) {
+        res.json({
+            "message": "Review couldn't be found",
+            "statusCode": 404
+        });
+    } else {
+
+        await review.destroy();
+
+        res.json({
+            "message": "Successfully deleted",
+            "statusCode": 200
+        })
+    }
+})
 
 module.exports = router;

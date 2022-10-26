@@ -1,7 +1,21 @@
-//////////OTHER//////////
+//////////USER//////////
 - Get the Current User ✅
 Method: GET
 URL: /api/session
+
+- Log In a User ✅
+Method: POST
+URL: /api/session
+Authentication error 🛑
+Invalid credentials error ✅
+Body validation error ✅
+
+- Sign Up a User ✅
+Method: POST
+URL: /api/users
+Error: User already exists with the specified email ✅
+Error: User already exists with the specified username ✅
+Body validation error 🛑
 
 //////////SPOTS//////////
 
@@ -10,42 +24,113 @@ Method: GET
 URL: /api/spots
 
 - Add Query Filters to Get All Spots *needs to be decimal friendly for lat lng/
-needs to acount for negative lat and lng*
+needs to acount for negative lat and lng/ need to clarify optional search queries ANSWER:
+query for every search param*
 Method: GET
 URL: /api/spots
 
 - Get all Spots owned by the Current User ✅
 Method: GET
 URL: /api/spots/current
+Authentication error 🛑
 
 - Get details of a Spot from an id ✅
 Method: GET
 URL: /api/spots/:spotId
+Invalid spot id error ✅
+
+- Delete a Spot ✅
+Method: DELETE
+URL: /api/spots/:spotId
+Invalid spot id error ✅
+Authentication error 🛑
+
+- Create a Spot ✅
+Method: POST
+URL: /api/spots
+Body validation error ✅
+Authentication error 🛑
+
+- Add an Image to a Spot based on the Spot's id ✅
+Method: POST
+URL: /api/spots/:spotId/images
+Invalid spot id error ✅
+Authentication error 🛑
 
 //////////REVIEWS//////////
 
 - Get all Reviews of the Current User ✅
 Method: GET
 URL: /api/reviews/current
+Authentication error 🛑
 
 - Get all Reviews by a Spot's id ✅
 Method: GET
 URL: /api/spots/:spotId/reviews
+Invalid spot id error ✅
+
+- Delete a Review ✅
+Method: DELETE
+URL: /api/reviews/:reviewId
+Invalid review id error ✅
+Authentication error 🛑
+
+- Create a Review for a Spot based on the Spot's id ✅
+Method: POST
+URL: /api/spots/:spotId/reviews
+Body validation error ✅ *CHECK POSTMAN TESTSPECS VS API DOCS*
+Invalid spot id error ✅
+Error: Review from the current user already exists for the Spot
+Authentication error 🛑
+
+- Add an Image to a Review based on the Review's id ✅
+Method: POST
+URL: /api/reviews/:reviewId/images
+Invalid review id error ✅
+maximum images error ✅
+Authentication error 🛑
 
 //////////BOOKINGS//////////
 
 - Get all of the Current User's Bookings ✅
 Method: GET
 URL: /api/bookings/current
+Authentication error 🛑
 
-- Get all Bookings for a Spot based on the Spot's id*
+- Get all Bookings for a Spot based on the Spot's id ✅
 *If you ARE NOT the owner of the spot ✅
 *If you ARE the owner of the spot ✅
 Method: GET
 URL: /api/spots/:spotId/bookings
+Invalid spot id error ✅
+Authentication error 🛑
+
+- Delete a Booking ✅
+Method: DELETE
+URL: /api/bookings/:bookingId
+Invalid booking id error ✅
+Authentication error 🛑
+
+Create a Booking from a Spot based on the Spot's id
+Method: POST
+URL: /api/spots/:spotId/bookings
+Body validation error ✅
+Invalid spot id error ✅
+Booking conflict error ✅
+Authentication error 🛑
 
 
-//////////ERRORS//////////
+//////////SPOT-IMAGES//////////
+- Delete a Spot Image ✅
+Method: DELETE
+URL: /api/spot-images/:imageId
+Invalid spot image id error ✅
+Authentication error 🛑
 
-Request: endpoints that require authentication
--
+//////////REVIEW-IMAGES//////////
+
+- Delete a Review Image ✅
+Method: DELETE
+URL: /api/review-images/:imageId
+Invalid review image id error ✅
+Authentication error 🛑

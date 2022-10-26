@@ -31,11 +31,50 @@ const validateSignup = [
 // Sign up
 router.post('/', validateSignup, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
+
+    const users = await User.findAll({
+        attributes: {
+            include: ['email']
+        }
+    });
+
+    for (let user of users) {
+        let userObj = user.toJSON()
+
+        if (userObj.email === email) {
+            res.status(403);
+            res.json({
+                "message": "User already exists",
+                "statusCode": 403,
+                "errors": {
+                    "email": "User with that email already exists"
+                }
+            })
+        }
+        else if (user.username === username) {
+            res.status(403);
+            res.json({
+                "message": "User already exists",
+                "statusCode": 403,
+                "errors": {
+                    "username": "User with that username already exists"
+                }
+            })
+        }
+    }
+
     const user = await User.signup({ email, username, password, firstName, lastName });
 
     await setTokenCookie(res, user);
 
-    return res.json({ user });
+    const signUpUser = await User.findByPk(user.id, {
+        attributes: {
+            include: ['email']
+        },
+        raw: true
+    })
+    signUpUser.token = ''
+    return res.json(signUpUser);
 });
 
 // Get all users

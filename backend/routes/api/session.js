@@ -42,29 +42,50 @@ const validateLogin = [
 router.post('/', validateLogin, async (req, res, next) => {
   const { credential, password } = req.body;
 
-  const user = await User.login({ credential, password });
+  if (!credential || !password) {
+    res.status(400);
+    res.json({
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "credential": "Email or username is required",
+        "password": "Password is required"
+      }
+    })
+  } else if (typeof credential !== 'string') {
+    res.status(401);
+    res.json({
+      "message": "Invalid credentials",
+      "statusCode": 401
+    })
+  } else {
 
-  if (!user) {
-    const err = new Error('Login failed');
-    err.status = 401;
-    err.title = 'Login failed';
-    err.errors = ['The provided credentials were invalid.'];
-    return next(err);
+    const user = await User.login({ credential, password });
+
+    console.log("FFFUUUUUUUUUUUUUUUUUU", user);
+
+    if (!user) {
+      const err = new Error('Login failed');
+      err.status = 401;
+      err.title = 'Login failed';
+      err.errors = ['The provided credentials were invalid.'];
+      return next(err);
+    }
+
+    await setTokenCookie(res, user);
+
+    const loginUser = await User.findOne({
+      where: {
+        id: user.id
+      },
+      attributes: {
+        include: ['email']
+      },
+      raw: true
+    })
+    loginUser.token = '';
+    return res.json(loginUser);
   }
-
-  await setTokenCookie(res, user);
-
-  const loginUser = await User.findOne({
-    where: {
-      id: user.id
-    },
-    attributes: {
-      include: ['email']
-    },
-    raw: true
-  })
-  loginUser.token = '';
-  return res.json(loginUser);
 });
 
 // Log out
