@@ -66,6 +66,42 @@ router.get('/current', requireAuth, async (req, res) => {
     res.json({ 'Bookings': bookings });
 });
 
+// Edit a Booking
+router.put('/:bookingId', requireAuth, async (req, res) => {
+
+    // const owner = req.user.toJSON()
+
+    const { startDate, endDate } = req.body;
+
+    // console.log("LORDY", review, stars)
+
+    if (startDate.valueOf() > endDate.valueOf()) {
+        res.status(400)
+        return res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+                "endDate": "endDate cannot come before startDate"
+            }
+        })
+    }
+
+    const findBooking = await Booking.findByPk(req.params.bookingId);
+
+    if (!findBooking) {
+        res.status(404);
+        res.json({
+            "message": "Booking couldn't be found",
+            "statusCode": 404
+        });
+    } else {
+
+        const editBooking = await findBooking.update({ startDate, endDate })
+
+        res.json(editBooking)
+    }
+});
+
 // Delete a Booking
 router.delete('/:bookingId', requireAuth, async (req, res) => {
     const booking = await Booking.findByPk(req.params.bookingId)

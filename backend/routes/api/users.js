@@ -32,6 +32,21 @@ const validateSignup = [
 router.post('/', validateSignup, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
 
+    // Body validation errors
+    if (!email || !username || !firstName || !lastName) {
+        res.status(400);
+        res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+                "email": "Invalid email",
+                "username": "Username is required",
+                "firstName": "First Name is required",
+                "lastName": "Last Name is required"
+            }
+        })
+    }
+
     const users = await User.findAll({
         attributes: {
             include: ['email']
@@ -40,7 +55,7 @@ router.post('/', validateSignup, async (req, res) => {
 
     for (let user of users) {
         let userObj = user.toJSON()
-
+        // User already exists with the specified email
         if (userObj.email === email) {
             res.status(403);
             res.json({
@@ -51,6 +66,7 @@ router.post('/', validateSignup, async (req, res) => {
                 }
             })
         }
+        // User already exists with the specified username
         else if (user.username === username) {
             res.status(403);
             res.json({

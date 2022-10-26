@@ -72,6 +72,44 @@ router.post('/:reviewId/images', async (req, res) => {
     }
 });
 
+// Edit a Review
+router.put('/:reviewId', requireAuth, async (req, res) => {
+
+    // const owner = req.user.toJSON()
+
+    const { review, stars } = req.body;
+
+    console.log("LORDY", review, stars)
+
+    if (!review || !stars || typeof stars !== 'number' || stars > 5 || stars < 1) {
+
+        res.status(400)
+        return res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+                "review": "Review text is required",
+                "stars": "Stars must be an integer from 1 to 5",
+            }
+        })
+    }
+
+    const findReview = await Review.findByPk(req.params.reviewId);
+
+    if (!findReview) {
+        res.status(404);
+        res.json({
+            "message": "Review couldn't be found",
+            "statusCode": 404
+        });
+    } else {
+
+        const editReview = await findReview.update({ review, stars })
+
+        res.json(editReview)
+    }
+});
+
 // Get all Reviews of the Current User
 router.get('/current', requireAuth, async (req, res) => {
 

@@ -44,9 +44,9 @@ const validateLogin = [
 
 // Get all Spots owned by the Current User
 router.get('/current', requireAuth, async (req, res) => {
-    const user = req.user.toJSON()
 
     const userId = req.user.id
+    console.log("FISH FILLET", userId)
 
     const spots = await Spot.findAll({
         where: {
@@ -56,7 +56,7 @@ router.get('/current', requireAuth, async (req, res) => {
             {
                 model: SpotImage,
                 where: {
-                    preview: true
+                    // preview: true
                 },
                 attributes: []
             },
@@ -80,6 +80,7 @@ router.get('/current', requireAuth, async (req, res) => {
         group: ['Spot.id']
     });
 
+    console.log('GIMMIE DA SPOTS', spots)
     res.json({ 'Spots': spots });
 });
 
@@ -119,6 +120,55 @@ router.get('/:spotId/reviews', async (req, res) => {
     return res.json({ 'Reviews': reviews });
 });
 
+// Edit a Spot
+router.put('/:spotId', requireAuth, async (req, res) => {
+
+    // const owner = req.user.toJSON()
+
+    const { address, city, state, country,
+        lat, lng, name, description, price } = req.body;
+
+    if (!address || !city || !state || !country || lat > 90 || typeof lat !== 'number'
+        || lng > 180 || typeof lng !== 'number' || name.length > 50 || !description || !price) {
+
+        res.status(400)
+        return res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+                "address": "Street address is required",
+                "city": "City is required",
+                "state": "State is required",
+                "country": "Country is required",
+                "lat": "Latitude is not valid",
+                "lng": "Longitude is not valid",
+                "name": "Name must be less than 50 characters",
+                "description": "Description is required",
+                "price": "Price per day is required"
+            }
+        })
+    }
+
+    const findSpot = await Spot.findByPk(req.params.spotId);
+
+    if (!findSpot) {
+        res.status(404);
+        res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        });
+    } else {
+
+        const editSpot = await findSpot.update({
+            address, city, state, country,
+            lat, lng, name, description, price,
+            // ownerId: owner.id
+        })
+
+        res.json(editSpot)
+    }
+});
+
 // Delete a Spot
 router.delete('/:spotId', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
@@ -147,7 +197,22 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     const { review, stars } = req.body;
 
     const checkSpot = await Spot.findByPk(req.params.spotId)
-    if (!review || !stars) {
+    if (!checkSpot) {
+        res.status(404);
+        return res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        })
+    }
+
+    const checkReview = await Review.findOne({
+        where: {
+            spotId: checkSpot.id,
+            userId: user.id
+        }
+    })
+
+    if (!review || !stars || typeof stars !== 'number' || stars > 5 || stars < 1) {
         res.json({
             "message": "Validation error",
             "statusCode": 400,
@@ -156,11 +221,11 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
                 "stars": "Stars must be an integer from 1 to 5",
             }
         })
-    } else if (!checkSpot) {
-        res.status(404);
+    } else if (checkReview) {
+        res.status(403);
         res.json({
-            "message": "Spot couldn't be found",
-            "statusCode": 404
+            "message": "User already has a review for this spot",
+            "statusCode": 403
         })
     } else {
         const newReview = await Review.create({
@@ -363,13 +428,12 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 // get spot by id
 router.get('/:spotId', async (req, res) => {
 
-    const id = req.params.spotId
+    const id = +req.params.spotId
 
     const spot = await Spot.findByPk(id, {
         include: [
             {
                 model: SpotImage,
-                where: { spotId: id },
                 attributes: ['id', 'url', 'preview']
             },
             {
@@ -379,7 +443,6 @@ router.get('/:spotId', async (req, res) => {
             },
             {
                 model: Review,
-                where: { spotId: id },
                 attributes: []
             }
         ],
@@ -394,6 +457,7 @@ router.get('/:spotId', async (req, res) => {
             ]
         }
     });
+    // console.log('YOOOOOOO', spot.toJSON())
 
     if (spot.id === null || (typeof id !== 'number')) {
         res.status(404)
@@ -419,7 +483,8 @@ router.get('/', async (req, res, next) => {
                     where: {
                         preview: true
                     },
-                    attributes: []
+                    attributes: [],
+                    required: false
                 },
                 {
                     model: Review,
@@ -440,7 +505,7 @@ router.get('/', async (req, res, next) => {
             },
             group: ['Spot.id'],
         });
-
+        console.log(spots)
         res.json({ 'Spots': spots });
     }
     else {

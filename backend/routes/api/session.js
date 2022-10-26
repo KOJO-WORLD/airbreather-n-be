@@ -42,6 +42,7 @@ const validateLogin = [
 router.post('/', validateLogin, async (req, res, next) => {
   const { credential, password } = req.body;
 
+  // body validation error
   if (!credential || !password) {
     res.status(400);
     res.json({
@@ -52,6 +53,7 @@ router.post('/', validateLogin, async (req, res, next) => {
         "password": "Password is required"
       }
     })
+    //  Invalid credentials pt1
   } else if (typeof credential !== 'string') {
     res.status(401);
     res.json({
@@ -62,14 +64,18 @@ router.post('/', validateLogin, async (req, res, next) => {
 
     const user = await User.login({ credential, password });
 
-    console.log("FFFUUUUUUUUUUUUUUUUUU", user);
-
+    //  Invalid credentials pt2
     if (!user) {
-      const err = new Error('Login failed');
-      err.status = 401;
-      err.title = 'Login failed';
-      err.errors = ['The provided credentials were invalid.'];
-      return next(err);
+      // const err = new Error('Login failed');
+      // err.status = 401;
+      // err.title = 'Login failed';
+      // err.errors = ['The provided credentials were invalid.'];
+      // return next(err);
+      res.status(401);
+      res.json({
+        "message": "Invalid credentials",
+        "statusCode": 401
+      })
     }
 
     await setTokenCookie(res, user);
@@ -109,7 +115,7 @@ router.delete('/', (_req, res) => {
 //   }
 // );
 
-// Restore session user
+// Get the Current User
 router.get('/', requireAuth, async (req, res) => {
   const { user } = req;
 
