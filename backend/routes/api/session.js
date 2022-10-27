@@ -78,7 +78,7 @@ router.post('/', validateLogin, async (req, res, next) => {
       })
     }
 
-    await setTokenCookie(res, user);
+    let userToken = await setTokenCookie(res, user);
 
     const loginUser = await User.findOne({
       where: {
@@ -89,7 +89,7 @@ router.post('/', validateLogin, async (req, res, next) => {
       },
       raw: true
     })
-    loginUser.token = '';
+    loginUser.token = userToken;
     return res.json(loginUser);
   }
 });

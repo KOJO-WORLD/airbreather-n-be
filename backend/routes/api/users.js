@@ -81,7 +81,7 @@ router.post('/', validateSignup, async (req, res) => {
 
     const user = await User.signup({ email, username, password, firstName, lastName });
 
-    await setTokenCookie(res, user);
+    let userToken = await setTokenCookie(res, user);
 
     const signUpUser = await User.findByPk(user.id, {
         attributes: {
@@ -89,7 +89,7 @@ router.post('/', validateSignup, async (req, res) => {
         },
         raw: true
     })
-    signUpUser.token = ''
+    signUpUser.token = userToken;
     return res.json(signUpUser);
 });
 
