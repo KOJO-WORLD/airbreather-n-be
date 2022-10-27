@@ -469,7 +469,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 // get spot by id
 router.get('/:spotId', async (req, res) => {
 
-    const spotId = req.params.spotId
+    const { spotId } = req.params
 
     let spot = await Spot.findByPk(spotId, {
         include: [
