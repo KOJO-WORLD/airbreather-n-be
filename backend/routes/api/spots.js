@@ -47,37 +47,77 @@ router.get('/current', requireAuth, async (req, res) => {
 
     const userId = req.user.id
 
-    const spots = await Spot.findAll({
+    const allSpots = await Spot.findAll({
         where: {
             ownerId: userId
-        },
-        include: [
-            {
-                model: SpotImage,
-                where: {
-                    // preview: true
-                },
-                attributes: []
-            },
-            {
-                model: Review,
-                attributes: []
-            }
-        ],
-        attributes: {
-            //aliasing column
-            include: [
-                [
-                    sequelize.fn("AVG", sequelize.col("Reviews.stars")),
-                    "avgRating"
-                ],
-                [
-                    sequelize.col("SpotImages.url"), "previewImage"
-                ]
-            ]
-        },
-        group: ['Spot.id', 'SpotImage.url']
+        }
     });
+
+    const spots = [];
+
+    for (let spot of allSpots) {
+        spot = spot.toJSON()
+        const reviews = await Review.findAll({
+            where: {
+                spotId: spot.id
+            },
+            attributes: ['stars']
+        })
+
+        if (!reviews.length) {
+            spot.avgRating = null
+        } else {
+            let ratings = 0;
+            for (let review of reviews) {
+                ratings += review.stars;
+            }
+
+            spot.avgRating = ratings / reviews.length;
+        }
+
+        const img = await SpotImage.findOne({
+            where: {
+                spotId: spot.id,
+                preview: true
+            }
+        })
+
+        spot.previewImage = img.url;
+
+        result.push(spot);
+    }
+
+    // const spots = await Spot.findAll({
+    //     where: {
+    //         ownerId: userId
+    //     },
+    //     include: [
+    //         {
+    //             model: SpotImage,
+    //             where: {
+    //                 // preview: true
+    //             },
+    //             attributes: []
+    //         },
+    //         {
+    //             model: Review,
+    //             attributes: []
+    //         }
+    //     ],
+    //     attributes: {
+    //         //aliasing column
+    //         include: [
+    //             [
+    //                 sequelize.fn("AVG", sequelize.col("Reviews.stars")),
+    //                 "avgRating"
+    //             ],
+    //             [
+    //                 sequelize.col("SpotImages.url"), "previewImage"
+    //             ]
+    //         ]
+    // },
+    //     group: ['Spot.id', 'SpotImage.url']
+    // });
 
     res.json({ 'Spots': spots });
 });
