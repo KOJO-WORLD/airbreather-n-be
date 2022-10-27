@@ -565,42 +565,28 @@ router.get('/', async (req, res, next) => {
                 },
                 limit: size,
                 offset: (size * (page - 1)),
-                attributes: {
-                    //aliasing column
-                    include: [
-                        [
-                            sequelize.fn("AVG", sequelize.col("stars")),
-                            "avgRating"
-                        ],
-                        [
-                            sequelize.col("SpotImages.url"), "previewImage"
-                        ]
-                    ],
-                },
+
                 group: ['Spot.id', 'SpotImages.url'],
-            });
+            }
+        );
 
-                // group: ['Spot.id', 'SpotImages.url'],
-            // }
-        // );
+        for (let spot of spots) {
 
-        // for (let spot of spots) {
+            const spotImages = await SpotImage.findAll({
+                where: {
+                    spotId: spot.id
+                }
+            })
 
-        //     const spotImages = await SpotImage.findAll({
-        //         where: {
-        //             spotId: spot.id
-        //         }
-        //     })
+            console.log("TODAY'S THE DAY", spotImages)
 
-        //     console.log("TODAY'S THE DAY", spotImages)
+            if (!spotImages) {
 
-        //     if (!spotImages) {
+                const prevImg = spotImages[0].dataValues.url
 
-        //         const prevImg = spotImages[0].dataValues.url
-
-        //         spot.dataValues.previewImage = prevImg;
-        //     }
-        // }
+                spot.dataValues.previewImage = prevImg;
+            }
+        }
         res.json({ 'Spots': spots, page, size });
     }
 });
