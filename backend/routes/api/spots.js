@@ -656,6 +656,8 @@ router.get('/', async (req, res, next) => {
             }
         );
 
+        let returnSpots = []
+
         for (let spot of spots) {
             spot = spot.toJSON()
 
@@ -675,8 +677,9 @@ router.get('/', async (req, res, next) => {
                 spotImage = spotImage.toJSON()
                 spot.previewImage = spotImage.url
             }
+            returnSpots.push(spot)
         }
-        res.json({ 'Spots': spots, page, size });
+        res.json({ 'Spots': returnSpots, page, size });
     }
 });
 
