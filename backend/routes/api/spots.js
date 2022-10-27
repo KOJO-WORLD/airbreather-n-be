@@ -475,6 +475,7 @@ router.get('/:spotId', async (req, res) => {
         include: [
             {
                 model: User,
+                as: "Owner",
                 attributes: ['id', 'firstName', 'lastName']
             }
         ]
@@ -519,8 +520,8 @@ router.get('/:spotId', async (req, res) => {
         spot.avgRating = ratings / reviews.length;
     }
 
-    const owner = spot.User
-    spot.Owner = owner
+    // const owner = spot.User
+    // spot.Owner = owner
 
     // const spot = await Spot.findByPk(id, {
     //     include: [
