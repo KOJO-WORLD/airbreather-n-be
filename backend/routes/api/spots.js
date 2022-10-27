@@ -84,7 +84,7 @@ router.get('/current', requireAuth, async (req, res) => {
 
         spot.previewImage = img.url;
 
-        result.push(spot);
+        spots.push(spot);
     }
 
     // const spots = await Spot.findAll({
