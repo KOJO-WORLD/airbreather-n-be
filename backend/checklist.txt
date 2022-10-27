@@ -70,7 +70,7 @@ Require proper authorization 🛑
 
 //////////REVIEWS//////////
 
-- Get all Reviews of the Current User ✅
+- Get all Reviews of the Current User ✅ ***not sure response structure will pass***
 Method: GET
 URL: /api/reviews/current
 Authentication error ✅
@@ -113,7 +113,7 @@ Require proper authorization 🛑
 
 //////////BOOKINGS//////////
 
-- Get all of the Current User's Bookings ✅
+- Get all of the Current User's Bookings ✅ ***not sure response structure will pass***
 Method: GET
 URL: /api/bookings/current
 Authentication error ✅
@@ -134,7 +134,7 @@ Authentication error ✅
 Error: Bookings that have been started can't be deleted ✅
 Require proper authorization 🛑
 
-- Create a Booking from a Spot based on the Spot's id
+- Create a Booking from a Spot based on the Spot's id ✅
 Method: POST
 URL: /api/spots/:spotId/bookings
 Body validation error ✅

@@ -46,7 +46,6 @@ const validateLogin = [
 router.get('/current', requireAuth, async (req, res) => {
 
     const userId = req.user.id
-    console.log("FISH FILLET", userId)
 
     const spots = await Spot.findAll({
         where: {
@@ -70,7 +69,7 @@ router.get('/current', requireAuth, async (req, res) => {
             include: [
                 [
                     sequelize.fn("AVG", sequelize.col("Reviews.stars")),
-                    "avgStarRating"
+                    "avgRating"
                 ],
                 [
                     sequelize.col("SpotImages.url"), "previewImage"
@@ -80,7 +79,6 @@ router.get('/current', requireAuth, async (req, res) => {
         group: ['Spot.id']
     });
 
-    console.log('GIMMIE DA SPOTS', spots)
     res.json({ 'Spots': spots });
 });
 
@@ -498,7 +496,7 @@ router.get('/', async (req, res, next) => {
                 include: [
                     [
                         sequelize.fn("AVG", sequelize.col("stars")),
-                        "avgStarRating"
+                        "avgRating"
                     ],
                     [
                         sequelize.col("SpotImages.url"), "previewImage"
@@ -510,9 +508,8 @@ router.get('/', async (req, res, next) => {
         console.log(spots)
         res.json({ 'Spots': spots });
     }
-    else {
+    else { // Return spots filtered by query parameters.
 
-        // Return spots filtered by query parameters.
         let { page, size, minLat, maxLat,
             minLng, maxLng, minPrice, maxPrice } = req.query;
 
@@ -581,9 +578,12 @@ router.get('/', async (req, res, next) => {
                     spotId: spot.id
                 }
             })
-            const prevImg = spotImages[0].dataValues.url
+            if (!spotImages) {
 
-            spot.dataValues.previewImage = prevImg;
+                const prevImg = spotImages[0].dataValues.url
+
+                spot.dataValues.previewImage = prevImg;
+            }
         }
         res.json({ 'Spots': spots, page, size });
     }

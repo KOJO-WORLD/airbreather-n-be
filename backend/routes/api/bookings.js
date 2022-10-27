@@ -37,7 +37,7 @@ router.get('/current', requireAuth, async (req, res) => {
         where: {
             userId
         },
-        attributes: ['id', 'spotId']
+        // attributes: ['id', 'spotId']
     })
 
     for (let booking of bookings) {
@@ -86,12 +86,6 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
 
     const findBooking = await Booking.findByPk(req.params.bookingId);
 
-    const checkBookings = await Booking.findAll({
-        where: {
-            spotId: findBooking.spotId
-        }
-    });
-
     if (!findBooking) {
         res.status(404);
         return res.json({
@@ -108,6 +102,13 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
             "statusCode": 403
         });
     }
+
+    const checkBookings = await Booking.findAll({
+        where: {
+            spotId: findBooking.spotId
+        }
+    });
+
 
     for (let booking of checkBookings) {
 
