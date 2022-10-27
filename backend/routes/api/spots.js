@@ -505,7 +505,6 @@ router.get('/', async (req, res, next) => {
             },
             group: ['Spot.id', 'SpotImages.url'],
         });
-        console.log(spots)
         res.json({ 'Spots': spots });
     }
     else { // Return spots filtered by query parameters.
@@ -566,28 +565,42 @@ router.get('/', async (req, res, next) => {
                 },
                 limit: size,
                 offset: (size * (page - 1)),
-
+                attributes: {
+                    //aliasing column
+                    include: [
+                        [
+                            sequelize.fn("AVG", sequelize.col("stars")),
+                            "avgRating"
+                        ],
+                        [
+                            sequelize.col("SpotImages.url"), "previewImage"
+                        ]
+                    ],
+                },
                 group: ['Spot.id', 'SpotImages.url'],
-            }
-        );
+            });
 
-        for (let spot of spots) {
+                // group: ['Spot.id', 'SpotImages.url'],
+            // }
+        // );
 
-            const spotImages = await SpotImage.findAll({
-                where: {
-                    spotId: spot.id
-                }
-            })
+        // for (let spot of spots) {
 
-            console.log("TODAY'S THE DAY", spotImages)
+        //     const spotImages = await SpotImage.findAll({
+        //         where: {
+        //             spotId: spot.id
+        //         }
+        //     })
 
-            if (!spotImages) {
+        //     console.log("TODAY'S THE DAY", spotImages)
 
-                const prevImg = spotImages[0].dataValues.url
+        //     if (!spotImages) {
 
-                spot.dataValues.previewImage = prevImg;
-            }
-        }
+        //         const prevImg = spotImages[0].dataValues.url
+
+        //         spot.dataValues.previewImage = prevImg;
+        //     }
+        // }
         res.json({ 'Spots': spots, page, size });
     }
 });
