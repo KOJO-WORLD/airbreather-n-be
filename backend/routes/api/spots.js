@@ -520,9 +520,6 @@ router.get('/:spotId', async (req, res) => {
         spot.avgRating = ratings / reviews.length;
     }
 
-    // const owner = spot.User
-    // spot.Owner = owner
-
     // const spot = await Spot.findByPk(id, {
     //     include: [
     //         {
@@ -657,20 +654,22 @@ router.get('/', async (req, res, next) => {
         );
 
         for (let spot of spots) {
+            spot = spot.toJSON()
 
-            const spotImages = await SpotImage.findAll({
+            const spotImage = await SpotImage.findOne({
                 where: {
-                    spotId: spot.id
+                    spotId: spot.id,
+                    preview: true
                 }
-            })
+            });
 
-            console.log("TODAY'S THE DAY", spotImages)
+            if (!spotImage) {
 
-            if (!spotImages) {
+                const prevImg = spotImage[0].dataValues.url
 
-                const prevImg = spotImages[0].dataValues.url
-
-                spot.dataValues.previewImage = prevImg;
+                spot.previewImage = prevImg;
+            } else {
+                spot.previewImage = spotImage.url
             }
         }
         res.json({ 'Spots': spots, page, size });
