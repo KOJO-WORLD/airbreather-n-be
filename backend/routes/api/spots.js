@@ -481,7 +481,6 @@ router.get('/:spotId', async (req, res) => {
         ]
     });
 
-    spot = spot.toJSON()
 
     if (spot === null) {
         res.status(404)
@@ -491,6 +490,7 @@ router.get('/:spotId', async (req, res) => {
         })
     }
 
+    spot = spot.toJSON()
 
     const reviews = await Review.findAll({
         where: {
