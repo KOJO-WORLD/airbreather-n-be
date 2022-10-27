@@ -481,7 +481,9 @@ router.get('/:spotId', async (req, res) => {
         ]
     });
 
-    if (spotId === null) {
+    spot = spot.toJSON()
+
+    if (spot === null) {
         res.status(404)
         res.json({
             "message": "Spot couldn't be found",
@@ -489,7 +491,6 @@ router.get('/:spotId', async (req, res) => {
         })
     }
 
-    spot = spot.toJSON()
 
     const reviews = await Review.findAll({
         where: {
