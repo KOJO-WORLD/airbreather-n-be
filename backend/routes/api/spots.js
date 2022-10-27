@@ -651,6 +651,7 @@ router.get('/', async (req, res, next) => {
                 },
                 limit: size,
                 offset: (size * (page - 1)),
+                subQuery: false,
 
                 group: ['Spot.id', 'SpotImages.url'],
             }
