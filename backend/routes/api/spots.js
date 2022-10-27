@@ -672,6 +672,7 @@ router.get('/', async (req, res, next) => {
 
                 spot.previewImage = null;
             } else {
+                spotImage = spotImage.toJSON()
                 spot.previewImage = spotImage.url
             }
         }
