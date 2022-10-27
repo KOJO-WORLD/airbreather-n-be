@@ -469,9 +469,9 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 // get spot by id
 router.get('/:spotId', async (req, res) => {
 
-    const SpotId = +req.params.spotId
+    const spotId = +req.params.spotId
 
-    let spot = await Spot.findByPk(SpotId, {
+    let spot = await Spot.findByPk(spotId, {
         include: [
             {
                 model: User,
@@ -481,7 +481,7 @@ router.get('/:spotId', async (req, res) => {
         ]
     });
 
-    if (spot.id === null || (typeof SpotId !== 'number')) {
+    if (spot.id === null || (typeof spotId !== 'number')) {
         res.status(404)
         res.json({
             "message": "Spot couldn't be found",
