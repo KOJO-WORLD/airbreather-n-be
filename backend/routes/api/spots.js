@@ -481,7 +481,7 @@ router.get('/:spotId', async (req, res) => {
         ]
     });
 
-    if (spot.id === null || (typeof spotId !== 'number')) {
+    if (spot.id === null) {
         res.status(404)
         res.json({
             "message": "Spot couldn't be found",
