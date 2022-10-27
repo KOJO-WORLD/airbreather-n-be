@@ -82,7 +82,9 @@ router.get('/current', requireAuth, async (req, res) => {
             }
         })
 
-        spot.previewImage = img.url;
+        if (img === null) {
+            spot.previewImage = null
+        } else spot.previewImage = img.url;
 
         spots.push(spot);
     }
