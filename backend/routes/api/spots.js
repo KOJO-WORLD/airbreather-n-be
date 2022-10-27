@@ -636,7 +636,7 @@ router.get('/', async (req, res, next) => {
             maxPrice = parseInt(maxPrice);
         }
 
-        const spots = await Spot.findAll(
+        let spots = await Spot.findAll(
             {
                 where: {
                     // lat: {
