@@ -503,7 +503,7 @@ router.get('/', async (req, res, next) => {
                     ]
                 ],
             },
-            group: ['Spot.id'],
+            group: ['Spot.id', 'SpotImages.url'],
         });
         console.log(spots)
         res.json({ 'Spots': spots });
