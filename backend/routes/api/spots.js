@@ -567,7 +567,7 @@ router.get('/', async (req, res, next) => {
                 limit: size,
                 offset: (size * (page - 1)),
 
-                group: ['Spot.id'],
+                group: ['Spot.id', 'SpotImages.url'],
             }
         );
 
@@ -578,6 +578,9 @@ router.get('/', async (req, res, next) => {
                     spotId: spot.id
                 }
             })
+
+            console.log("TODAY'S THE DAY", spotImages)
+
             if (!spotImages) {
 
                 const prevImg = spotImages[0].dataValues.url

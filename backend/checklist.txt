@@ -20,7 +20,7 @@ for firstName & lastName, is that ok*
 
 //////////SPOTS//////////
 
-- Get all Spots ✅
+- Get all Spots ✅ ***fix avgRating length***
 Method: GET
 URL: /api/spots
 
