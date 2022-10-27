@@ -469,9 +469,9 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 // get spot by id
 router.get('/:spotId', async (req, res) => {
 
-    const id = +req.params.spotId
+    const SpotId = +req.params.spotId
 
-    let spot = await Spot.findByPk(id, {
+    let spot = await Spot.findByPk(SpotId, {
         include: [
             {
                 model: User,
@@ -481,7 +481,7 @@ router.get('/:spotId', async (req, res) => {
         ]
     });
 
-    if (spot.id === null || (typeof id !== 'number')) {
+    if (spot.id === null || (typeof SpotId !== 'number')) {
         res.status(404)
         res.json({
             "message": "Spot couldn't be found",
@@ -493,7 +493,7 @@ router.get('/:spotId', async (req, res) => {
 
     const reviews = await Review.findAll({
         where: {
-            spotId: spot.id
+            spotId
         },
         attributes: ['stars']
     })
@@ -502,7 +502,7 @@ router.get('/:spotId', async (req, res) => {
 
     const images = await SpotImage.findAll({
         where: {
-            spotId: spot.id
+            spotId
         },
         attributes: ['id', 'url', 'preview']
     })
@@ -665,9 +665,9 @@ router.get('/', async (req, res, next) => {
 
             if (!spotImage) {
 
-                const prevImg = spotImage[0].dataValues.url
+                // const prevImg = spotImage[0].dataValues.url
 
-                spot.previewImage = prevImg;
+                spot.previewImage = null;
             } else {
                 spot.previewImage = spotImage.url
             }
