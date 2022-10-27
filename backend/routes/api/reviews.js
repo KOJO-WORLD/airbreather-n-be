@@ -52,7 +52,6 @@ router.post('/:reviewId/images', async (req, res) => {
             })
         } else {
 
-
             const newReviewImage = await ReviewImage.create({
                 reviewId: checkReview.id,
                 url
@@ -60,7 +59,7 @@ router.post('/:reviewId/images', async (req, res) => {
 
             const returnReviewImage = await ReviewImage.findOne({
                 where: {
-                    reviewId: checkReview.id,
+                    id: newReviewImage.id,
                     url
                 },
                 attributes: {
@@ -78,8 +77,6 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
     // const owner = req.user.toJSON()
 
     const { review, stars } = req.body;
-
-    console.log("LORDY", review, stars)
 
     if (!review || !stars || typeof stars !== 'number' || stars > 5 || stars < 1) {
 
@@ -171,6 +168,7 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
     const review = await Review.findByPk(req.params.reviewId)
 
     if (!review) {
+        res.status(404)
         res.json({
             "message": "Review couldn't be found",
             "statusCode": 404

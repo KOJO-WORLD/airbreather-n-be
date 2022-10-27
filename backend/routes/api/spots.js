@@ -174,6 +174,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
 
     if (!spot) {
+        res.status(404)
         res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
@@ -213,6 +214,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     })
 
     if (!review || !stars || typeof stars !== 'number' || stars > 5 || stars < 1) {
+        res.status(400)
         res.json({
             "message": "Validation error",
             "statusCode": 400,
@@ -234,7 +236,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
             stars,
             userId: user.id
         })
-
+        res.status(201);
         res.json(newReview);
     }
 });
@@ -273,7 +275,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 });
 
 // Create a Booking from a Spot based on the Spot's id
-router.post('/:spotId/bookings', async (req, res) => {
+router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
     let user = req.user.toJSON()
 
@@ -286,11 +288,12 @@ router.post('/:spotId/bookings', async (req, res) => {
     });
 
     for (let booking of checkBookings) {
-        if (booking.startDate >= startDate && booking.startDate <= endDate ||
-            booking.endDate >= startDate && booking.endDate <= endDate) {
 
-            res.status(400);
-            res.json({
+        if ((booking.startDate >= startDate && booking.startDate <= endDate) ||
+            (booking.endDate >= startDate && booking.endDate <= endDate)) {
+
+            res.status(403);
+            return res.json({
                 "message": "Sorry, this spot is already booked for the specified dates",
                 "statusCode": 403,
                 "errors": {
@@ -298,7 +301,6 @@ router.post('/:spotId/bookings', async (req, res) => {
                     "endDate": "End date conflicts with an existing booking"
                 }
             })
-
         }
     }
 
@@ -306,7 +308,7 @@ router.post('/:spotId/bookings', async (req, res) => {
 
     if (!checkSpot) {
         res.status(404);
-        res.json({
+        return res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         });
@@ -314,7 +316,7 @@ router.post('/:spotId/bookings', async (req, res) => {
 
         if (startDate.valueOf() >= endDate.valueOf()) {
             res.status(400);
-            res.json({
+            return res.json({
                 "message": "Validation error",
                 "statusCode": 400,
                 "errors": {
@@ -373,6 +375,7 @@ router.post('/', requireAuth, async (req, res) => {
         ownerId: owner.id
     })
 
+    res.status(201)
     res.json(newSpot)
 
 });
@@ -457,7 +460,6 @@ router.get('/:spotId', async (req, res) => {
             ]
         }
     });
-    // console.log('YOOOOOOO', spot.toJSON())
 
     if (spot.id === null || (typeof id !== 'number')) {
         res.status(404)
@@ -480,9 +482,9 @@ router.get('/', async (req, res, next) => {
             include: [
                 {
                     model: SpotImage,
-                    where: {
-                        preview: true
-                    },
+                    // where: {
+                    //     preview: true
+                    // },
                     attributes: [],
                     required: false
                 },
