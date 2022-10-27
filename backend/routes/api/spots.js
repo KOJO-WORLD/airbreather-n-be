@@ -488,12 +488,16 @@ router.get('/:spotId', async (req, res) => {
         })
     }
 
+    spot = spot.toJSON()
+
     const reviews = await Review.findAll({
         where: {
             spotId: spot.id
         },
         attributes: ['stars']
     })
+
+    spot.numReviews = reviews.length;
 
     const images = await SpotImage.findAll({
         where: {
@@ -502,8 +506,7 @@ router.get('/:spotId', async (req, res) => {
         attributes: ['id', 'url', 'preview']
     })
 
-    spot = spot.toJSON()
-    spot.numReviews = reviews.length;
+    spot.SpotImages = images
 
     if (!reviews.length) {
         spot.avgStarRating = null
@@ -518,7 +521,6 @@ router.get('/:spotId', async (req, res) => {
 
     const owner = spot.User
     spot.Owner = owner
-    spot.SpotImages = images
 
     // const spot = await Spot.findByPk(id, {
     //     include: [
