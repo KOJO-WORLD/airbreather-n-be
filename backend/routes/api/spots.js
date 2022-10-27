@@ -659,7 +659,7 @@ router.get('/', async (req, res, next) => {
         for (let spot of spots) {
             spot = spot.toJSON()
 
-            const spotImage = await SpotImage.findOne({
+            let spotImage = await SpotImage.findOne({
                 where: {
                     spotId: spot.id,
                     preview: true
