@@ -8,7 +8,6 @@
   "description": "Totally Original Idea: AirBnB",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "npm --prefix backend install backend",
@@ -27,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/Trevor-Walton-Moore/API-project/issues"
   },
-  "homepage": "https://github.com/Trevor-Walton-Moore/API-project#readme"
+  "homepage": "https://github.com/Trevor-Walton-Moore/API-project#readme",
+  "devDependencies": {}
 }

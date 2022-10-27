@@ -101,7 +101,7 @@ module.exports = {
     ]);
 
     // // ReviewImages //////////////////////////////////////////////////////
-    await queryInterface.bulkInsert('reviewImages', [
+    await queryInterface.bulkInsert('ReviewImages', [
       {
         reviewId: 1,
         url: 'review1.com',
