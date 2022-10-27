@@ -493,7 +493,7 @@ router.get('/:spotId', async (req, res) => {
 
     const reviews = await Review.findAll({
         where: {
-            spotId: spot.id
+            spotId: spotId
         },
         attributes: ['stars']
     })
@@ -502,7 +502,7 @@ router.get('/:spotId', async (req, res) => {
 
     const images = await SpotImage.findAll({
         where: {
-            spotId: spot.id
+            spotId: spotId
         },
         attributes: ['id', 'url', 'preview']
     })
