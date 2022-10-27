@@ -76,7 +76,7 @@ router.get('/current', requireAuth, async (req, res) => {
                 ]
             ]
         },
-        group: ['Spot.id']
+        group: ['Spot.id', 'SpotImage.url']
     });
 
     res.json({ 'Spots': spots });
@@ -456,7 +456,8 @@ router.get('/:spotId', async (req, res) => {
                     sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgStarRating"
                 ]
             ]
-        }
+        },
+        group: ['Spot.id', 'SpotImage.url']
     });
 
     if (spot.id === null || (typeof id !== 'number')) {
