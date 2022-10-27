@@ -471,33 +471,13 @@ router.get('/:spotId', async (req, res) => {
 
     const id = +req.params.spotId
 
-    const spot = await Spot.findByPk(id, {
+    let spot = await Spot.findByPk(id, {
         include: [
             {
-                model: SpotImage,
-                attributes: ['id', 'url', 'preview']
-            },
-            {
                 model: User,
-                as: 'Owner',
                 attributes: ['id', 'firstName', 'lastName']
-            },
-            {
-                model: Review,
-                attributes: []
             }
-        ],
-        attributes: {
-            include: [
-                [
-                    sequelize.fn('COUNT', sequelize.col('Reviews.id')), 'numReviews'
-                ],
-                [
-                    sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgStarRating"
-                ]
-            ]
-        },
-        group: ['Spot.id', 'SpotImage.url']
+        ]
     });
 
     if (spot.id === null || (typeof id !== 'number')) {
@@ -507,6 +487,67 @@ router.get('/:spotId', async (req, res) => {
             "statusCode": 404
         })
     }
+
+    const reviews = await Review.findAll({
+        where: {
+            spotId: spot.id
+        },
+        attributes: ['stars']
+    })
+
+    const images = await SpotImage.findAll({
+        where: {
+            spotId: spot.id
+        },
+        attributes: ['id', 'url', 'preview']
+    })
+
+    spot = spot.toJSON()
+    spot.numReviews = reviews.length;
+
+    if (!reviews.length) {
+        spot.avgStarRating = null
+    } else {
+        let ratings = 0;
+        for (let review of reviews) {
+            ratings += review.stars;
+        }
+
+        spot.avgRating = ratings / reviews.length;
+    }
+
+    const owner = spot.User
+    spot.Owner = owner
+    spot.SpotImages = images
+
+    // const spot = await Spot.findByPk(id, {
+    //     include: [
+    //         {
+    //             model: SpotImage,
+    //             attributes: ['id', 'url', 'preview']
+    //         },
+    //         {
+    //             model: User,
+    //             as: 'Owner',
+    //             attributes: ['id', 'firstName', 'lastName']
+    //         },
+    //         {
+    //             model: Review,
+    //             attributes: []
+    //         }
+    //     ],
+    //     attributes: {
+    //         include: [
+    //             [
+    //                 sequelize.fn('COUNT', sequelize.col('Reviews.id')), 'numReviews'
+    //             ],
+    //             [
+    //                 sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgStarRating"
+    //             ]
+    //         ]
+    //     },
+    //     group: ['Spot.id', 'SpotImage.url']
+    // });
 
     return res.json(spot);
 });
