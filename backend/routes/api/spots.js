@@ -505,6 +505,7 @@ router.get('/', async (req, res, next) => {
             },
             group: ['Spot.id', 'SpotImages.url'],
         });
+
         res.json({ 'Spots': spots });
     }
     else { // Return spots filtered by query parameters.
