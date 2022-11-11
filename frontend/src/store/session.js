@@ -19,7 +19,6 @@ const removeUser = () => {
 
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
-  console.log('login THUNK')
   const response = await csrfFetch('/api/session', {
     method: 'POST',
     body: JSON.stringify({
@@ -28,21 +27,20 @@ export const login = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  console.log('about to DISPATCH')
-  dispatch(setUser(data));
+  dispatch(setUser(data.user));
   return response;
 };
 
+// response body does not match the example
 export const restoreUser = () => async dispatch => {
     const response = await csrfFetch('/api/session');
     const data = await response.json();
-    dispatch(setUser(data));
+    dispatch(setUser(data.user));
     return response;
 };
 
 export const signup = (user) => async (dispatch) => {
     const { username, email, password } = user;
-    console.log('BEFORE SEND')
     const response = await csrfFetch("/api/users", {
       method: "POST",
       body: JSON.stringify({
@@ -52,8 +50,7 @@ export const signup = (user) => async (dispatch) => {
       }),
     });
     const data = await response.json();
-    console.log('DATA RESPONSE:', data)
-    dispatch(setUser(data));
+    dispatch(setUser(data.user));
     return response;
   };
 

@@ -80,19 +80,20 @@ router.post('/', validateSignup, async (req, res) => {
         }
     }
 
-    const user = await User.signup({ email, username, password, firstName, lastName });
+    const signUpUser = await User.signup({ email, username, password, firstName, lastName });
 
-    let userToken = await setTokenCookie(res, user);
+    let userToken = await setTokenCookie(res, signUpUser);
 
-    const signUpUser = await User.findByPk(user.id, {
+    const user = await User.findByPk(signUpUser.id, {
         attributes: {
             include: ['email']
         },
         raw: true
     })
-    signUpUser.token = userToken;
+    user.token = userToken;
 
-    return res.json(signUpUser);
+    // return res.json(signUpUser);
+    return res.json({ 'user': { user } });
 });
 
 // Get all users

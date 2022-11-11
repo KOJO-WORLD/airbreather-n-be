@@ -62,10 +62,10 @@ router.post('/', validateLogin, async (req, res, next) => {
     })
   } else {
 
-    const user = await User.login({ credential, password });
+    const loginUser = await User.login({ credential, password });
 
     //  Invalid credentials pt2
-    if (!user) {
+    if (!loginUser) {
       // const err = new Error('Login failed');
       // err.status = 401;
       // err.title = 'Login failed';
@@ -78,19 +78,20 @@ router.post('/', validateLogin, async (req, res, next) => {
       })
     }
 
-    let userToken = await setTokenCookie(res, user);
+    let userToken = await setTokenCookie(res, loginUser);
 
-    const loginUser = await User.findOne({
+    const user = await User.findOne({
       where: {
-        id: user.id
+        id: loginUser.id
       },
       attributes: {
         include: ['email']
       },
       raw: true
     })
-    loginUser.token = userToken;
-    return res.json(loginUser);
+    user.token = userToken;
+    // return res.json(loginUser);
+    return res.json({ 'user': { user } });
   }
 });
 
@@ -116,6 +117,7 @@ router.delete('/', (_req, res) => {
 // );
 
 // Get the Current User
+// response body does not match the example
 router.get('/', requireAuth, async (req, res) => {
   const { user } = req;
 
@@ -128,7 +130,9 @@ router.get('/', requireAuth, async (req, res) => {
     }
   })
 
-  res.json(currUser)
+  // res.json(currUser)
+  // response body does not match the example
+  res.json({ "user": { currUser } })
 });
 
 
