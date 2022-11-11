@@ -121,18 +121,23 @@ router.delete('/', (_req, res) => {
 router.get('/', requireAuth, async (req, res) => {
   const { user } = req;
 
-  const currUser = await User.findOne({
-    where: {
-      id: user.id
-    },
-    attributes: {
-      include: ['email']
-    }
-  })
+  // const currUser = await User.findOne({
+  //   where: {
+  //     id: user.id
+  //   },
+  //   attributes: {
+  //     include: ['email']
+  //   }
+  // })
 
   // res.json(currUser)
-  // response body does not match the example
-  res.json({ "user": { currUser } })
+
+  if (user) {
+    return res.json({ user: user.toSafeObject() })
+
+  } else {
+    return res.json({ user: null })
+  }
 });
 
 
