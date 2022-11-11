@@ -33,7 +33,8 @@ router.post('/', validateSignup, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
 
     // Body validation errors
-    if (!email || !username || !firstName || !lastName) {
+    if (!email || !username) {
+        console.log('ERROR')
         res.status(400);
         res.json({
             "message": "Validation error",
@@ -41,8 +42,8 @@ router.post('/', validateSignup, async (req, res) => {
             "errors": {
                 "email": "Invalid email",
                 "username": "Username is required",
-                "firstName": "First Name is required",
-                "lastName": "Last Name is required"
+                // "firstName": "First Name is required",
+                // "lastName": "Last Name is required"
             }
         })
     }
@@ -90,6 +91,7 @@ router.post('/', validateSignup, async (req, res) => {
         raw: true
     })
     signUpUser.token = userToken;
+
     return res.json(signUpUser);
 });
 
