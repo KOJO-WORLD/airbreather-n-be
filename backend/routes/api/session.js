@@ -89,9 +89,10 @@ router.post('/', validateLogin, async (req, res, next) => {
       },
       raw: true
     })
+
     user.token = userToken;
-    // return res.json(loginUser);
-    return res.json({ 'user': { user } });
+
+    return res.json({ user: user });
   }
 });
 
@@ -118,7 +119,7 @@ router.delete('/', (_req, res) => {
 
 // Get the Current User
 // response body does not match the example
-router.get('/', requireAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   const { user } = req;
 
   // const currUser = await User.findOne({
