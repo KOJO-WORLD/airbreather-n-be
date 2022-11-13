@@ -384,9 +384,6 @@ router.post('/', requireAuth, async (req, res) => {
     const { address, city, state, country,
         lat, lng, name, description, price } = req.body;
 
-    console.log('WHAT', typeof lng)
-    console.log('IS GOING ONE???', isNaN(lng))
-
     if (!address || !city || !state || !country || lat > 90 || typeof lat !== 'number'
         || lng > 180 || typeof lng !== 'number' || name.length > 50 || !description || !price) {
 
