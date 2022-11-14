@@ -165,12 +165,15 @@ router.put('/:spotId', requireAuth, async (req, res) => {
 
     // const owner = req.user.toJSON()
 
+    // const { spotId } = req.params;
+
     const { address, city, state, country,
         lat, lng, name, description, price } = req.body;
 
-    if (!address || !city || !state || !country || lat > 90 || typeof lat !== 'number'
-        || lng > 180 || typeof lng !== 'number' || name.length > 50 || !description || !price) {
 
+
+    if (!address || !city || !state || !country || lat > 90
+        || lng > 180 || name.length > 50 || !description || !price) {
         res.status(400)
         return res.json({
             "message": "Validation Error",
@@ -384,8 +387,10 @@ router.post('/', requireAuth, async (req, res) => {
     const { address, city, state, country,
         lat, lng, name, description, price } = req.body;
 
-    if (!address || !city || !state || !country || lat > 90 || typeof lat !== 'number'
-        || lng > 180 || typeof lng !== 'number' || name.length > 50 || !description || !price) {
+    console.log('PRICE TYPE', typeof price)
+
+    if (!address || !city || !state || !country || lat > 90
+        || lng > 180 || name.length > 50 || !description || !price) {
 
         res.status(400)
         res.json({
@@ -403,18 +408,17 @@ router.post('/', requireAuth, async (req, res) => {
                 "price": "Price per day is required"
             }
         })
+    } else {
+        const newSpot = await Spot.create({
+            address, city, state,
+            country, lat, lng,
+            name, description, price,
+            ownerId: owner.id
+        })
+
+        res.status(201)
+        res.json(newSpot)
     }
-
-    const newSpot = await Spot.create({
-        address, city, state,
-        country, lat, lng,
-        name, description, price,
-        ownerId: owner.id
-    })
-
-    res.status(201)
-    res.json(newSpot)
-
 });
 
 

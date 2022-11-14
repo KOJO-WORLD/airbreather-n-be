@@ -1,20 +1,30 @@
 import SpotForm from './SpotForm';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const EditSpotForm = () => {
-  const spot = {
-    name: '',
-    address: '',
-    city: '',
-    state: '',
-    country: '',
-    latitude: 0,
-    longitude: 0,
-    description: '',
-    price: 0,
+
+
+  const { spotId } = useParams()
+  const spot = useSelector(state => {
+    return state.spots[spotId]
+  }
+  );
+
+  const editSpot = {
+    name: spot.name,
+    address: spot.address,
+    city: spot.city,
+    state: spot.state,
+    country: spot.country,
+    latitude: spot.lat,
+    longitude: spot.lng,
+    description: spot.description,
+    price: spot.price,
   };
 
   return (
-    <SpotForm spot={spot} formType="Edit Spot" />
+    <SpotForm spot={editSpot} formType="Edit Spot" />
   );
 }
 

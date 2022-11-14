@@ -7,8 +7,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* max-width: 500px; */
   }
-  
+
   #modal-background {
     position: fixed;
     top: 0;
@@ -21,4 +22,8 @@
   #modal-content {
     position: absolute;
     background-color:white;
+    max-width: 800px;
+    min-width: 600px;
+    min-height: fit-content;
+    border-radius: 10px;
   }

@@ -1,24 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Route, Switch} from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import { getAllSpotsThunk } from '../../store/spots';
+// import "./Spots.css"
 
 import SpotDetail from './SpotDetail';
 import AddSpotForm from './AddSpotForm';
 
 const AllSpots = () => {
     const dispatch = useDispatch();
+    const [hidden, setHidden] = useState(true);
 
     // const { spotId } = useParams();
 
     const spots = useSelector(state => {
-        console.log('USESELECTOR LISTENING TO STATE', state)
         if (!state.spots.spotsArr) return null;
         return state.spots.spotsArr.map((spotObj) => spotObj);
     });
 
     useEffect(() => {
-
         dispatch(getAllSpotsThunk());
     }, [dispatch]);
 
@@ -26,28 +26,34 @@ const AllSpots = () => {
         return null;
     }
 
+    function showForm() {
+        setHidden(false)
+    }
+
     return (
         <main>
             <div>
                 {spots.map((spot) => {
                     return (
-                        <NavLink key={spot.name} to={`/spots/${spot.id}`}>
+                        <NavLink key={spot.id} to={`/spots/${spot.id}`}>
                             <div>{spot.name}</div>
                         </NavLink>
                     );
                 })}
-                {/* <Link to="/spots"> */}
-
-                <AddSpotForm />
-                {/* </Link> */}
-            <Switch>
-                <Route path="/spots/:spotId">
-                    <SpotDetail />
-                </Route>
-                <Route path="/spots">
+                <NavLink to='/spots/new'>
+                <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Add a spot</button>
+                <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
                     <AddSpotForm />
-                </Route>
-            </Switch>
+                </div>
+                </NavLink>
+                <Switch>
+                    <Route path="/spots/:spotId">
+                        <SpotDetail />
+                    </Route>
+                    <Route path="/spots/new">
+                        <AddSpotForm />
+                    </Route>
+                </Switch>
             </div>
         </main>
     );

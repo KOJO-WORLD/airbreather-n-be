@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 // import EditSpotForm from './EditSpotForm';
 import { getSpotDetailThunk } from '../../store/spots';
+import EditSpotForm from './EditSpotForm';
 
 const SpotDetail = () => {
+
+    const [hidden, setHidden] = useState(true);
 
     const { spotId } = useParams();
     const spot = useSelector(state => state.spots[spotId]);
     //   const [editSpotForm, setEditSpotForm] = useState(false);
-
-    console.log('SPOT', spot)
 
     const dispatch = useDispatch();
 
@@ -21,6 +22,10 @@ const SpotDetail = () => {
 
     if (!spot) {
         return null;
+    }
+
+    function showForm() {
+        setHidden(false)
     }
 
     return (
@@ -36,8 +41,13 @@ const SpotDetail = () => {
                 <p>${spot.price}/night</p>
                 <p>{spot.description}</p>
             </div>
-
-
+            <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Edit spot</button>
+            <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
+                <EditSpotForm />
+            </div>
+            {/* <Route path={`/spots/${spotId}`}>
+                <EditSpotForm />
+            </Route> */}
 
 
 
@@ -45,12 +55,12 @@ const SpotDetail = () => {
           className="spot-image"
           style={{ backgroundImage: `url('${spot.imageUrl}')` }}
         ></div> */}
-            <div>
+            {/* <div> */}
                 {/* <h1 className="bigger">{spot.name}</h1>
                 {(!showEditPokeForm && pokemon.captured) && (
             <button onClick={() => setEditSpotForm(true)}>Edit</button>
           )} */}
-            </div>
+            {/* </div> */}
         </div >
     );
 };

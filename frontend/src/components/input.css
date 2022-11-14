@@ -1,0 +1,29 @@
+.input {
+    border: 3px solid rgb(121, 121, 191);
+    border-radius: 45px;
+    background-image: linear-gradient(120deg, #d9d9d9, #ffffff);
+    color: rgb(99, 108, 112);
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    transition: all 1s;
+    max-width: 200px;
+    min-width: 200px;
+    display: flex;
+    margin: auto;
+    padding: 15;
+}
+
+.input:focus {
+    outline-color: rgb(127, 170, 170);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    max-width: 600px;
+    min-width: 300px;
+    gap: 20px 5px;
+}

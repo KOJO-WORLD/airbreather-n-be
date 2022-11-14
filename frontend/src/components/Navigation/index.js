@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormPage/index';
+import SignupFormModal from '../SignupFormModal/index';
 import './Navigation.css';
 import logo from './breathe5.png'
 
@@ -25,20 +25,18 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div>
+    <div className='bar'>
       <div>
         <NavLink exact to="/" className="nvlnk">
-          <img src={logo} className="img" />
+          <img src={logo} className="img" alt="home logo"/>
           <p className="logo">
             airbreatheNbe
           </p>
         </NavLink>
       </div>
-      <ul>
-        <li>
-          {isLoaded && sessionLinks}
-        </li>
-      </ul>
+      <div>
+        {isLoaded && sessionLinks}
+      </div>
     </div>
   );
 }

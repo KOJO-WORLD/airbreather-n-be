@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { addSpotThunk } from '../../store/spots';
+import { useHistory, useParams } from 'react-router-dom';
+import { addSpotThunk, editSpotThunk } from '../../store/spots';
 
 const SpotForm = ({ spot, formType }) => {
+
+    const { spotId } = useParams();
+
+    console.log('JUST CHECING THIS ID', spotId)
 
     const dispatch = useDispatch();
 
     const history = useHistory();
-console.log('Spot', spot, formType);
+
     const [name, setName] = useState(spot.name);
     const [address, setAdress] = useState(spot.address);
     const [city, setCity] = useState(spot.city);
@@ -44,16 +48,16 @@ console.log('Spot', spot, formType);
             price
         };
 
-        dispatch(addSpotThunk(payload))
-        // formType === "Add Spot" ? dispatch(addSpotThunk(payload)) : dispatch(editSpotThunk(payload))
+        // dispatch(addSpotThunk(payload))
+        formType === "Add Spot" ? dispatch(addSpotThunk(payload)) : dispatch(editSpotThunk(payload, spotId))
 
-        history.push(`/spots/${spot.id}`);
+        history.push(`/`);
     };
 
-    // const handleCancelClick = (e) => {
-    // e.preventDefault();
-    // history.push(`/`);
-    // };
+    const handleCancelClick = (e) => {
+        e.preventDefault();
+        history.push('/');
+    };
 
     return (
         <form onSubmit={handleSubmit}>
@@ -120,8 +124,8 @@ console.log('Spot', spot, formType);
                     value={price}
                     onChange={updatePrice} />
             </label>
-            <button type="submit">Add new spot</button>
-            {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}
+            <button type="submit">Save   |</button>
+            <button type="button" onClick={handleCancelClick}> | Cancel</button>
         </form>
     );
 };

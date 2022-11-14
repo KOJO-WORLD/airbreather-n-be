@@ -3,6 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 import '../button.css';
+import '../input.css';
 
 function LoginForm() {
     const dispatch = useDispatch();
@@ -29,32 +30,37 @@ function LoginForm() {
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <label>
-                Username or Email
-                <input
-                    type="text"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Password
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button className='submit' type="submit">
+            <div className='container'>
 
-                <span className="circle" aria-hidden="true">
-                    <span className="icon arrow"></span>
-                </span>
-                <span className="button-text">Log In</span>
+                <label>
+                    <input
+                        className="input"
+                        placeholder="Username or Email"
+                        type="text"
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    <input
+                        className="input"
+                        placeholder="Password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </label>
+                <button className='submit' type="submit">
 
-            </button>
+                    <span className="circle" aria-hidden="true">
+                        <span className="icon arrow"></span>
+                    </span>
+                    <span className="button-text">Log In</span>
+
+                </button>
+            </div>
         </form>
     );
 }
