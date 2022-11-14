@@ -119,7 +119,7 @@ const spotsReducer = (state = initialState, action) => {
         [action.spot.id]: action.spot
       };
       let updateSpotsArr = Object.values(updateState);
-      updateState.spotsArr = updateSpotsArr.slice(0, -1);
+      updateState.spotsArr = updateSpotsArr.slice(0, -2);
       return updateState;
     default:
       return state;
