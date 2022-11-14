@@ -5,6 +5,8 @@ import * as sessionActions from "../../store/session";
 // import './SignupForm.css';
 import '../button.css';
 import '../input.css'
+// import exMark from '../Errors/exMark.png'
+import '../Errors/Errors.css';
 
 function SignupForm() {
   const dispatch = useDispatch();
@@ -34,7 +36,7 @@ function SignupForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul>
+      <ul className="list">
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <div className='container'>
