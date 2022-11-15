@@ -8,6 +8,8 @@ import EditSpotForm from './EditSpotForm';
 
 const SpotDetail = () => {
 
+    console.log('WUT')
+
     const history = useHistory();
 
     const [hidden, setHidden] = useState(true);
@@ -53,23 +55,10 @@ const SpotDetail = () => {
             <button onClick={() => {
                 dispatch(deleteSpotThunk(spotId));
                 history.push('/');
-                }}>Delete spot</button>
+            }}>Delete spot</button>
             {/* <Route path={`/spots/${spotId}/edit`}>
                 <EditSpotForm />
             </Route> */}
-
-
-
-            {/* <div
-          className="spot-image"
-          style={{ backgroundImage: `url('${spot.imageUrl}')` }}
-        ></div> */}
-            {/* <div> */}
-            {/* <h1 className="bigger">{spot.name}</h1>
-                {(!showEditPokeForm && pokemon.captured) && (
-            <button onClick={() => setEditSpotForm(true)}>Edit</button>
-          )} */}
-            {/* </div> */}
         </div >
     );
 };

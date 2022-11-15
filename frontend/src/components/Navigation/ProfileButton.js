@@ -39,10 +39,10 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <div >
-          <div>{user.username}</div>
-          <div>{user.email}</div>
+          <div className="text">{user.username}</div>
+          <div className="text">{user.email}</div>
           <div>
-            <button onClick={logout}>Log Out</button>
+            <button className='logout' onClick={logout}>Log Out</button>
           </div>
         </div>
       )}

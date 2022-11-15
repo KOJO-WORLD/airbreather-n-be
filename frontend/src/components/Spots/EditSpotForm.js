@@ -2,7 +2,7 @@ import SpotForm from './SpotFormModal/SpotForm';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const EditSpotForm = () => {
+const EditSpotForm = (modal) => {
 
   const { spotId } = useParams()
   const spot = useSelector(state => {
@@ -23,7 +23,7 @@ const EditSpotForm = () => {
   };
 
   return (
-    <SpotForm spot={editSpot} formType="Edit Spot" />
+    <SpotForm spot={editSpot} formType="Edit Spot" modal={modal} />
   );
 }
 

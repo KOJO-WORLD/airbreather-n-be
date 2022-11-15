@@ -21,6 +21,7 @@
 
 .spotParent {
     max-width: 300px;
+    min-width: 300px;
     max-height: 500px;
     min-height: 300px;
     border: solid;

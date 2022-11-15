@@ -8,11 +8,14 @@ import '../../Errors/Errors.css'
 
 const SpotForm = ({ spot, formType, modal }) => {
 
+    console.log(modal, '<- AYE EE MODAL n FoRM TYPE : ', formType)
+
     // if (formType === 'Add Spot') {
     //     var [hidden, setHidden] = hiddenState.hiddenState
     // }
-    const [showModal, setShowModal] = modal.modal
-    console.log('WHAT IT DUE', showModal, setShowModal);
+    // if (formType === "Edit Spot") var [showModal, setShowModal] = modal;
+    // else var [showModal, setShowModal] = modal.modal
+    // console.log('WHAT IT DUE', formType, showModal, setShowModal);
 
     const { spotId } = useParams();
 
@@ -59,7 +62,7 @@ const SpotForm = ({ spot, formType, modal }) => {
         if (formType === "Add Spot") {
             dispatch(addSpotThunk(payload));
             // setHidden(true);
-            setShowModal(false);
+            // setShowModal(false);
             history.push(`/`);
         } else
             dispatch(editSpotThunk(payload, spotId));
@@ -158,7 +161,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             </button>
             <button className="cancel" type='button' onClick={(e) => {
                 // if (formType === 'Add Spot') setHidden(true);
-                setShowModal(false);
+                // setShowModal(false);
                 handleCancelClick(e);
             }}><span className="circle" aria-hidden="true">
                     <span className="icon arrow"></span>

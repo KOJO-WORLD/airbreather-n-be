@@ -41,9 +41,9 @@ const AllSpots = () => {
                     <Route path="/spots/:spotId">
                         <SpotDetail />
                     </Route>
-                    {/* <Route path="/spots">
+                    <Route path="/spots">
                         <AddSpotForm />
-                    </Route> */}
+                    </Route>
                 </Switch>
                 <div className='spotsContainer'>
                     {spots.map((spot) => {
