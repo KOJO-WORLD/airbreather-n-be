@@ -4,11 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 // import EditSpotForm from './EditSpotForm';
 import { deleteSpotThunk, getSpotDetailThunk } from '../../store/spots';
 import EditSpotForm from './EditSpotForm';
+import GetSpotReviews from '../Reviews/GetSpotReviews';
 // import DeleteSpot from '../../store/spots';
 
 const SpotDetail = () => {
-
-    console.log('WUT')
 
     const history = useHistory();
 
@@ -35,7 +34,6 @@ const SpotDetail = () => {
 
     return (
         <div>
-
             <div>
                 <h2>{spot.name}</h2>
                 <ul>address
@@ -46,6 +44,7 @@ const SpotDetail = () => {
                 <p>${spot.price}/night</p>
                 <p>{spot.description}</p>
             </div>
+            <GetSpotReviews />
             <NavLink to={`/spots/${spotId}/edit`}>
                 <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Edit spot</button>
             </NavLink>
