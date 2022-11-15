@@ -51,9 +51,12 @@ const SpotForm = ({ spot, formType, hiddenState }) => {
             previewImage: spotId
         };
 
-        // dispatch(addSpotThunk(payload))
-        formType === "Add Spot" ? dispatch(addSpotThunk(payload)) : dispatch(editSpotThunk(payload, spotId))
-
+        if (formType === "Add Spot") {
+            dispatch(addSpotThunk(payload));
+            setHidden(true);
+            history.push(`/`);
+        } else
+            dispatch(editSpotThunk(payload, spotId));
         history.push(`/`);
     };
 
