@@ -1,6 +1,6 @@
 import SpotForm from './SpotForm';
 
-const AddSpotForm = () => {
+const AddSpotForm = (hiddenState) => {
   const spot = {
     name: '',
     address: '',
@@ -14,7 +14,7 @@ const AddSpotForm = () => {
   };
 
   return (
-    <SpotForm spot={spot} formType="Add Spot" />
+    <SpotForm spot={spot} formType="Add Spot" hiddenState={hiddenState} />
   );
 }
 

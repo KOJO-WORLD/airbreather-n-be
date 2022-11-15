@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { addSpotThunk, editSpotThunk } from '../../store/spots';
 
-const SpotForm = ({ spot, formType }) => {
+const SpotForm = ({ spot, formType, hiddenState }) => {
+
+    if (formType === 'Add Spot') {
+        var [hidden, setHidden] = hiddenState.hiddenState
+    }
 
     const { spotId } = useParams();
-
-    console.log('JUST CHECING THIS ID', spotId)
 
     const dispatch = useDispatch();
 
@@ -45,7 +47,8 @@ const SpotForm = ({ spot, formType }) => {
             latitude,
             longitude,
             description,
-            price
+            price,
+            previewImage: spotId
         };
 
         // dispatch(addSpotThunk(payload))
@@ -125,7 +128,11 @@ const SpotForm = ({ spot, formType }) => {
                     onChange={updatePrice} />
             </label>
             <button type="submit">Save   |</button>
-            <button type="button" onClick={handleCancelClick}> | Cancel</button>
+            <div>#########################</div>
+            <button type='button' onClick={(e) => {
+                if (formType === 'Add Spot') setHidden(true);
+                handleCancelClick(e);
+            }}> | Cancel</button>
         </form>
     );
 };

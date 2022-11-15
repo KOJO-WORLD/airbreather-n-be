@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Route } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 // import EditSpotForm from './EditSpotForm';
 import { getSpotDetailThunk } from '../../store/spots';
@@ -41,11 +41,13 @@ const SpotDetail = () => {
                 <p>${spot.price}/night</p>
                 <p>{spot.description}</p>
             </div>
-            <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Edit spot</button>
-            <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
-                <EditSpotForm />
-            </div>
-            {/* <Route path={`/spots/${spotId}`}>
+            <NavLink to={`/spots/${spotId}/edit`}>
+                <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Edit spot</button>
+            </NavLink>
+                <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
+                    <EditSpotForm />
+                </div>
+            {/* <Route path={`/spots/${spotId}/edit`}>
                 <EditSpotForm />
             </Route> */}
 
@@ -56,7 +58,7 @@ const SpotDetail = () => {
           style={{ backgroundImage: `url('${spot.imageUrl}')` }}
         ></div> */}
             {/* <div> */}
-                {/* <h1 className="bigger">{spot.name}</h1>
+            {/* <h1 className="bigger">{spot.name}</h1>
                 {(!showEditPokeForm && pokemon.captured) && (
             <button onClick={() => setEditSpotForm(true)}>Edit</button>
           )} */}

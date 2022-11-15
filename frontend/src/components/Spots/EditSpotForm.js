@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const EditSpotForm = () => {
 
-
   const { spotId } = useParams()
   const spot = useSelector(state => {
     return state.spots[spotId]

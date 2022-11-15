@@ -22,11 +22,11 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route
-        path={["/", "/spots/:spotId", "/spots/new"]}
-        exact>
-        <AllSpots />
-      </Route>
-      {/* <Route path="spots/new" component={AddSpotForm}/> */}
+            path={["/", "/spots/:spotId", "/spots/:spotId/edit"]}
+            exact>
+            <AllSpots />
+          </Route>
+          {/* <Route path="spots/new" component={AddSpotForm}/> */}
           {/* <Route path="/login"><LoginFormPage /></Route> */}
           {/* <Route path="/signup"><SignupFormPage /></Route> */}
         </Switch>
