@@ -141,7 +141,6 @@ const spotsReducer = (state = initialState, action) => {
       return updateState;
     case DELETE:
       const deletedState = { ...state };
-      console.log("DIS DA PLACE TO YEET", deletedState[action.spotId])
       delete deletedState[action.spotId]
       let spotsArr = Object.values(deletedState).slice(0, -2);
       delete deletedState[undefined];
