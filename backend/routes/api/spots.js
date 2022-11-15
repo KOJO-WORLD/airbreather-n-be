@@ -387,8 +387,6 @@ router.post('/', requireAuth, async (req, res) => {
     const { address, city, state, country,
         lat, lng, name, description, price } = req.body;
 
-    console.log('PRICE TYPE', typeof price)
-
     if (!address || !city || !state || !country || lat > 90
         || lng > 180 || name.length > 50 || !description || !price) {
 

@@ -36,26 +36,74 @@ module.exports = {
       {
         ownerId: 1,
         address: '123 address St',
-        city: 'City1',
-        state: 'State1',
-        country: 'Country1',
+        city: 'Olde Towne',
+        state: 'California',
+        country: 'United Sates',
         lat: 123.4,
         lng: 123.5,
-        name: 'NAME1',
-        description: 'This is spot #1',
-        price: 100.00
+        name: 'Golden Glory',
+        description: 'Your dream getaway begins here',
+        price: 180.00
       },
       {
         ownerId: 2,
         address: '456 address Ave',
-        city: 'City2',
-        state: 'State2',
-        country: 'Country2',
+        city: 'New Towne',
+        state: 'California',
+        country: 'United States',
         lat: 198.7654321,
         lng: -198.7654321,
-        name: 'NAME2',
-        description: 'This is spot #2',
-        price: 100.00
+        name: 'Shanty Town',
+        description: 'The perfect little spot',
+        price: 140.00
+      },
+      {
+        ownerId: 3,
+        address: '789 address Blvd',
+        city: 'Twin Peaks',
+        state: 'California',
+        country: 'United States',
+        lat: 50.7654321,
+        lng: -70.7654321,
+        name: 'Red Room',
+        description: 'Are you Laura Palmer?',
+        price: 550.00
+      },
+      {
+        ownerId: 1,
+        address: '987 address Cir',
+        city: 'Who-Towne',
+        state: 'California',
+        country: 'United States',
+        lat: 40.7654321,
+        lng: -60.7654321,
+        name: 'Who Hill',
+        description: 'Owls live here',
+        price: 200.00
+      },
+      {
+        ownerId: 2,
+        address: '654 Palace St',
+        city: 'San Bernardino',
+        state: 'California',
+        country: 'United States',
+        lat: 50.7654321,
+        lng: -70.7634321,
+        name: 'Hot Hill',
+        description: "It's really hot here but you can pay to stay here",
+        price: 5.00
+      },
+      {
+        ownerId: 2,
+        address: '321 Palace Ave',
+        city: 'Saint Bernardo',
+        state: 'California',
+        country: 'United States',
+        lat: 44.7654321,
+        lng: -76.7634321,
+        name: 'Pupper Palace',
+        description: "WUUF, you'll love it here! :)",
+        price: 135.00
       }
     ]);
 
@@ -63,40 +111,109 @@ module.exports = {
     await queryInterface.bulkInsert('SpotImages', [
       {
         spotId: 1,
-        url: 'spot1.com',
+        url: 'https://static.dezeen.com/uploads/2022/02/shed-architecture-and-design-golden-house-seattle-hero.jpg',
         preview: true
       },
       {
         spotId: 2,
-        url: 'spot2.com',
+        url: 'https://photos.lensculture.com/large/94693bf8-0dd2-4dff-8b10-a643b2815032.jpg',
         preview: true
-      }]);
+      },
+      {
+        spotId: 3,
+        url: 'https://images.squarespace-cdn.com/content/v1/588a85512e69cf2194b7a1a2/1622336529885-O6OOA0ZWKDIAAGYMXBXK/IMG_2426.jpeg?format=1500w',
+        preview: true
+      },
+      {
+        spotId: 4,
+        url: 'https://www.sunset.com/wp-content/uploads/web-owlhouse-LouAnne-Brickhouse-1024x683.jpg',
+        preview: true
+      },
+      {
+        spotId: 5,
+        url: 'https://www.swissnomads.ch/Wordpress/wp-content/uploads/2019/07/auto-wrack-namibia-1024x683.jpg',
+        preview: true
+      },
+      {
+        spotId: 6,
+        url: 'https://blythewoodworks.com/wp-content/uploads/2018/09/Brittany-Michelles-pup-and-his-Goliath-dog-house.jpg',
+        preview: true
+      },
+    ]);
 
     // // Reviews //////////////////////////////////////////////////////
     await queryInterface.bulkInsert('Reviews', [
       {
         spotId: 1,
-        userId: 1,
-        review: 'review 1',
-        stars: 1
+        userId: 3,
+        review: 'amazing',
+        stars: 5
       },
       {
         spotId: 1,
         userId: 2,
-        review: 'review 2',
+        review: 'very golden',
         stars: 5
+      },
+      {
+        spotId: 1,
+        userId: 3,
+        review: 'a little too golden',
+        stars: 3
       },
       {
         spotId: 2,
         userId: 1,
-        review: 'review 3',
-        stars: 2
+        review: 'very gross, we loved it',
+        stars: 5
       },
       {
         spotId: 2,
         userId: 2,
-        review: 'review 4',
+        review: 'no',
+        stars: 1
+      },
+      {
+        spotId: 3,
+        userId: 1,
+        review: 'Are you Laura Palmer?',
+        stars: 4
+      },
+      {
+        spotId: 3,
+        userId: 2,
+        review: 'Are you Laura Palmer?',
         stars: 3
+      },
+      {
+        spotId: 3,
+        userId: 3,
+        review: 'Are you Laura Palmer?',
+        stars: 1
+      },
+      {
+        spotId: 4,
+        userId: 1,
+        review: 'I can turn my head 180 degrees lol',
+        stars: 3
+      },
+      {
+        spotId: 4,
+        userId: 3,
+        review: "WHO wouldn't want to stay here?",
+        stars: 5
+      },
+      {
+        spotId: 5,
+        userId: 2,
+        review: "Spent the best week of my life here. If you see this, I love you Spencer",
+        stars: 5
+      },
+      {
+        spotId: 6,
+        userId: 1,
+        review: 'Great place to rough house',
+        stars: 4
       }
     ]);
 
