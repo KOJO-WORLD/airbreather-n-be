@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 // import EditSpotForm from './EditSpotForm';
-import { getSpotDetailThunk } from '../../store/spots';
+import { deleteSpotThunk, getSpotDetailThunk } from '../../store/spots';
 import EditSpotForm from './EditSpotForm';
+// import DeleteSpot from '../../store/spots';
 
 const SpotDetail = () => {
+
+    const history = useHistory();
 
     const [hidden, setHidden] = useState(true);
 
@@ -44,9 +47,13 @@ const SpotDetail = () => {
             <NavLink to={`/spots/${spotId}/edit`}>
                 <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Edit spot</button>
             </NavLink>
-                <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
-                    <EditSpotForm />
-                </div>
+            <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
+                <EditSpotForm />
+            </div>
+            <button onClick={() => {
+                dispatch(deleteSpotThunk(spotId));
+                history.push('/');
+                }}>Delete spot</button>
             {/* <Route path={`/spots/${spotId}/edit`}>
                 <EditSpotForm />
             </Route> */}

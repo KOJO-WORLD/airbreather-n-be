@@ -4,6 +4,7 @@ const GET_SPOTS = 'spots/GET';
 const GET_ONE = 'spots/GET_ONE';
 const CREATE = 'spots/CREATE';
 const UPDATE = 'spot/UPDATE';
+const DELETE = 'spot/DELETE';
 
 const getAllSpots = (spots) => ({
   type: GET_SPOTS,
@@ -23,6 +24,11 @@ const addSpot = spot => ({
 const editSpot = spot => ({
   type: UPDATE,
   spot
+});
+
+const deleteSpot = spotId => ({
+  type: DELETE,
+  spotId
 });
 
 export const addSpotThunk = (payload) => async (dispatch) => {
@@ -69,6 +75,19 @@ export const getSpotDetailThunk = (spotId) => async dispatch => {
     dispatch(getSpotDetail(spot))
   }
 }
+
+export const deleteSpotThunk = (spotId) => async (dispatch) => {
+  console.log('SPO T ID IN THUNK: ', spotId);
+  const response = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    console.log('SPOR ID B+TO DISCPATCH: ', spotId);
+    dispatch(deleteSpot(spotId))
+  }
+};
 
 const initialState = {
   spots: []
@@ -120,6 +139,16 @@ const spotsReducer = (state = initialState, action) => {
       let updateSpotsArr = Object.values(updateState);
       updateState.spotsArr = updateSpotsArr.slice(0, -2);
       return updateState;
+    case DELETE:
+      const deletedState = { ...state };
+      console.log("DIS DA PLACE TO YEET", deletedState[action.spotId])
+      delete deletedState[action.spotId]
+      let spotsArr = Object.values(deletedState).slice(0, -2);
+      delete deletedState[undefined];
+      return {
+        ...deletedState,
+        spotsArr
+      };
     default:
       return state;
   }

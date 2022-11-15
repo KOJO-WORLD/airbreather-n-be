@@ -163,7 +163,7 @@ router.get('/:spotId/reviews', async (req, res) => {
 // Edit a Spot
 router.put('/:spotId', requireAuth, async (req, res) => {
 
-    // const owner = req.user.toJSON()
+    const owner = req.user.toJSON()
 
     // const { spotId } = req.params;
 
@@ -202,6 +202,13 @@ router.put('/:spotId', requireAuth, async (req, res) => {
         });
     } else {
 
+        if (findSpot.ownerId !== owner.id) {
+            res.status(403).json({
+                message: "Forbidden", statusCode: 403
+            })
+        };
+
+
         const editSpot = await findSpot.update({
             address, city, state, country,
             lat, lng, name, description, price,
@@ -215,6 +222,14 @@ router.put('/:spotId', requireAuth, async (req, res) => {
 // Delete a Spot
 router.delete('/:spotId', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
+
+    const owner = req.user.toJSON()
+
+    if (spot.ownerId !== owner.id) {
+        return res.status(403).json({
+            message: "Forbidden", statusCode: 403
+        });
+    }
 
     if (!spot) {
         res.status(404)
