@@ -46,10 +46,6 @@
     transform: scale(0.9);
 }
 
-
-
-
-
 button {
     position: relative;
     display: inline-block;
@@ -120,6 +116,87 @@ button.submit .button-text {
     padding: 0.75rem 0;
     margin: 0 0 0 1.85rem;
     color: #375bdc;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.button span {
+    background-color: rgb(255, 255, 255);
+    padding: 16px 24px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+}
+
+.button:hover span {
+    background: none;
+    color: #ffffff;
+}
+
+.button:active {
+    transform: scale(0.9);
+}
+
+
+button.cancel {
+    font-family: Phantomsans, sans-serif;
+    width: 12rem;
+    height: auto;
+}
+
+button.cancel .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(144deg, #f97b0d, #ff2121 50%, #a914ff);
+    border-radius: 1.625rem;
+}
+
+button.cancel .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+}
+
+button.cancel .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+}
+
+button.cancel .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+}
+
+button.cancel .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #ff2121;
     font-weight: 700;
     line-height: 1.6;
     text-align: center;

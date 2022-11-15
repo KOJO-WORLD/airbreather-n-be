@@ -1,4 +1,4 @@
-import SpotForm from './SpotForm';
+import SpotForm from './SpotFormModal/SpotForm';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 

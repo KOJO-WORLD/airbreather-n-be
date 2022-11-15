@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { addSpotThunk, editSpotThunk } from '../../store/spots';
+import { addSpotThunk, editSpotThunk } from '../../../store/spots';
+import '../../button.css';
+import '../../input.css';
+import '../../Errors/Errors.css'
 
-const SpotForm = ({ spot, formType, hiddenState }) => {
+const SpotForm = ({ spot, formType, modal }) => {
 
-    if (formType === 'Add Spot') {
-        var [hidden, setHidden] = hiddenState.hiddenState
-    }
+    // if (formType === 'Add Spot') {
+    //     var [hidden, setHidden] = hiddenState.hiddenState
+    // }
+    const [showModal, setShowModal] = modal.modal
+    console.log('WHAT IT DUE', showModal, setShowModal);
 
     const { spotId } = useParams();
 
@@ -53,7 +58,8 @@ const SpotForm = ({ spot, formType, hiddenState }) => {
 
         if (formType === "Add Spot") {
             dispatch(addSpotThunk(payload));
-            setHidden(true);
+            // setHidden(true);
+            setShowModal(false);
             history.push(`/`);
         } else
             dispatch(editSpotThunk(payload, spotId));
@@ -68,36 +74,41 @@ const SpotForm = ({ spot, formType, hiddenState }) => {
     return (
         <form onSubmit={handleSubmit}>
             <label>
-                name
                 <input
+                    placeholder='name'
+                    className="input"
                     type='text'
                     value={name}
                     onChange={updateName} />
             </label>
             <label>
-                address
                 <input
+                    placeholder='address'
+                    className="input"
                     type='text'
                     value={address}
                     onChange={updateAddress} />
             </label>
             <label>
-                city
                 <input
+                    className="input"
+                    placeholder='city'
                     type='text'
                     value={city}
                     onChange={updateCity} />
             </label>
             <label>
-                state
                 <input
+                    placeholder='state'
+                    className="input"
                     type='text'
                     value={state}
                     onChange={updateState} />
             </label>
             <label>
-                country
                 <input
+                    placeholder='country'
+                    className="input"
                     type='text'
                     value={country}
                     onChange={updateCountry} />
@@ -105,6 +116,8 @@ const SpotForm = ({ spot, formType, hiddenState }) => {
             <label>
                 latitude
                 <input
+                    placeholder='latitude'
+                    className="input"
                     type='number'
                     value={latitude}
                     onChange={updateLatitude} />
@@ -112,13 +125,16 @@ const SpotForm = ({ spot, formType, hiddenState }) => {
             <label>
                 longitude
                 <input
+                    placeholder='longitude'
+                    className="input"
                     type='number'
                     value={longitude}
                     onChange={updateLongitude} />
             </label>
             <label>
-                description
                 <input
+                    placeholder='description'
+                    className="input"
                     type='text'
                     value={description}
                     onChange={updateDescription} />
@@ -126,16 +142,28 @@ const SpotForm = ({ spot, formType, hiddenState }) => {
             <label>
                 price
                 <input
+                    placeholder='price'
+                    className="input"
                     type='number'
                     value={price}
                     onChange={updatePrice} />
             </label>
-            <button type="submit">Save   |</button>
-            <div>#########################</div>
-            <button type='button' onClick={(e) => {
-                if (formType === 'Add Spot') setHidden(true);
+            <button className='submit' type="submit">
+
+                <span className="circle" aria-hidden="true">
+                    <span className="icon arrow"></span>
+                </span>
+                <span className="button-text">Save</span>
+
+            </button>
+            <button className="cancel" type='button' onClick={(e) => {
+                // if (formType === 'Add Spot') setHidden(true);
+                setShowModal(false);
                 handleCancelClick(e);
-            }}> | Cancel</button>
+            }}><span className="circle" aria-hidden="true">
+                    <span className="icon arrow"></span>
+                </span>
+                <span className="button-text">Cancel</span></button>
         </form>
     );
 };

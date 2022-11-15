@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import { getAllSpotsThunk } from '../../store/spots';
@@ -9,7 +9,7 @@ import AddSpotForm from './AddSpotForm';
 
 const AllSpots = () => {
     const dispatch = useDispatch();
-    const [hidden, setHidden] = useState(true);
+    // const [hidden, setHidden] = useState(true);
 
     // const { spotId } = useParams();
 
@@ -26,24 +26,24 @@ const AllSpots = () => {
         return null;
     }
 
-    function showForm() {
-        setHidden(false)
-    }
+    // function showForm() {
+    //     setHidden(false)
+    // }
 
     return (
         <main>
             <div>
-                <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Add a spot</button>
+                {/* <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Add a spot</button>
                 <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
                     <AddSpotForm hiddenState={[hidden, setHidden]} />
-                </div>
+                </div> */}
                 <Switch>
                     <Route path="/spots/:spotId">
                         <SpotDetail />
                     </Route>
-                    <Route path="/spots">
+                    {/* <Route path="/spots">
                         <AddSpotForm />
-                    </Route>
+                    </Route> */}
                 </Switch>
                 <div className='spotsContainer'>
                     {spots.map((spot) => {
