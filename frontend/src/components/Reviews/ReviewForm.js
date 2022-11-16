@@ -10,16 +10,6 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
 
     const [hidden2, setHidden2] = spotId.hidden;
 
-    // if (formType === 'Add Spot') {
-    //     var [hidden, setHidden] = hiddenState.hiddenState
-    // }
-    // if (formType === "Edit Spot") var [showModal, setShowModal] = modal;
-    // else
-    // if (formType === 'Add Spot') var [showModal, setShowModal] = modal.modal
-    // console.log('WHAT IT DUE', formType, showModal, setShowModal);
-
-    // const { spotId } = useParams();
-
     const dispatch = useDispatch();
 
     const history = useHistory();
@@ -45,14 +35,7 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
             userId: sessionUser.id
         };
 
-        // if (formType === "Add Spot") {
-        //     dispatch(addSpotThunk(payload));
-        //     // setHidden(true);
-        //     setShowModal(false);
-        //     history.push(`/`);
-        // } else
         dispatch(writeReviewThunk(payload));
-        console.log('get thunked')
         setHidden2(true);
         history.push(`/spots/${spotId.spotId}`);
     };

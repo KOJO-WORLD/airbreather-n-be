@@ -10,12 +10,12 @@ import '../Errors/Errors.css';
 
 function LoginForm() {
     const dispatch = useDispatch();
-      const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-      if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,7 +23,8 @@ function LoginForm() {
         return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+                console.log('------DATA', data)
+                if (data) setErrors(Object.values(data));
                 else return (<Redirect to="/" />);
             });
     }
@@ -31,7 +32,7 @@ function LoginForm() {
     return (
         <form onSubmit={handleSubmit}>
             <ul className='list'>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                <li>{errors[0]}</li>
             </ul>
             <div className='container'>
 
@@ -64,7 +65,7 @@ function LoginForm() {
 
                 </button>
             </div>
-        </form>
+        </form >
     );
 }
 

@@ -19,7 +19,6 @@ const GetSpotReviews = () => {
     const reviews = useSelector(state => {
         if (!state.reviews.spotReviewsArr) return null;
         return state.reviews.spotReviewsArr.map((reviewObj) => {
-            console.log('REVIEW OBJ: ', reviewObj)
             return reviewObj
         });
     });
@@ -40,17 +39,11 @@ const GetSpotReviews = () => {
 
     return (
         <main>
-            {/* <Switch>
-                <Route path={`/reviews/:reviewId`}>
-                    <EditReviewForm />
-                </Route>
-            </Switch> */}
             <div className=''> *****REVIEWS*****
                 {reviews.map((review) => {
                     return (
                         <div key={review.id}>
                             <div className=''>
-                                {/* <img className='prevImg' src={spot.previewImage} alt='preview'></img> */}
                                 <div>{review.stars}/5 stars</div>
                                 <div>{review.review}</div>
                             </div>

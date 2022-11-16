@@ -6,6 +6,7 @@ import { deleteSpotThunk, getSpotDetailThunk } from '../../store/spots';
 import EditSpotForm from './EditSpotForm';
 import GetSpotReviews from '../Reviews/GetSpotReviews';
 import WriteReviewForm from '../Reviews/WriteReviewForm';
+import './Spots.css';
 
 const SpotDetail = () => {
 
@@ -39,21 +40,20 @@ const SpotDetail = () => {
 
     return (
         // (sessionUser) &&
-        <div>
-            <div>
-                <h2>{spot.name}</h2>
-                <ul>address
-                    <li>
-                        {spot.address} {spot.city} {spot.state} {spot.country}
-                    </li>
-                </ul>
-                <p>${spot.price}/night</p>
-                <p>{spot.description}</p>
+        <div className="spotMain">
+            <div className="spotDisplay">
+                <img src={spot.previewImage} className='spotImage' alt='preview' />
+                <div className="spotDetail">
+                <h2 className='spotInfo'>{spot.name}</h2>
+                <div className='spotInfo'>address: {spot.address} {spot.city} {spot.state} {spot.country}</div>
+                <p className='spotInfo'>price: ${spot.price}/night</p>
+                <p className='spotInfo'>description: {spot.description}</p>
+                </div>
             </div>
             <GetSpotReviews />
             {
                 ((sessionUser) &&
-                (spot.ownerId === sessionUser.id)) && (
+                    (spot.ownerId === sessionUser.id)) && (
                     <div>
                         <NavLink to={`/spots/${spotId}/edit`}>
                             <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Edit spot</button>
@@ -70,7 +70,7 @@ const SpotDetail = () => {
             }
             {
                 ((sessionUser) &&
-                (spot.ownerId !== sessionUser.id)) && (
+                    (spot.ownerId !== sessionUser.id)) && (
                     <>
                         <button style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }}>Leave a review</button>
                         <div style={{ visibility: hidden2 ? 'hidden' : 'visible' }}>

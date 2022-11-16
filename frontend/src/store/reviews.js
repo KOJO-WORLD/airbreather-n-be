@@ -1,9 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const GET_SPOT_REVIEWS = 'reviews/GET_SPOT_REVIEWS';
-// const GET_ONE = 'spots/GET_ONE';
 const CREATE = 'review/CREATE';
-// const UPDATE = 'spot/UPDATE';
 const DELETE = 'review/DELETE';
 
 const getSpotReviews = (reviews) => ({
@@ -11,20 +9,10 @@ const getSpotReviews = (reviews) => ({
   reviews
 });
 
-// const getSpotDetail = (spot) => ({
-//   type: GET_ONE,
-//   spot
-// });
-
 const writeReview = review => ({
   type: CREATE,
   review
 });
-
-// const editSpot = spot => ({
-//   type: UPDATE,
-//   spot
-// });
 
 const deleteReview = reviewId => ({
   type: DELETE,
@@ -46,28 +34,6 @@ export const writeReviewThunk = (payload) => async (dispatch) => {
     return review;
   }
 };
-
-// export const editSpotThunk = (payload, spotId) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/spots/${spotId}`, {
-//     method: 'PUT',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(payload)
-//   });
-
-//   if (response.ok) {
-//     const spot = await response.json();
-//     dispatch(editSpot(spot));
-//     return spot;
-//   }
-// };
-
-// export const getReviewsThunk = () => async dispatch => {
-//   const response = await fetch(`/api/spots`);
-//   if (response.ok) {
-//     const spotsData = await response.json();
-//     dispatch(getAllSpots(spotsData.Spots));
-//   }
-// };
 
 export const getSpotReviewsThunk = (spotId) => async dispatch => {
   const response = await fetch(`/api/spots/${spotId}/reviews`)
@@ -94,8 +60,6 @@ const initialState = {
   reviews: []
 };
 
-// const spotsArr = []
-
 const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_SPOT_REVIEWS:
@@ -107,23 +71,7 @@ const reviewsReducer = (state = initialState, action) => {
         ...spotReviews,
         spotReviewsArr: (action.reviews.Reviews)
       };
-    // case GET_ONE:
-    //   if (!state[action.spot.id]) {
-    //     let newState = {
-    //       ...state,
-    //       [action.spot.id]: action.spot
-    //     };
-    //     let spotsArr = newState.spots.map(id => newState[id]);
-    //     spotsArr.push(action.spots);
-    //     newState.spotsArr = (action.spots);
-    //     return newState;
-    //   } else return {
-    //     ...state,
-    //     [action.spots]: {
-    //       ...state[action.spots],
-    //       ...action.spots
-    //     }
-    //   };
+
     case CREATE:
       let newState = {
         ...state,
@@ -131,24 +79,23 @@ const reviewsReducer = (state = initialState, action) => {
       };
       let createReviewsArr = Object.values(newState);
       newState.spotReviewsArr = createReviewsArr.slice(0, -1);
-      console.log('STATE IN TE REDUCER', newState);
       return newState;
-    // case UPDATE:
-    //   const updateState = {
-    //     ...state,
-    //     [action.spot.id]: action.spot
-    //   };
-    //   let updateSpotsArr = Object.values(updateState);
-    //   updateState.spotsArr = updateSpotsArr.slice(0, -2);
-    //   return updateState;
+
     case DELETE:
+      // console.log("WHATS UP WITH STATE: ", state)
       const deletedState = { ...state };
+      // console.log('NEW DELETED STATE CREATED: ', deletedState)
       delete deletedState[action.reviewId]
-      let reviewsArr = Object.values(deletedState).slice(0, -2);
-      delete deletedState[undefined];
+      delete deletedState.spotReviewsArr[action.reviewId]
+      // console.log('NEW DELETED STATE AFTER REMOVING REVIEW: ', deletedState)
+      let spotReviewsArr = Object.values(deletedState).slice(0, -1);
+      // console.log('CREATED SPOT REVIEWS ARR: ', spotReviewsArr)
+      // delete deletedState[undefined];
+      // console.log('DELETED STATE AGAIN: ', deletedState)
+      // console.log('CREATED SPOT REVIEWS ARR AGAIN: ', spotReviewsArr)
       return {
         ...deletedState,
-        reviewsArr
+        spotReviewsArr
       };
     default:
       return state;
