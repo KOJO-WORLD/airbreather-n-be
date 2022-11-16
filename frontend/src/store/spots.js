@@ -46,6 +46,7 @@ export const addSpotThunk = (payload) => async (dispatch) => {
 };
 
 export const editSpotThunk = (payload, spotId) => async (dispatch) => {
+  
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },

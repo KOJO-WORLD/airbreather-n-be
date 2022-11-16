@@ -47,6 +47,12 @@ const AllSpots = () => {
                 </Switch>
                 <div className='spotsContainer'>
                     {spots.map((spot) => {
+                        // if(spot.avgRating.toString() !== undefined) {
+                        //     let str = spot.avgRating.toString()
+                        //     const arr = str.split('')
+                        //     if(arr.includes('.')) arr.splice(4)
+                        //     spot.avgRating = +arr.join('')
+                        // }
                         return (
                             <NavLink key={spot.id} to={`/spots/${spot.id}`}>
                                 <div className='spotParent'>

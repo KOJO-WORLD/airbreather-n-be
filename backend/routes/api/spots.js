@@ -168,7 +168,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     // const { spotId } = req.params;
 
     const { address, city, state, country,
-        lat, lng, name, description, price, previewImage } = req.body;
+        lat, lng, name, description, price, previewImage, avgRating } = req.body;
 
     if (!address || !city || !state || !country || lat > 90
         || lng > 180 || name.length > 50 || !description || !price) {
@@ -215,6 +215,13 @@ router.put('/:spotId', requireAuth, async (req, res) => {
 
         const returnSpot = editSpot.toJSON()
         returnSpot.previewImage = previewImage
+
+        if (avgRating) {
+            let str = avgRating.toString()
+            const arr = str.split('')
+            if (arr.includes('.')) arr.splice(4)
+            returnSpot.avgRating = +arr.join('')
+        }
 
         res.json(returnSpot)
     }
@@ -608,7 +615,22 @@ router.get('/', async (req, res, next) => {
             group: ['Spot.id', 'SpotImages.url'],
         });
 
-        res.json({ 'Spots': spots });
+        // let returnSpots = spots.toJSON();
+
+        const returnSpots = []
+
+        for (let spot of spots) {
+            spot = spot.toJSON()
+            if (spot.avgRating) {
+                let str = spot.avgRating.toString()
+                const arr = str.split('')
+                if (arr.includes('.')) arr.splice(4)
+                spot.avgRating = +arr.join('')
+            }
+            returnSpots.push(spot)
+        }
+
+        res.json({ 'Spots': returnSpots });
     }
     else { // Return spots filtered by query parameters.
 

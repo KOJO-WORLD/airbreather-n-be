@@ -72,7 +72,9 @@ const SpotForm = ({ spot, formType, modal }) => {
             setShowModal(false);
             history.push(`/`);
         } else
-            dispatch(editSpotThunk(payload, spotId));
+            console.log("PAYLOADDDDDDDDD", payload)
+            console.log("PAYLOAD.AVGGGGGGGG", payload.avgRating)
+        dispatch(editSpotThunk(payload, spotId));
         history.push(`/`);
     };
 
