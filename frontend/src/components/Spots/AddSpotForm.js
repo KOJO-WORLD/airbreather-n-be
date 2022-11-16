@@ -12,6 +12,7 @@ const AddSpotForm = (modal) => {
     longitude: 0,
     description: '',
     price: 0,
+    previewImage: ''
   };
 
   return (

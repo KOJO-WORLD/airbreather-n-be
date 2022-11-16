@@ -35,6 +35,7 @@ const SpotForm = ({ spot, formType, modal }) => {
     const [longitude, setLongitude] = useState(spot.longitude);
     const [description, setDescription] = useState(spot.description);
     const [price, setPrice] = useState(spot.price);
+    const [previewImage, setPreviewImage] = useState(spot.previewImage);
 
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAdress(e.target.value);
@@ -45,6 +46,7 @@ const SpotForm = ({ spot, formType, modal }) => {
     const updateLongitude = (e) => setLongitude(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
     const updatePrice = (e) => setPrice(e.target.value);
+    const updatePreviewImage = (e) => setPreviewImage(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -59,7 +61,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             longitude,
             description,
             price,
-            previewImage: spot.previewImage,
+            previewImage: previewImage,
             avgRating: spot.avgRating,
             ownerId: sessionUser.id
         };
@@ -122,7 +124,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     onChange={updateCountry} />
             </label>
             <label>
-                latitude
+                Latitude
                 <input
                     placeholder='latitude'
                     className="input"
@@ -131,7 +133,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     onChange={updateLatitude} />
             </label>
             <label>
-                longitude
+                Longitude
                 <input
                     placeholder='longitude'
                     className="input"
@@ -148,13 +150,22 @@ const SpotForm = ({ spot, formType, modal }) => {
                     onChange={updateDescription} />
             </label>
             <label>
-                price
+                Price
                 <input
                     placeholder='price'
                     className="input"
                     type='number'
                     value={price}
                     onChange={updatePrice} />
+            </label>
+            <label>
+                Preview image
+                <input
+                    placeholder='URL'
+                    className="input"
+                    type='text'
+                    value={previewImage}
+                    onChange={updatePreviewImage} />
             </label>
             <button className='submit' type="submit">
 

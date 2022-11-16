@@ -410,7 +410,7 @@ router.post('/', requireAuth, async (req, res) => {
     let owner = req.user.toJSON()
 
     const { address, city, state, country,
-        lat, lng, name, description, price } = req.body;
+        lat, lng, name, description, price, previewImage } = req.body;
 
     if (!address || !city || !state || !country || lat > 90
         || lng > 180 || name.length > 50 || !description || !price) {
@@ -439,8 +439,11 @@ router.post('/', requireAuth, async (req, res) => {
             ownerId: owner.id
         })
 
-        res.status(201)
-        res.json(newSpot)
+        const returnSpot = newSpot.toJSON();
+        returnSpot.previewImage = previewImage
+
+        res.status(201);
+        res.json(returnSpot);
     }
 });
 
