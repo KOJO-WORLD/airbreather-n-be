@@ -168,9 +168,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     // const { spotId } = req.params;
 
     const { address, city, state, country,
-        lat, lng, name, description, price } = req.body;
-
-
+        lat, lng, name, description, price, previewImage } = req.body;
 
     if (!address || !city || !state || !country || lat > 90
         || lng > 180 || name.length > 50 || !description || !price) {
@@ -211,11 +209,14 @@ router.put('/:spotId', requireAuth, async (req, res) => {
 
         const editSpot = await findSpot.update({
             address, city, state, country,
-            lat, lng, name, description, price,
+            lat, lng, name, description, price, previewImage
             // ownerId: owner.id
         })
 
-        res.json(editSpot)
+        const returnSpot = editSpot.toJSON()
+        returnSpot.previewImage = previewImage
+
+        res.json(returnSpot)
     }
 });
 
@@ -255,6 +256,8 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
     const { review, stars } = req.body;
 
+    console.log('in the backend', review, stars)
+
     const checkSpot = await Spot.findByPk(req.params.spotId)
     if (!checkSpot) {
         res.status(404);
@@ -271,7 +274,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
         }
     })
 
-    if (!review || !stars || typeof stars !== 'number' || stars > 5 || stars < 1) {
+    if (!review || !stars || stars > 5 || stars < 1) {
         res.status(400)
         res.json({
             "message": "Validation error",
