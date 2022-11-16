@@ -124,14 +124,15 @@ const reviewsReducer = (state = initialState, action) => {
     //       ...action.spots
     //     }
     //   };
-    // case CREATE:
-    //   let newState = {
-    //     ...state,
-    //     [action.spot.id]: action.spot
-    //   };
-    //   let createSpotsArr = Object.values(newState);
-    //   newState.spotsArr = createSpotsArr.slice(0, -1);
-    //   return newState;
+    case CREATE:
+      let newState = {
+        ...state,
+        [action.review.id]: action.review
+      };
+      let createReviewsArr = Object.values(newState);
+      newState.spotReviewsArr = createReviewsArr.slice(0, -1);
+      console.log('STATE IN TE REDUCER', newState);
+      return newState;
     // case UPDATE:
     //   const updateState = {
     //     ...state,

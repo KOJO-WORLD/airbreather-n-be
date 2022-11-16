@@ -17,9 +17,11 @@ const GetSpotReviews = () => {
     const { spotId } = useParams();
 
     const reviews = useSelector(state => {
-        console.log('_________NEEEEEED TO HEAR THE STATE CHANGE_____________')
         if (!state.reviews.spotReviewsArr) return null;
-        return state.reviews.spotReviewsArr.map((reviewObj) => reviewObj);
+        return state.reviews.spotReviewsArr.map((reviewObj) => {
+            console.log('REVIEW OBJ: ', reviewObj)
+            return reviewObj
+        });
     });
 
     const sessionUser = useSelector(state => state.session.user);

@@ -20,8 +20,6 @@ const SpotForm = ({ spot, formType, modal }) => {
 
     const { spotId } = useParams();
 
-    console.log('LOOKING PREV IMG', spot.previewImage)
-
     const sessionUser = useSelector(state => state.session.user);
 
     const dispatch = useDispatch();
@@ -72,8 +70,6 @@ const SpotForm = ({ spot, formType, modal }) => {
             setShowModal(false);
             history.push(`/`);
         } else
-            console.log("PAYLOADDDDDDDDD", payload)
-            console.log("PAYLOAD.AVGGGGGGGG", payload.avgRating)
         dispatch(editSpotThunk(payload, spotId));
         history.push(`/`);
     };
