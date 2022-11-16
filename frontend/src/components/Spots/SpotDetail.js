@@ -38,6 +38,7 @@ const SpotDetail = () => {
     }
 
     return (
+        // (sessionUser) &&
         <div>
             <div>
                 <h2>{spot.name}</h2>
@@ -51,7 +52,8 @@ const SpotDetail = () => {
             </div>
             <GetSpotReviews />
             {
-                (spot.ownerId === sessionUser.id) && (
+                ((sessionUser) &&
+                (spot.ownerId === sessionUser.id)) && (
                     <div>
                         <NavLink to={`/spots/${spotId}/edit`}>
                             <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Edit spot</button>
@@ -67,12 +69,13 @@ const SpotDetail = () => {
                 )
             }
             {
-                (spot.ownerId !== sessionUser.id) && (
+                ((sessionUser) &&
+                (spot.ownerId !== sessionUser.id)) && (
                     <>
-                        <button style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => {setHidden2(false)}}>Leave a review</button>
+                        <button style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }}>Leave a review</button>
                         <div style={{ visibility: hidden2 ? 'hidden' : 'visible' }}>
                             {/* <Route path='/reviews/new'> */}
-                                <WriteReviewForm spotId={spotId} hidden={[hidden2, setHidden2]} />
+                            <WriteReviewForm spotId={spotId} hidden={[hidden2, setHidden2]} />
                             {/* </Route> */}
 
                         </div>

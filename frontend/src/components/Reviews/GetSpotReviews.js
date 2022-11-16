@@ -51,7 +51,7 @@ const GetSpotReviews = () => {
                                 <div>{review.stars}/5 stars</div>
                                 <div>{review.review}</div>
                             </div>
-                            {(review.userId === sessionUser.id) && (
+                            {((sessionUser) && (review.userId === sessionUser.id)) && (
                                 <button onClick={() => {
                                     dispatch(deleteReviewThunk(review.id));
                                     history.push('/');

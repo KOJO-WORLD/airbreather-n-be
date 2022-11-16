@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 const GET_SPOT_REVIEWS = 'reviews/GET_SPOT_REVIEWS';
 // const GET_ONE = 'spots/GET_ONE';
-// const CREATE = 'spots/CREATE';
+const CREATE = 'review/CREATE';
 // const UPDATE = 'spot/UPDATE';
 const DELETE = 'review/DELETE';
 
@@ -16,10 +16,10 @@ const getSpotReviews = (reviews) => ({
 //   spot
 // });
 
-// const addSpot = spot => ({
-//   type: CREATE,
-//   spot
-// });
+const writeReview = review => ({
+  type: CREATE,
+  review
+});
 
 // const editSpot = spot => ({
 //   type: UPDATE,
@@ -31,19 +31,21 @@ const deleteReview = reviewId => ({
   reviewId
 });
 
-// export const addSpotThunk = (payload) => async (dispatch) => {
-//   const response = await csrfFetch('/api/spots', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(payload)
-//   });
+export const writeReviewThunk = (payload) => async (dispatch) => {
+  console.log('payload', payload, 'spotId: ', payload.spotId)
+  const response = await csrfFetch(`/api/${payload.spotId}/reviews`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
 
-//   if (response.ok) {
-//     const spot = await response.json();
-//     dispatch(addSpot(spot));
-//     return spot;
-//   }
-// };
+  if (response.ok) {
+    console.log('write review success')
+    const review = await response.json();
+    dispatch(writeReview(review));
+    return review;
+  }
+};
 
 // export const editSpotThunk = (payload, spotId) => async (dispatch) => {
 //   const response = await csrfFetch(`/api/spots/${spotId}`, {
@@ -77,7 +79,6 @@ export const getSpotReviewsThunk = (spotId) => async dispatch => {
 }
 
 export const deleteReviewThunk = (reviewId) => async (dispatch) => {
-  console.log('REVIEW ID IN THUNK: ', reviewId);
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
