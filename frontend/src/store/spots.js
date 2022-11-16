@@ -32,7 +32,6 @@ const deleteSpot = spotId => ({
 });
 
 export const addSpotThunk = (payload) => async (dispatch) => {
-  console.log('PAYLOAD', payload)
   const response = await csrfFetch('/api/spots', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -42,7 +41,6 @@ export const addSpotThunk = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const spot = await response.json();
-    console.log('RES OK', spot)
     dispatch(addSpot(spot));
     return spot;
   }
@@ -76,6 +74,7 @@ export const getSpotDetailThunk = (spotId) => async dispatch => {
 
   if (response.ok) {
     const spot = await response.json();
+    console.log('spot, does have prevImg?', spot)
     dispatch(getSpotDetail(spot))
   }
 }

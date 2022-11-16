@@ -425,8 +425,6 @@ router.post('/', requireAuth, async (req, res) => {
     const { address, city, state, country,
         lat, lng, name, description, price, previewImage } = req.body;
 
-    console.log('LAT N LNG', lat, lng)
-
     if (!address || !city || !state || !country || lat > 90
         || lng > 180 || name.length > 50 || !description || !price) {
 
@@ -553,12 +551,22 @@ router.get('/:spotId', async (req, res) => {
 
     const images = await SpotImage.findAll({
         where: {
-            spotId: spotId
+            spotId: spotId,
         },
         attributes: ['id', 'url', 'preview']
     })
 
-    spot.SpotImages = images
+    spot.SpotImages = images;
+
+    const prevImg = await SpotImage.findOne({
+        where: {
+            spotId: spotId,
+            preview: true
+        },
+        attributes: ['id', 'url', 'preview']
+    })
+
+    spot.previewImage = prevImg.url;
 
     if (!reviews.length) {
         spot.avgStarRating = null

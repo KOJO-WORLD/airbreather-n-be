@@ -38,6 +38,8 @@ const SpotDetail = () => {
         setHidden(false)
     }
 
+    console.log('spot preview image', spot.previewImage);
+
     return (
         // (sessionUser) &&
         <div className="spotMain">

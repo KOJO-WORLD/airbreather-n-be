@@ -30,6 +30,7 @@ export const writeReviewThunk = (payload) => async (dispatch) => {
   if (response.ok) {
     console.log('write review success')
     const review = await response.json();
+    console.log('correct avgRating?',review)
     dispatch(writeReview(review));
     return review;
   }

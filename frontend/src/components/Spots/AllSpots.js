@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import { getAllSpotsThunk } from '../../store/spots';
+// import { writeReviewThunk } from '../../store/reviews';
+
 import "./Spots.css"
 
-import SpotDetail from './SpotDetail';
-import AddSpotForm from './AddSpotForm';
+// import SpotDetail from './SpotDetail';
+// import AddSpotForm from './AddSpotForm';
 
 const AllSpots = () => {
     const dispatch = useDispatch();
@@ -29,14 +31,14 @@ const AllSpots = () => {
     return (
         <main clasname="main">
             <div>
-                <Switch>
+                {/* <Switch>
                     <Route path="/spots/:spotId">
                         <SpotDetail />
                     </Route>
                     <Route path="/spots">
                         <AddSpotForm />
                     </Route>
-                </Switch>
+                </Switch> */}
                 <div className='spotsContainer'>
                     {spots.map((spot) => {
                         return (
