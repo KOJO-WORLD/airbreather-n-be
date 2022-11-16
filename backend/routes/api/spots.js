@@ -163,6 +163,8 @@ router.get('/:spotId/reviews', async (req, res) => {
 // Edit a Spot
 router.put('/:spotId', requireAuth, async (req, res) => {
 
+    console.log('---------req.body___________', req.body)
+
     const owner = req.user.toJSON()
 
     // const { spotId } = req.params;
@@ -170,7 +172,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     const { address, city, state, country,
         lat, lng, name, description, price, previewImage, avgRating } = req.body;
 
-    if (!address || !city || !state || !country || lat > 90
+    if (!address || !city || !state || !country || lat > 180
         || lng > 180 || name.length > 50 || !description || !price) {
         res.status(400)
         return res.json({

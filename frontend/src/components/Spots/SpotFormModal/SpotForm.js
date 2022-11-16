@@ -72,7 +72,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             setShowModal(false);
             history.push(`/`);
         } else
-        dispatch(editSpotThunk(payload, spotId));
+            dispatch(editSpotThunk(payload, spotId));
         history.push(`/`);
     };
 
@@ -85,14 +85,17 @@ const SpotForm = ({ spot, formType, modal }) => {
         <form onSubmit={handleSubmit}>
             <label>
                 <input
+                    required
                     placeholder='name'
                     className="input"
                     type='text'
                     value={name}
+                    maxLength={50}
                     onChange={updateName} />
             </label>
             <label>
                 <input
+                    required
                     placeholder='address'
                     className="input"
                     type='text'
@@ -101,6 +104,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             </label>
             <label>
                 <input
+                    required
                     className="input"
                     placeholder='city'
                     type='text'
@@ -109,6 +113,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             </label>
             <label>
                 <input
+                    required
                     placeholder='state'
                     className="input"
                     type='text'
@@ -117,6 +122,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             </label>
             <label>
                 <input
+                    required
                     placeholder='country'
                     className="input"
                     type='text'
@@ -126,6 +132,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             <label>
                 Latitude
                 <input
+                    required
                     placeholder='latitude'
                     className="input"
                     type='number'
@@ -135,6 +142,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             <label>
                 Longitude
                 <input
+                    required
                     placeholder='longitude'
                     className="input"
                     type='number'
@@ -143,6 +151,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             </label>
             <label>
                 <input
+                    required
                     placeholder='description'
                     className="input"
                     type='text'
@@ -152,6 +161,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             <label>
                 Price
                 <input
+                    required
                     placeholder='price'
                     className="input"
                     type='number'
@@ -162,6 +172,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             <label>
                 Preview image
                 <input
+                    required
                     placeholder='URL'
                     className="input"
                     type='text'

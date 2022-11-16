@@ -47,7 +47,6 @@ export const addSpotThunk = (payload) => async (dispatch) => {
 };
 
 export const editSpotThunk = (payload, spotId) => async (dispatch) => {
-
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -74,7 +73,6 @@ export const getSpotDetailThunk = (spotId) => async dispatch => {
 
   if (response.ok) {
     const spot = await response.json();
-    console.log('spot, does have prevImg?', spot)
     dispatch(getSpotDetail(spot))
   }
 }
@@ -93,8 +91,6 @@ export const deleteSpotThunk = (spotId) => async (dispatch) => {
 const initialState = {
   spots: []
 };
-
-// const spotsArr = []
 
 const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
