@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { addSpotThunk, editSpotThunk } from '../../../store/spots';
 import '../../button.css';
@@ -19,6 +19,10 @@ const SpotForm = ({ spot, formType, modal }) => {
     // console.log('WHAT IT DUE', formType, showModal, setShowModal);
 
     const { spotId } = useParams();
+
+    console.log('LOOKING PREV IMG', spot.previewImage)
+
+    const sessionUser = useSelector(state => state.session.user);
 
     const dispatch = useDispatch();
 
@@ -57,7 +61,9 @@ const SpotForm = ({ spot, formType, modal }) => {
             longitude,
             description,
             price,
-            previewImage: spotId
+            previewImage: spot.previewImage,
+            avgRating: spot.avgRating,
+            ownerId: sessionUser.id
         };
 
         if (formType === "Add Spot") {

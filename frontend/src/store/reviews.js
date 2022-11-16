@@ -32,8 +32,8 @@ const deleteReview = reviewId => ({
 });
 
 export const writeReviewThunk = (payload) => async (dispatch) => {
-  console.log('payload', payload, 'spotId: ', payload.spotId)
-  const response = await csrfFetch(`/api/${payload.spotId}/reviews`, {
+  console.log('payload', payload, 'spotId: ', payload.spotId);
+  const response = await csrfFetch(`/api/spots/${payload.spotId}/reviews`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)

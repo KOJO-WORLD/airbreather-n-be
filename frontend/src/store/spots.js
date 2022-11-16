@@ -77,14 +77,12 @@ export const getSpotDetailThunk = (spotId) => async dispatch => {
 }
 
 export const deleteSpotThunk = (spotId) => async (dispatch) => {
-  console.log('SPO T ID IN THUNK: ', spotId);
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
 
   if (response.ok) {
-    console.log('SPOR ID B+TO DISCPATCH: ', spotId);
     dispatch(deleteSpot(spotId))
   }
 };
@@ -128,8 +126,9 @@ const spotsReducer = (state = initialState, action) => {
         ...state,
         [action.spot.id]: action.spot
       };
-      let createSpotsArr = Object.values(newState);
-      newState.spotsArr = createSpotsArr.slice(0, -1);
+      let createSpotsArr = Object.values(newState).slice(0, -1);
+      newState.spotsArr = createSpotsArr;
+
       return newState;
     case UPDATE:
       const updateState = {

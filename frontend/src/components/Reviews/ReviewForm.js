@@ -51,7 +51,7 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
         //     setShowModal(false);
         //     history.push(`/`);
         // } else
-        // dispatch(editReviewThunk(payload, reviewId));
+        dispatch(writeReviewThunk(payload));
         console.log('get thunked')
         setHidden2(true);
         history.push(`/spots/${spotId.spotId}`);
@@ -78,6 +78,8 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
                     placeholder='stars'
                     className="input"
                     type='number'
+                    min={0}
+                    max={5}
                     value={stars}
                     onChange={updateStars} />
             </label>

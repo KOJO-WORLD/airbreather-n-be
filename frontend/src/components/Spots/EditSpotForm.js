@@ -20,6 +20,8 @@ const EditSpotForm = (modal) => {
     longitude: spot.lng,
     description: spot.description,
     price: spot.price,
+    avgRating: spot.avgRating,
+    previewImage: spot.previewImage
   };
 
   return (
