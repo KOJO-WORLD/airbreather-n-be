@@ -31,8 +31,8 @@ const SpotForm = ({ spot, formType, modal }) => {
     const [city, setCity] = useState(spot.city);
     const [state, setState] = useState(spot.state);
     const [country, setCountry] = useState(spot.country);
-    const [latitude, setLatitude] = useState(spot.latitude);
-    const [longitude, setLongitude] = useState(spot.longitude);
+    const [lat, setLatitude] = useState(spot.latitude);
+    const [lng, setLongitude] = useState(spot.longitude);
     const [description, setDescription] = useState(spot.description);
     const [price, setPrice] = useState(spot.price);
     const [previewImage, setPreviewImage] = useState(spot.previewImage);
@@ -57,8 +57,8 @@ const SpotForm = ({ spot, formType, modal }) => {
             city,
             state,
             country,
-            latitude,
-            longitude,
+            lat,
+            lng,
             description,
             price,
             previewImage: previewImage,
@@ -129,7 +129,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     placeholder='latitude'
                     className="input"
                     type='number'
-                    value={latitude}
+                    value={lat}
                     onChange={updateLatitude} />
             </label>
             <label>
@@ -138,7 +138,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     placeholder='longitude'
                     className="input"
                     type='number'
-                    value={longitude}
+                    value={lng}
                     onChange={updateLongitude} />
             </label>
             <label>
@@ -155,6 +155,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     placeholder='price'
                     className="input"
                     type='number'
+                    min={0}
                     value={price}
                     onChange={updatePrice} />
             </label>

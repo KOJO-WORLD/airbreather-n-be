@@ -204,26 +204,39 @@ router.put('/:spotId', requireAuth, async (req, res) => {
             res.status(403).json({
                 message: "Forbidden", statusCode: 403
             })
-        };
+        } else {
 
+            if (previewImage) {
+                const findImg = await SpotImage.findOne({
+                    where: {
+                        spotId: findSpot.id,
+                        preview: true
+                    }
+                });
 
-        const editSpot = await findSpot.update({
-            address, city, state, country,
-            lat, lng, name, description, price, previewImage
-            // ownerId: owner.id
-        })
+                const prevImg = await findImg.update({
+                    url: previewImage
+                })
+            }
 
-        const returnSpot = editSpot.toJSON()
-        returnSpot.previewImage = previewImage
+            const editSpot = await findSpot.update({
+                address, city, state, country,
+                lat, lng, name, description, price
+                // ownerId: owner.id
+            })
 
-        if (avgRating) {
-            let str = avgRating.toString()
-            const arr = str.split('')
-            if (arr.includes('.')) arr.splice(4)
-            returnSpot.avgRating = +arr.join('')
+            const returnSpot = editSpot.toJSON()
+            returnSpot.previewImage = previewImage
+
+            if (avgRating) {
+                let str = avgRating.toString()
+                const arr = str.split('')
+                if (arr.includes('.')) arr.splice(4)
+                returnSpot.avgRating = +arr.join('')
+            }
+
+            res.json(returnSpot)
         }
-
-        res.json(returnSpot)
     }
 });
 
@@ -412,6 +425,8 @@ router.post('/', requireAuth, async (req, res) => {
     const { address, city, state, country,
         lat, lng, name, description, price, previewImage } = req.body;
 
+    console.log('LAT N LNG', lat, lng)
+
     if (!address || !city || !state || !country || lat > 90
         || lng > 180 || name.length > 50 || !description || !price) {
 
@@ -434,9 +449,15 @@ router.post('/', requireAuth, async (req, res) => {
     } else {
         const newSpot = await Spot.create({
             address, city, state,
-            country, lat, lng,
+            country, lat: +lat, lng: +lng,
             name, description, price,
             ownerId: owner.id
+        })
+
+        const prevImg = await SpotImage.create({
+            url: previewImage,
+            preview: true,
+            spotId: newSpot.id
         })
 
         const returnSpot = newSpot.toJSON();

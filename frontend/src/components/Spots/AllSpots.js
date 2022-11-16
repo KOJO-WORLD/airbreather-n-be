@@ -42,7 +42,7 @@ const AllSpots = () => {
                         return (
                             <NavLink key={spot.id} to={`/spots/${spot.id}`}>
                                 <div className='spotParent'>
-                                    <img className='prevImg' src={spot.previewImage} alt='preview'></img>
+                                    <img className='prevImg' src={spot?.previewImage} alt='preview'></img>
                                     <div>{spot.name}</div>
                                     <p>{spot.avgRating}</p>
                                 </div>

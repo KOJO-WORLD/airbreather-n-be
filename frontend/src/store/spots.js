@@ -32,14 +32,17 @@ const deleteSpot = spotId => ({
 });
 
 export const addSpotThunk = (payload) => async (dispatch) => {
+  console.log('PAYLOAD', payload)
   const response = await csrfFetch('/api/spots', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
 
+
   if (response.ok) {
     const spot = await response.json();
+    console.log('RES OK', spot)
     dispatch(addSpot(spot));
     return spot;
   }
@@ -129,6 +132,7 @@ const spotsReducer = (state = initialState, action) => {
       };
       let createSpotsArr = Object.values(newState).slice(0, -1);
       newState.spotsArr = createSpotsArr;
+      delete newState[undefined]
 
       return newState;
     case UPDATE:
@@ -138,6 +142,7 @@ const spotsReducer = (state = initialState, action) => {
       };
       let updateSpotsArr = Object.values(updateState);
       updateState.spotsArr = updateSpotsArr.slice(0, -2);
+      delete updateState[undefined];
       return updateState;
     case DELETE:
       const deletedState = { ...state };
