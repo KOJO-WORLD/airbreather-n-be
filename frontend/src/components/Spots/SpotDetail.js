@@ -6,7 +6,7 @@ import { deleteSpotThunk, getSpotDetailThunk } from '../../store/spots';
 import EditSpotForm from './EditSpotForm';
 import GetSpotReviews from '../Reviews/GetSpotReviews';
 import WriteReviewForm from '../Reviews/WriteReviewForm';
-// import '../button.css';
+import '../button.css';
 
 const SpotDetail = () => {
 
@@ -94,11 +94,15 @@ const SpotDetail = () => {
                 ((sessionUser) &&
                     (spot.ownerId !== sessionUser.id)) && (!existingReview) && (
                     <>
-                        <button style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }}>Leave a review</button>
+                        <button style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }} className='submit'>
+                            <span className="circle" aria-hidden="true">
+                                <span className="icon arrow"></span>
+                            </span>
+                            <span className="button-text">Leave review</span></button>
                         <div style={{ visibility: hidden2 ? 'hidden' : 'visible' }}>
-                            {/* <Route path='/reviews/new'> */}
+
                             <WriteReviewForm spotId={spotId} hidden={[hidden2, setHidden2]} />
-                            {/* </Route> */}
+
 
                         </div>
                     </>

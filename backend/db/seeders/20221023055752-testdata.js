@@ -58,8 +58,8 @@ module.exports = {
         city: 'New Towne',
         state: 'California',
         country: 'United States',
-        lat: 198.7654321,
-        lng: -198.7654321,
+        lat: 40.7654321,
+        lng: 58.7654321,
         name: 'Shanty Town',
         description: 'The perfect little spot',
         price: 140.00
@@ -118,27 +118,27 @@ module.exports = {
     await queryInterface.bulkInsert('SpotImages', [
       {
         spotId: 1,
-        url: 'https://static.dezeen.com/uploads/2022/02/shed-architecture-and-design-golden-house-seattle-hero.jpg',
+        url: 'https://www.truenorthloghomes.com/wp-content/uploads/2018/03/Front2-min-300x300.jpg',
         preview: true
       },
       {
         spotId: 2,
-        url: 'https://photos.lensculture.com/large/94693bf8-0dd2-4dff-8b10-a643b2815032.jpg',
+        url: 'https://www.marylmartin.com/wp-content/uploads/2016/10/0000516535-300x300.jpg',
         preview: true
       },
       {
         spotId: 3,
-        url: 'https://images.squarespace-cdn.com/content/v1/588a85512e69cf2194b7a1a2/1622336529885-O6OOA0ZWKDIAAGYMXBXK/IMG_2426.jpeg?format=1500w',
+        url: 'https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/image/rDtN98Qoishumwih/a-red-background-texture-that-looks-like-a-silky_BtyxPTBCrs_thumb.jpg',
         preview: true
       },
       {
         spotId: 4,
-        url: 'https://www.sunset.com/wp-content/uploads/web-owlhouse-LouAnne-Brickhouse-1024x683.jpg',
+        url: 'https://i.etsystatic.com/21784082/r/il/5a4371/2761320438/il_300x300.2761320438_b42k.jpg',
         preview: true
       },
       {
         spotId: 5,
-        url: 'https://www.swissnomads.ch/Wordpress/wp-content/uploads/2019/07/auto-wrack-namibia-1024x683.jpg',
+        url: 'https://render.fineartamerica.com/images/rendered/square-dynamic/small/images/artworkimages/mediumlarge/3/2-abandoned-car-wrecks-in-solitaire-located-in-the-namib-desert-of-namibia-miroslav-liska.jpg',
         preview: true
       },
       {

@@ -27,7 +27,10 @@ main {
 
 .spotDetail {
     /* border: 15px rgb(0, 53, 128) dotted; */
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
 
@@ -45,6 +48,7 @@ main {
     flex-flow: wrap;
     justify-content: space-evenly;
     margin: auto;
+    row-gap: 60px;
 }
 
 .spotLink {

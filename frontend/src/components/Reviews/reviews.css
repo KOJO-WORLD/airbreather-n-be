@@ -2,6 +2,7 @@
     /* border: 5px blue solid; */
     height: 60%;
     display: flex;
+    margin: 5%;
 }
 
 .reviewsContainer {
