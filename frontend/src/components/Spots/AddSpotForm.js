@@ -8,10 +8,10 @@ const AddSpotForm = (modal) => {
     city: '',
     state: '',
     country: '',
-    latitude: 0,
-    longitude: 0,
+    latitude: null,
+    longitude: null,
     description: '',
-    price: 0,
+    price: null,
     previewImage: ''
   };
 

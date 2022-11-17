@@ -124,7 +124,6 @@ const SpotForm = ({ spot, formType, modal }) => {
                     onChange={updateCountry} />
             </label>
             <label className='spotText'>
-                Latitude
                 <input
                     required
                     placeholder='latitude'
@@ -134,7 +133,6 @@ const SpotForm = ({ spot, formType, modal }) => {
                     onChange={updateLatitude} />
             </label>
             <label className='spotText'>
-                Longitude
                 <input
                     required
                     placeholder='longitude'
@@ -153,7 +151,6 @@ const SpotForm = ({ spot, formType, modal }) => {
                     onChange={updateDescription} />
             </label>
             <label className='spotText'>
-                Price
                 <input
                     required
                     placeholder='price'
@@ -164,10 +161,9 @@ const SpotForm = ({ spot, formType, modal }) => {
                     onChange={updatePrice} />
             </label>
             <label className='spotText'>
-                Preview image
                 <input
                     required
-                    placeholder='URL'
+                    placeholder=' Preview image URL'
                     className="input"
                     type='text'
                     value={previewImage}
