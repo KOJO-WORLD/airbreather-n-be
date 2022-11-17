@@ -278,8 +278,6 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
     const { review, stars } = req.body;
 
-    console.log('in the backend', review, stars)
-
     const checkSpot = await Spot.findByPk(req.params.spotId)
     if (!checkSpot) {
         res.status(404);

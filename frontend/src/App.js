@@ -24,20 +24,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route
-            path={["/"]}
-            exact>
-            <AllSpots />
-          </Route>
-          <Route path="/spots/:spotId">
-            <SpotDetail />
-          </Route>
-          <Route path="/spots">
-            <AddSpotForm />
-          </Route>
-          {/* <Route path="spots/new" component={AddSpotForm}/> */}
-          {/* <Route path="/login"><LoginFormPage /></Route> */}
-          {/* <Route path="/signup"><SignupFormPage /></Route> */}
+          <Route exact path="/"><AllSpots /></Route>
+          <Route path="/spots/:spotId"><SpotDetail /></Route>
+          <Route path="/spots"><AddSpotForm /></Route>
         </Switch>
       )}
     </>

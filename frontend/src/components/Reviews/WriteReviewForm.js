@@ -10,7 +10,7 @@ const WriteReviewForm = (spotId, hidden) => {
         spotId: spotId.spotId,
         userId: sessionUser.id,
         review: '',
-        stars: 0
+        stars: null
     };
 
     return (

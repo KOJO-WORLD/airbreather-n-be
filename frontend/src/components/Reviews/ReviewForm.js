@@ -43,6 +43,9 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
     const handleCancelClick = (e) => {
         e.preventDefault();
         setHidden2(true);
+
+        setReview('');
+        setStars(0);
         history.push(`/spots/${spotId.spotId}`);
     };
 
@@ -54,6 +57,7 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
                     className="input"
                     type='text'
                     value={review}
+                    required
                     onChange={updateReview} />
             </label>
             <label>
@@ -61,9 +65,10 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
                     placeholder='stars'
                     className="input"
                     type='number'
-                    min={0}
+                    min={1}
                     max={5}
                     value={stars}
+                    required
                     onChange={updateStars} />
             </label>
             <button className='submit' type="submit">

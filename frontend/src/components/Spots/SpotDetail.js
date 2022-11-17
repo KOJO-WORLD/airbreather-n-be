@@ -15,14 +15,23 @@ const SpotDetail = () => {
     const [hidden, setHidden] = useState(true);
     const [hidden2, setHidden2] = useState(true);
 
+    const sessionUser = useSelector(state => state.session.user);
+
     const { spotId } = useParams();
 
     const spot = useSelector(state => state.spots[spotId]);
-    //   const [editSpotForm, setEditSpotForm] = useState(false);
+    const reviews = useSelector(state => state.reviews.spotReviewsArr);
+
+    let existingReview;
+
+    if (reviews) {
+        for (let review of reviews) {
+            if(review.userId === sessionUser.id) existingReview = true;
+        }
+    }
+
 
     const dispatch = useDispatch();
-
-    const sessionUser = useSelector(state => state.session.user);
 
 
     useEffect(() => {
@@ -38,18 +47,16 @@ const SpotDetail = () => {
         setHidden(false)
     }
 
-    console.log('spot preview image', spot.previewImage);
-
     return (
         // (sessionUser) &&
         <div className="spotMain">
             <div className="spotDisplay">
                 <img src={spot.previewImage} className='spotImage' alt='preview' />
                 <div className="spotDetail">
-                <h2 className='spotInfo'>{spot.name}</h2>
-                <div className='spotInfo'>address: {spot.address} {spot.city} {spot.state} {spot.country}</div>
-                <p className='spotInfo'>price: ${spot.price}/night</p>
-                <p className='spotInfo'>description: {spot.description}</p>
+                    <h2 className='spotInfo'>{spot.name}</h2>
+                    <div className='spotInfo'>address: {spot.address} {spot.city} {spot.state} {spot.country}</div>
+                    <p className='spotInfo'>price: ${spot.price}/night</p>
+                    <p className='spotInfo'>description: {spot.description}</p>
                 </div>
             </div>
             <GetSpotReviews />
@@ -72,7 +79,7 @@ const SpotDetail = () => {
             }
             {
                 ((sessionUser) &&
-                    (spot.ownerId !== sessionUser.id)) && (
+                    (spot.ownerId !== sessionUser.id)) && (!existingReview) &&(
                     <>
                         <button style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }}>Leave a review</button>
                         <div style={{ visibility: hidden2 ? 'hidden' : 'visible' }}>
