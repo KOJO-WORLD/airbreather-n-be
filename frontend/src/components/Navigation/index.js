@@ -14,33 +14,28 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
-      <ProfileButton user={sessionUser} />
-      <SpotFormModal />
-      </>
+      <div className='bar-right'>
+        <ProfileButton user={sessionUser} />
+        <SpotFormModal />
+      </div>
     );
   } else {
     sessionLinks = (
       <>
         <LoginFormModal />
         <SignupFormModal />
+        <button className='demo'>Demo</button>
       </>
     );
   }
 
   return (
     <div className='bar'>
-      <div>
-        <NavLink exact to="/" className="nvlnk">
-          <img src={logo} className="img" alt="home logo"/>
-          <p className="logo">
-            airbreatheNbe
-          </p>
-        </NavLink>
-      </div>
-      <div>
-        {isLoaded && sessionLinks}
-      </div>
+      <NavLink exact to="/" className="nvlnk">
+        <img src={logo} className="img" alt="home logo" />
+        <p className="logo">airbreatheNbe</p>
+      </NavLink>
+      {isLoaded && sessionLinks}
     </div>
   );
 }

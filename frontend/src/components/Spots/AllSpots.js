@@ -31,14 +31,6 @@ const AllSpots = () => {
     return (
         <main clasname="main">
             <div>
-                {/* <Switch>
-                    <Route path="/spots/:spotId">
-                        <SpotDetail />
-                    </Route>
-                    <Route path="/spots">
-                        <AddSpotForm />
-                    </Route>
-                </Switch> */}
                 <div className='spotsContainer'>
                     {spots.map((spot) => {
                         return (
@@ -52,8 +44,6 @@ const AllSpots = () => {
                         );
                     })}
                 </div>
-                {/* <NavLink to='/spots'> */}
-                {/* </NavLink> */}
             </div>
         </main>
     );

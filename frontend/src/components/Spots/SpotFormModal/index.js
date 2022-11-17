@@ -8,14 +8,13 @@ function SpotFormModal() {
 
   return (
     <>
-      <button className='button' onClick={() => setShowModal(true)}>
-        <span>
-          Add a spot
-        </span>
+      <button className='icon-btn add-btn' onClick={() => setShowModal(true)}>
+        <div class="add-icon"></div>
+        <div class="btn-txt">Add a spot</div>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <AddSpotForm modal={[showModal, setShowModal]}/>
+          <AddSpotForm modal={[showModal, setShowModal]} />
         </Modal>
       )}
     </>

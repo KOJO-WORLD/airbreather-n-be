@@ -32,7 +32,7 @@ function ProfileButton({ user }) {
 
   return (
     <div className="profile-dropdown">
-      <button onClick={openMenu} style={{height: "64px"}}>
+      <button onClick={openMenu}>
         <img src={userIcon} alt="user icon"/>
         {/* { <a target="_blank" href="https://icons8.com/icon/zXd7HOdmWPxf/user">User</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>} */}
 

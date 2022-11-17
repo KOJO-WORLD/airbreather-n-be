@@ -1,5 +1,8 @@
+/* ================= login / sign up ================= */
+
 .button {
-    align-items: center;
+    height: 30%;
+    /* align-items: center; */
     background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: 0;
     border-radius: 8px;
@@ -28,24 +31,6 @@
     outline: 0;
 }
 
-.button span {
-    background-color: rgb(255, 255, 255);
-    padding: 16px 24px;
-    border-radius: 6px;
-    width: 100%;
-    height: 100%;
-    transition: 300ms;
-}
-
-.button:hover span {
-    background: none;
-    color: #ffffff;
-}
-
-.button:active {
-    transform: scale(0.9);
-}
-
 button {
     position: relative;
     display: inline-block;
@@ -59,6 +44,8 @@ button {
     font-size: inherit;
     font-family: inherit;
 }
+
+/* ================= submit / cancel ================= */
 
 button.submit {
     font-family: Phantomsans, sans-serif;
@@ -124,7 +111,10 @@ button.submit .button-text {
 
 .button span {
     background-color: rgb(255, 255, 255);
-    padding: 16px 24px;
+    /* padding: 16px 24px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 6px;
     width: 100%;
     height: 100%;
@@ -139,7 +129,6 @@ button.submit .button-text {
 .button:active {
     transform: scale(0.9);
 }
-
 
 button.cancel {
     font-family: Phantomsans, sans-serif;
@@ -215,3 +204,143 @@ button:hover .circle .icon.arrow {
 button:hover .button-text {
     color: #fff;
 }
+
+/* ================= add a spot ================= */
+
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #cdcdcd;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+    font-weight: 500;
+    font-family: inherit;
+}
+
+.add-btn:hover {
+    width: 120px;
+}
+
+.add-btn::before,
+.add-btn::after {
+    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 10px;
+    top: calc(50% - 2px);
+    background: #4090ff;
+}
+
+.add-btn::after {
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.add-btn::before {
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.icon-btn:focus {
+    outline: none;
+}
+
+.btn-txt {
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-family: Phantomsans, sans-serif;
+    color: rgba(94, 94, 94, 0.87);
+}
+
+.add-btn:hover::before,
+.add-btn:hover::after {
+    width: 4px;
+    border-radius: 2px;
+}
+
+.add-btn:hover .btn-txt {
+    opacity: 1;
+}
+
+.add-icon::after,
+.add-icon::before {
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    background: #00c0eb;
+    overflow: hidden;
+}
+
+.add-icon::before {
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.add-icon::after {
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.add-btn:hover .add-icon::before {
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+
+.add-btn:hover .add-icon::after {
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+
+/* ================= demo ================= */
+
+.demo {
+    --green: #1b94fd;
+    height: 30%;
+    font-size: 100%;
+    padding: 0.7em 2.7em;
+    letter-spacing: 0.06em;
+    position: relative;
+    font-family: Phantomsans, sans-serif;
+    border-radius: 0.6em;
+    overflow: hidden;
+    transition: all 0.3s;
+    line-height: 1.4em;
+    border: 2px solid var(--green);
+    background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 253, 156, 0.1) 100%);
+    color: var(--green);
+    box-shadow: inset 0 0 10px rgba(27, 234, 253, 0.4), 0 0 9px 3px rgba(27, 189, 253, 0.1);
+   }
+
+   .demo:hover {
+    color: #1b6efdee;;
+    box-shadow: inset 0 0 10px rgba(27, 166, 253, 0.6), 0 0 9px 3px rgba(27, 46, 253, 0.2);
+   }
+
+   .demo:before {
+    content: "";
+    position: absolute;
+    left: -4em;
+    width: 4em;
+    height: 100%;
+    top: 0;
+    transition: transform .4s ease-in-out;
+    background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%,rgba(27, 253, 156, 0.1) 60% , transparent 100%);
+   }
+
+   .demo:hover:before {
+    transform: translateX(15em);
+   }
