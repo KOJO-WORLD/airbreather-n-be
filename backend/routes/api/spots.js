@@ -172,7 +172,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     const { address, city, state, country,
         lat, lng, name, description, price, previewImage, avgRating } = req.body;
 
-    if (!address || !city || !state || !country || lat > 180
+    if (!address || !city || !state || !country || lat > 90
         || lng > 180 || name.length > 50 || !description || !price) {
         res.status(400)
         return res.json({

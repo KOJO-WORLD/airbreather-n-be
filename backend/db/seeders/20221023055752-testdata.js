@@ -28,6 +28,13 @@ module.exports = {
         hashedPassword: 'password2',
         firstName: 'Last',
         lastName: 'Name'
+      },
+      {
+        username: 'Demo-licious',
+        email: 'demo1@demail.com',
+        hashedPassword: 'password',
+        firstName: 'Demo',
+        lastName: 'Usah'
       }
     ]);
 
@@ -39,7 +46,7 @@ module.exports = {
         city: 'Olde Towne',
         state: 'California',
         country: 'United Sates',
-        lat: 123.4,
+        lat: 80.4,
         lng: 123.5,
         name: 'Golden Glory',
         description: 'Your dream getaway begins here',
