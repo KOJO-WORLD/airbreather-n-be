@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams, NavLink, useHistory, Route, Link } from 'react-router-dom';
+import { useParams, NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 // import EditSpotForm from './EditSpotForm';
 import { deleteSpotThunk, getSpotDetailThunk } from '../../store/spots';
 import EditSpotForm from './EditSpotForm';
 import GetSpotReviews from '../Reviews/GetSpotReviews';
 import WriteReviewForm from '../Reviews/WriteReviewForm';
-import './Spots.css';
+// import '../button.css';
 
 const SpotDetail = () => {
 
@@ -24,9 +24,9 @@ const SpotDetail = () => {
 
     let existingReview;
 
-    if (reviews) {
+    if (reviews && sessionUser) {
         for (let review of reviews) {
-            if(review.userId === sessionUser.id) existingReview = true;
+            if (review.userId === sessionUser.id) existingReview = true;
         }
     }
 
@@ -64,22 +64,35 @@ const SpotDetail = () => {
                 ((sessionUser) &&
                     (spot.ownerId === sessionUser.id)) && (
                     <div>
+                        <button onClick={() => {
+                            dispatch(deleteSpotThunk(spotId));
+                            history.push('/');
+                        }} className="deleteSpot">
+                            <span className="text">Delete spot</span>
+                            <span className="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </button>
                         <NavLink to={`/spots/${spotId}/edit`}>
-                            <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>Edit spot</button>
+                            <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()} className='submit'>
+                                <span className="circle" aria-hidden="true">
+                                    <span className="icon arrow"></span>
+                                </span>
+                                <span className="button-text">Edit spot</span>
+                            </button>
                         </NavLink>
                         <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
                             <EditSpotForm />
                         </div>
-                        <button onClick={() => {
-                            dispatch(deleteSpotThunk(spotId));
-                            history.push('/');
-                        }}>Delete spot</button>
                     </div>
                 )
             }
             {
                 ((sessionUser) &&
-                    (spot.ownerId !== sessionUser.id)) && (!existingReview) &&(
+                    (spot.ownerId !== sessionUser.id)) && (!existingReview) && (
                     <>
                         <button style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }}>Leave a review</button>
                         <div style={{ visibility: hidden2 ? 'hidden' : 'visible' }}>

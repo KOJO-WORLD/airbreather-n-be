@@ -20,7 +20,7 @@ const deleteReview = reviewId => ({
 });
 
 export const writeReviewThunk = (payload) => async (dispatch) => {
-  console.log('payload', payload, 'spotId: ', payload.spotId);
+
   const response = await csrfFetch(`/api/spots/${payload.spotId}/reviews`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -28,9 +28,7 @@ export const writeReviewThunk = (payload) => async (dispatch) => {
   });
 
   if (response.ok) {
-    console.log('write review success')
     const review = await response.json();
-    console.log('correct avgRating?',review)
     dispatch(writeReview(review));
     return review;
   }
@@ -52,7 +50,6 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
   });
 
   if (response.ok) {
-    console.log('response ok');
     dispatch(deleteReview(reviewId))
   }
 };
@@ -83,17 +80,10 @@ const reviewsReducer = (state = initialState, action) => {
       return newState;
 
     case DELETE:
-      // console.log("WHATS UP WITH STATE: ", state)
       const deletedState = { ...state };
-      // console.log('NEW DELETED STATE CREATED: ', deletedState)
       delete deletedState[action.reviewId]
       delete deletedState.spotReviewsArr[action.reviewId]
-      // console.log('NEW DELETED STATE AFTER REMOVING REVIEW: ', deletedState)
       let spotReviewsArr = Object.values(deletedState).slice(0, -1);
-      // console.log('CREATED SPOT REVIEWS ARR: ', spotReviewsArr)
-      // delete deletedState[undefined];
-      // console.log('DELETED STATE AGAIN: ', deletedState)
-      // console.log('CREATED SPOT REVIEWS ARR AGAIN: ', spotReviewsArr)
       return {
         ...deletedState,
         spotReviewsArr

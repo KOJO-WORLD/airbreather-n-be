@@ -163,8 +163,6 @@ router.get('/:spotId/reviews', async (req, res) => {
 // Edit a Spot
 router.put('/:spotId', requireAuth, async (req, res) => {
 
-    console.log('---------req.body___________', req.body)
-
     const owner = req.user.toJSON()
 
     // const { spotId } = req.params;

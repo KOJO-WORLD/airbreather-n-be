@@ -23,7 +23,6 @@ function LoginForm() {
         return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json();
-                console.log('------DATA', data)
                 if (data) setErrors(Object.values(data));
                 else return (<Redirect to="/" />);
             });

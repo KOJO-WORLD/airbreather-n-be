@@ -10,15 +10,7 @@ import './spotModal.css'
 
 const SpotForm = ({ spot, formType, modal }) => {
 
-    // console.log(modal, '<- AYE EE MODAL n FoRM TYPE : ', formType)
-
-    // if (formType === 'Add Spot') {
-    //     var [hidden, setHidden] = hiddenState.hiddenState
-    // }
-    // if (formType === "Edit Spot") var [showModal, setShowModal] = modal;
-    // else
     if (formType === 'Add Spot') var [showModal, setShowModal] = modal.modal
-    // console.log('WHAT IT DUE', formType, showModal, setShowModal);
 
     const { spotId } = useParams();
 

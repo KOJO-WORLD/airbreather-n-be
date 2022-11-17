@@ -1,0 +1,33 @@
+.reviewsMain {
+    /* border: 5px blue solid; */
+    height: 60%;
+    display: flex;
+}
+
+.reviewsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+    align-items: flex-end;
+    border-bottom: 3px gray solid;
+    /* border: 5px rgb(18, 154, 113) dashed; */
+    height: 60%;
+    width: 100%;
+}
+
+.reviewTitle {
+    font-family: Phantomsans, sans-serif;
+    color: rgba(116, 116, 116, 0.845)
+}
+
+.reviewContent {
+    font-family: Phantomsans, sans-serif;
+    color: rgba(116, 116, 116, 0.845)
+}
+
+.deleteReview {
+    border: 2px red solid;
+    font-family: Phantomsans, sans-serif;
+    border-radius: 4px;
+    color: rgba(116, 116, 116, 0.845)
+}

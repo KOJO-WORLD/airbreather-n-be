@@ -9,7 +9,6 @@ const EditReviewForm = () => {
       return state.reviews[reviewId]
     }
     );
-    console.log(`LOOKIN FOR REVIEW AT ${reviewId}`, review )
 
   const editReview = {
     review: review.review,

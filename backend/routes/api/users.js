@@ -34,7 +34,6 @@ router.post('/', validateSignup, async (req, res) => {
 
     // Body validation errors
     if (!email || !username) {
-        console.log('ERROR')
         res.status(400);
         res.json({
             "message": "Validation error",

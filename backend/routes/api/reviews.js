@@ -156,7 +156,6 @@ router.get('/current', requireAuth, async (req, res) => {
                 exclude: ['description', 'createdAt', 'updatedAt']
             }
         })
-        // console.log(review.dataValues);
         review.dataValues.User = user;
         review.dataValues.Spot = spot;
     }

@@ -14,8 +14,6 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
 
     const history = useHistory();
 
-    console.log('spotId', spotId.spotId)
-
     const sessionUser = useSelector(state => state.session.user);
 
 
