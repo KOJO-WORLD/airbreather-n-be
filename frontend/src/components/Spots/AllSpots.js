@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Route, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getAllSpotsThunk } from '../../store/spots';
 // import { writeReviewThunk } from '../../store/reviews';
 
@@ -34,11 +34,14 @@ const AllSpots = () => {
                 <div className='spotsContainer'>
                     {spots.map((spot) => {
                         return (
-                            <NavLink key={spot.id} to={`/spots/${spot.id}`}>
+                            <NavLink key={spot.id} to={`/spots/${spot.id}`} className="spotLink">
                                 <div className='spotParent'>
                                     <img className='prevImg' src={spot?.previewImage} alt='preview'></img>
-                                    <div>{spot.name}</div>
-                                    <p>{spot.avgRating}</p>
+                                    <div className='textContainer'>
+                                        <div className="spotText">{spot.name}</div>
+                                        <div className="spotText">⭐️ {spot.avgRating}</div>
+                                        <div className="spotText">${spot.price} night</div>
+                                    </div>
                                 </div>
                             </NavLink>
                         );

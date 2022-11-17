@@ -4,7 +4,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import { addSpotThunk, editSpotThunk } from '../../../store/spots';
 import '../../button.css';
 import '../../input.css';
-import '../../Errors/Errors.css'
+import '../../Errors/Errors.css';
+import '../Spots.css';
+import './spotModal.css'
 
 const SpotForm = ({ spot, formType, modal }) => {
 
@@ -82,7 +84,7 @@ const SpotForm = ({ spot, formType, modal }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='spotForm'>
             <label>
                 <input
                     required
@@ -129,7 +131,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     value={country}
                     onChange={updateCountry} />
             </label>
-            <label>
+            <label className='spotText'>
                 Latitude
                 <input
                     required
@@ -139,7 +141,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     value={lat}
                     onChange={updateLatitude} />
             </label>
-            <label>
+            <label className='spotText'>
                 Longitude
                 <input
                     required
@@ -158,7 +160,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     value={description}
                     onChange={updateDescription} />
             </label>
-            <label>
+            <label className='spotText'>
                 Price
                 <input
                     required
@@ -169,7 +171,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     value={price}
                     onChange={updatePrice} />
             </label>
-            <label>
+            <label className='spotText'>
                 Preview image
                 <input
                     required

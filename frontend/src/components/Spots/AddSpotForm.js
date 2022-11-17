@@ -1,5 +1,5 @@
 import SpotForm from './SpotFormModal/SpotForm';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 const AddSpotForm = (modal) => {
   const spot = {
