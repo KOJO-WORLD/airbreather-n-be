@@ -165,7 +165,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                     required
                     placeholder=' Preview image URL'
                     className="input"
-                    type='text'
+                    type='URL'
                     value={previewImage}
                     onChange={updatePreviewImage} />
             </label>
