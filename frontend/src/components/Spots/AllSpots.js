@@ -19,10 +19,11 @@ const AllSpots = () => {
         if (!state.spots.spotsArr) return null;
         return state.spots.spotsArr.map((spotObj) => spotObj);
     });
+    const reviews = useSelector(state => state.reviews.spotReviewsArr);
 
     useEffect(() => {
         dispatch(getAllSpotsThunk());
-    }, [dispatch]);
+    }, [dispatch, reviews]);
 
     if (!spots) {
         return null;
