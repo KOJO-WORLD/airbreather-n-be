@@ -37,7 +37,8 @@ const SpotDetail = () => {
     useEffect(() => {
 
         dispatch(getSpotDetailThunk(spotId))
-    }, [dispatch, spotId]);
+
+    }, [dispatch, spotId, reviews]);
 
     if (!spot) {
         return null;
