@@ -1,16 +1,7 @@
-# API-project
+# API Documentation
 
-Totally Original Idea: AirBnB
-
-Database Schema Design
-<p align="center">
-  <img src="airbnb_dbdiagram.png">
-</p>
-
-API Documentation
 USER AUTHENTICATION/AUTHORIZATION
-All endpoints that require authentication
-All endpoints that require a current user to be logged in.
+All endpoints that require authentication / require a current user to be logged in.
 
 * Request: endpoints that require authentication
 * Error Response: Require authentication
