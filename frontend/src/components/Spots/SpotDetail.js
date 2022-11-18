@@ -22,8 +22,6 @@ const SpotDetail = () => {
     const spot = useSelector(state => state.spots[spotId]);
     const reviews = useSelector(state => state.reviews.spotReviewsArr);
     const reviewsObj = useSelector(state => state.reviews);
-    console.log('REVIEWS ARR in spot detail:', reviews);
-    console.log('REVIEWS OBJECT in spot detail:', reviewsObj);
 
     let existingReview;
 
@@ -71,21 +69,14 @@ const SpotDetail = () => {
                         <button onClick={() => {
                             dispatch(deleteSpotThunk(spotId));
                             history.push('/');
-                        }} className="deleteSpot">
-                            <span className="text">Delete spot</span>
-                            <span className="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
-                                    </path>
-                                </svg>
-                            </span>
+                        }} className="button">
+                            <span className="submit">Delete spot</span>
                         </button>
-                        <NavLink to={`/spots/${spotId}/edit`}>
-                            <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()} className='submit'>
-                                <span className="circle" aria-hidden="true">
-                                    <span className="icon arrow"></span>
+                        <NavLink to={`/spots/${spotId}/edit`} style={{textDecoration: 'none'}}>
+                            <button className="button" style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>
+                                <span className="submit">
+                                    Edit spot
                                 </span>
-                                <span className="button-text">Edit spot</span>
                             </button>
                         </NavLink>
                         <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
@@ -98,11 +89,11 @@ const SpotDetail = () => {
                 ((sessionUser) &&
                     (spot.ownerId !== sessionUser.id)) && (!existingReview) && (
                     <>
-                        <button style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }} className='submit'>
-                            <span className="circle" aria-hidden="true">
-                                <span className="icon arrow"></span>
+                        <button className="button" style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }}>
+                            <span className="submit">
+                                Leave review
                             </span>
-                            <span className="button-text">Leave review</span></button>
+                        </button>
                         <div style={{ visibility: hidden2 ? 'hidden' : 'visible' }}>
 
                             <WriteReviewForm spotId={spotId} hidden={[hidden2, setHidden2]} />

@@ -4,13 +4,12 @@
     height: 30%;
     /* align-items: center; */
     background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
-    border: 0;
     border-radius: 8px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
     box-sizing: border-box;
     color: #375bdc;
     display: flex;
-    font-family: Phantomsans, sans-serif;
+    font-family: sans-serif;
     font-size: 18px;
     justify-content: center;
     line-height: 1em;
@@ -18,95 +17,7 @@
     min-width: 140px;
     padding: 3px;
     text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    cursor: pointer;
     transition: all .3s;
-}
-
-.button:active,
-.button:hover {
-    outline: 0;
-}
-
-button {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    outline: none;
-    border: 0;
-    vertical-align: middle;
-    text-decoration: none;
-    background: transparent;
-    padding: 0;
-    font-size: inherit;
-    font-family: inherit;
-}
-
-/* ================= submit / cancel / edit ================= */
-
-button.submit {
-    font-family: Phantomsans, sans-serif;
-    width: 12rem;
-    height: auto;
-}
-
-button.submit .circle {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: relative;
-    display: block;
-    margin: 0;
-    width: 3rem;
-    height: 3rem;
-    background: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
-    border-radius: 1.625rem;
-}
-
-button.submit .circle .icon {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    background: #fff;
-}
-
-button.submit .circle .icon.arrow {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    left: 0.625rem;
-    width: 1.125rem;
-    height: 0.125rem;
-    background: none;
-}
-
-button.submit .circle .icon.arrow::before {
-    position: absolute;
-    content: "";
-    top: -0.29rem;
-    right: 0.0625rem;
-    width: 0.625rem;
-    height: 0.625rem;
-    border-top: 0.125rem solid #fff;
-    border-right: 0.125rem solid #fff;
-    transform: rotate(45deg);
-}
-
-button.submit .button-text {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0.75rem 0;
-    margin: 0 0 0 1.85rem;
-    color: #375bdc;
-    font-weight: 700;
-    line-height: 1.6;
-    text-align: center;
-    text-transform: uppercase;
 }
 
 .button span {
@@ -130,53 +41,22 @@ button.submit .button-text {
     transform: scale(0.9);
 }
 
-button.cancel {
-    font-family: Phantomsans, sans-serif;
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    border: 0;
+    vertical-align: middle;
+    background: transparent;
+}
+
+button.submit {
+    font-family: sans-serif;
     width: 12rem;
     height: auto;
 }
 
-button.cancel .circle {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: relative;
-    display: block;
-    margin: 0;
-    width: 3rem;
-    height: 3rem;
-    background: linear-gradient(144deg, #f97b0d, #ff2121 50%, #a914ff);
-    border-radius: 1.625rem;
-}
-
-button.cancel .circle .icon {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    background: #fff;
-}
-
-button.cancel .circle .icon.arrow {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    left: 0.625rem;
-    width: 1.125rem;
-    height: 0.125rem;
-    background: none;
-}
-
-button.cancel .circle .icon.arrow::before {
-    position: absolute;
-    content: "";
-    top: -0.29rem;
-    right: 0.0625rem;
-    width: 0.625rem;
-    height: 0.625rem;
-    border-top: 0.125rem solid #fff;
-    border-right: 0.125rem solid #fff;
-    transform: rotate(45deg);
-}
-
-button.cancel .button-text {
+button.submit .button-text {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
     top: 0;
@@ -185,162 +65,36 @@ button.cancel .button-text {
     bottom: 0;
     padding: 0.75rem 0;
     margin: 0 0 0 1.85rem;
-    color: #ff2121;
+    color: #375bdc;
     font-weight: 700;
     line-height: 1.6;
     text-align: center;
     text-transform: uppercase;
 }
 
-button:hover .circle {
-    width: 100%;
-}
-
-button:hover .circle .icon.arrow {
-    background: #fff;
-    transform: translate(1rem, 0);
-}
-
 button:hover .button-text {
     color: #fff;
-}
-
-/* ================= add a spot ================= */
-
-.icon-btn {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #cdcdcd;
-    background: white;
-    border-radius: 25px;
-    overflow: hidden;
-    position: relative;
-    transition: width 0.2s ease-in-out;
-    font-weight: 500;
-    font-family: inherit;
-}
-
-.add-btn:hover {
-    width: 120px;
-}
-
-.add-btn::before,
-.add-btn::after {
-    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
-    content: "";
-    position: absolute;
-    height: 4px;
-    width: 10px;
-    top: calc(50% - 2px);
-    background: #4090ff;
-}
-
-.add-btn::after {
-    right: 14px;
-    overflow: hidden;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
-
-.add-btn::before {
-    left: 14px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-}
-
-.icon-btn:focus {
-    outline: none;
-}
-
-.btn-txt {
-    opacity: 0;
-    transition: opacity 0.2s;
-    font-family: Phantomsans, sans-serif;
-    color: rgba(94, 94, 94, 0.87);
-}
-
-.add-btn:hover::before,
-.add-btn:hover::after {
-    width: 4px;
-    border-radius: 2px;
-}
-
-.add-btn:hover .btn-txt {
-    opacity: 1;
-}
-
-.add-icon::after,
-.add-icon::before {
-    transition: all 0.2s ease-in-out;
-    content: "";
-    position: absolute;
-    height: 20px;
-    width: 2px;
-    top: calc(50% - 10px);
-    background: #00c0eb;
-    overflow: hidden;
-}
-
-.add-icon::before {
-    left: 22px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-}
-
-.add-icon::after {
-    right: 22px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-}
-
-.add-btn:hover .add-icon::before {
-    left: 15px;
-    height: 4px;
-    top: calc(50% - 2px);
-}
-
-.add-btn:hover .add-icon::after {
-    right: 15px;
-    height: 4px;
-    top: calc(50% - 2px);
 }
 
 /* ================= demo ================= */
 
 .demo {
-    --green: #1b94fd;
     height: 30%;
     font-size: 100%;
     padding: 0.7em 2.7em;
     letter-spacing: 0.06em;
     position: relative;
-    font-family: Phantomsans, sans-serif;
-    border-radius: 0.6em;
+    font-family: sans-serif;
+    border-radius: 7px;
     overflow: hidden;
     transition: all 0.3s;
-    line-height: 1.4em;
-    border: 2px solid var(--green);
+    border-color: #1b35fd;
     background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 253, 156, 0.1) 100%);
-    color: var(--green);
+    color: #1b94fd;
     box-shadow: inset 0 0 10px rgba(27, 234, 253, 0.4), 0 0 9px 3px rgba(27, 189, 253, 0.1);
    }
 
    .demo:hover {
     color: #1b6efdee;;
     box-shadow: inset 0 0 10px rgba(27, 166, 253, 0.6), 0 0 9px 3px rgba(27, 46, 253, 0.2);
-   }
-
-   .demo:before {
-    content: "";
-    position: absolute;
-    left: -4em;
-    width: 4em;
-    height: 100%;
-    top: 0;
-    transition: transform .4s ease-in-out;
-    background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%,rgba(27, 253, 156, 0.1) 60% , transparent 100%);
-   }
-
-   .demo:hover:before {
-    transform: translateX(15em);
    }

@@ -100,13 +100,8 @@ function SignupForm() {
             required
           />
         </label>
-        <button className='submit' type="submit">
-
-          <span className="circle" aria-hidden="true">
-            <span className="icon arrow"></span>
-          </span>
-          <span className="button-text">Sign Up</span>
-
+        <button className='button' type="submit">
+          <span className="submit">Sign Up</span>
         </button>
       </div>
     </form>

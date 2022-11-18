@@ -71,21 +71,16 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
                     required
                     onChange={updateStars} />
             </label>
-            <button className='submit' type="submit">
-
-                <span className="circle" aria-hidden="true">
-                    <span className="icon arrow"></span>
-                </span>
-                <span className="button-text">Save</span>
+            <button className='button' type="submit">
+                <span className="submit">Submit</span>
             </button>
-            <button className="cancel" type='button' onClick={(e) => {
+            <button className="button" type='button' onClick={(e) => {
                 // if (formType === 'Add Spot') setHidden(true);
                 // if (formType === 'Add Spot') setShowModal(false);
                 handleCancelClick(e);
-            }}><span className="circle" aria-hidden="true">
-                    <span className="icon arrow"></span>
-                </span>
-                <span className="button-text">Cancel</span></button>
+            }}>
+                <span className="submit">Cancel</span>
+            </button>
         </form>
     );
 };

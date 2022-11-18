@@ -5,7 +5,7 @@ import '../button.css';
 
 function SignupFormModal() {
   const [showModal, setShowModal] = useState(false);
-  
+
   return (
     <>
       <button className="button" onClick={() => setShowModal(true)}>

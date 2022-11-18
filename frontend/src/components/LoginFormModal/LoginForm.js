@@ -55,13 +55,10 @@ function LoginForm() {
                         required
                     />
                 </label>
-                <button className='submit' type="submit">
-
-                    <span className="circle" aria-hidden="true">
-                        <span className="icon arrow"></span>
+                <button className='button' type="submit">
+                    <span className='submit'>
+                        Log In
                     </span>
-                    <span className="button-text">Log In</span>
-
                 </button>
             </div>
         </form >

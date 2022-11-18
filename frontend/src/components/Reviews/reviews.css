@@ -25,10 +25,3 @@
     font-family: Phantomsans, sans-serif;
     color: rgba(116, 116, 116, 0.845)
 }
-
-.deleteReview {
-    border: 2px red solid;
-    font-family: Phantomsans, sans-serif;
-    border-radius: 4px;
-    color: rgba(116, 116, 116, 0.845)
-}
