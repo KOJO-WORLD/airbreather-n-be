@@ -53,7 +53,7 @@ const SpotDetail = () => {
             <div className="spotDisplay">
                 <img src={spot.previewImage} className='spotImage' alt='preview' />
                 <div className="spotDetail">
-                    <h2 className='spotInfo'>{spot.name}</h2>
+                    <h2 className='spotInfo'>{spot.name} ⭐️{spot.avgRating}</h2>
                     <div className='spotInfo'>address: {spot.address} {spot.city} {spot.state} {spot.country}</div>
                     <p className='spotInfo'>price: ${spot.price}/night</p>
                     <p className='spotInfo'>description: {spot.description}</p>

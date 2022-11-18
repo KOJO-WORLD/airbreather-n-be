@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { writeReviewThunk } from '../../store/reviews';
+
 import '../button.css';
 import '../input.css';
 import '../Errors/Errors.css'
@@ -34,8 +35,9 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
         };
 
         dispatch(writeReviewThunk(payload));
+
         setHidden2(true);
-        history.push(`/spots/${spotId.spotId}`);
+        history.push(`/`);
     };
 
     const handleCancelClick = (e) => {
