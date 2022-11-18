@@ -21,6 +21,9 @@ const SpotDetail = () => {
 
     const spot = useSelector(state => state.spots[spotId]);
     const reviews = useSelector(state => state.reviews.spotReviewsArr);
+    const reviewsObj = useSelector(state => state.reviews);
+    console.log('REVIEWS ARR in spot detail:', reviews);
+    console.log('REVIEWS OBJECT in spot detail:', reviewsObj);
 
     let existingReview;
 
@@ -38,7 +41,7 @@ const SpotDetail = () => {
 
         dispatch(getSpotDetailThunk(spotId))
 
-    }, [dispatch, spotId, reviews]);
+    }, [dispatch, spotId, reviewsObj]);
 
     if (!spot) {
         return null;
