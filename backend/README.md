@@ -1,6 +1,7 @@
 # API Documentation
 
 USER AUTHENTICATION/AUTHORIZATION
+
 All endpoints that require authentication / require a current user to be logged in.
 
 * Request: endpoints that require authentication
