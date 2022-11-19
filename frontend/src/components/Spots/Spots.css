@@ -6,6 +6,7 @@ main {
 /*------------- spot details --------------*/
 .spotMain {
     width: 90%;
+    display: inline;
 }
 
 .spotDisplay {

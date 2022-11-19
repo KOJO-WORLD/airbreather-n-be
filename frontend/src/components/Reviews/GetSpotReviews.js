@@ -35,6 +35,8 @@ const GetSpotReviews = () => {
     return (
         <main className='reviewsMain'>
             <div className='reviewsContainer'>
+                <div className='reviewsContent'>
+
                 <h2 className='reviewTitle'>Reviews:</h2>
                 {reviews.map((review) => {
                     return (
@@ -56,6 +58,7 @@ const GetSpotReviews = () => {
                         </div>
                     );
                 })}
+                </div>
             </div>
         </main>
     );

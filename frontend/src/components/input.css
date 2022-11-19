@@ -10,19 +10,21 @@
     width: 65%;
     display: flex;
     margin: auto;
-    padding: 10;
+    padding: 10px;
+    /* overflow: scroll; */
 }
 
 .input:focus {
     outline-color: rgb(127, 170, 170);
 }
 
-.container {
+/* .container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
     max-width: 600px;
     min-width: 300px;
-    gap: 20px 5px;
-}
+    gap: 20px 5px; */
+    /* overflow: scroll; */
+/* } */
