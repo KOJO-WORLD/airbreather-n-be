@@ -70,7 +70,7 @@ const SpotDetail = () => {
                     <div>
                         <button onClick={() => {
                             dispatch(deleteSpotThunk(spotId));
-                            history.push(`/spots/${spotId}`);
+                            history.push('/');
                         }} className="deleteSpot">
                             <span className="text">Delete spot</span>
                             <span className="icon">
