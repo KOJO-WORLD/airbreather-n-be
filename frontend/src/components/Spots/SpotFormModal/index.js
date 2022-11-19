@@ -8,8 +8,8 @@ function SpotFormModal() {
 
   return (
     <>
-      <button className='button' onClick={() => setShowModal(true)}>
-      <span className="submit">Add a spot</span>
+      <button className='addHomeButton' onClick={() => setShowModal(true)}>
+        Add your home
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../store/session';
 
 import './Navigation.css';
-import logo from './breathe5.png'
+import logo from './breathe-color.png'
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
@@ -23,13 +23,14 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <div className='bar-right'>
-        <ProfileButton user={sessionUser} />
         <SpotFormModal />
+        <ProfileButton user={sessionUser} />
       </div>
     );
   } else {
     sessionLinks = (
       <>
+        <ProfileButton user={sessionUser} onClick={() => {}}/>
         <LoginFormModal />
         <SignupFormModal />
         <button className='demo' onClick={(e) => {
