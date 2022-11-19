@@ -37,7 +37,7 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
         dispatch(writeReviewThunk(payload));
 
         setHidden2(true);
-        history.push(`/`);
+        history.push(`/spots/${spotId.spotId}`);
     };
 
     const handleCancelClick = (e) => {

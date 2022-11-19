@@ -14,6 +14,7 @@ const SpotDetail = () => {
 
     const [hidden, setHidden] = useState(true);
     const [hidden2, setHidden2] = useState(true);
+    // const [avgRating, setAvgRating] = useState(null);
 
     const sessionUser = useSelector(state => state.session.user);
 
@@ -21,16 +22,27 @@ const SpotDetail = () => {
 
     const spot = useSelector(state => state.spots[spotId]);
     const reviews = useSelector(state => state.reviews.spotReviewsArr);
-    const reviewsObj = useSelector(state => state.reviews);
 
     let existingReview;
+    let totalStars = 0;
+    let avgRating = 0;
 
     if (reviews && sessionUser) {
         for (let review of reviews) {
-            if (review.userId === sessionUser.id) existingReview = true;
+            if (review.userId === sessionUser.id) {
+                existingReview = true;
+            }
+            totalStars += +review.stars;
         }
+        avgRating = totalStars / reviews.length;
     }
 
+    if (avgRating) {
+        let str = avgRating.toString()
+        const arr = str.split('')
+        if (arr.includes('.')) arr.splice(4)
+        avgRating = +arr.join('')
+    }
 
     const dispatch = useDispatch();
 
@@ -39,7 +51,7 @@ const SpotDetail = () => {
 
         dispatch(getSpotDetailThunk(spotId))
 
-    }, [dispatch, spotId, reviewsObj]);
+    }, [dispatch, spotId]);
 
     if (!spot) {
         return null;
@@ -55,7 +67,7 @@ const SpotDetail = () => {
             <div className="spotDisplay">
                 <img src={spot.previewImage} className='spotImage' alt='preview' />
                 <div className="spotDetail">
-                    <h2 className='spotInfo'>{spot.name} ⭐️{spot.avgRating}</h2>
+                    {avgRating ? <h2 className='spotInfo'>{spot.name} ⭐️{avgRating}</h2> : ''}
                     <div className='spotInfo'>address: {spot.address} {spot.city} {spot.state} {spot.country}</div>
                     <p className='spotInfo'>price: ${spot.price}/night</p>
                     <p className='spotInfo'>description: {spot.description}</p>
@@ -72,7 +84,7 @@ const SpotDetail = () => {
                         }} className="button">
                             <span className="submit">Delete spot</span>
                         </button>
-                        <NavLink to={`/spots/${spotId}/edit`} style={{textDecoration: 'none'}}>
+                        <NavLink to={`/spots/${spotId}/edit`} style={{ textDecoration: 'none' }}>
                             <button className="button" style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>
                                 <span className="submit">
                                     Edit spot

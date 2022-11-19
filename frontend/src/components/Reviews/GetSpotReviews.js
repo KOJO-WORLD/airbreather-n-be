@@ -48,7 +48,7 @@ const GetSpotReviews = () => {
                             {((sessionUser) && (review.userId === sessionUser.id)) && (
                                 <button onClick={() => {
                                     dispatch(deleteReviewThunk(review.id));
-                                    history.push(`/`);
+                                    history.push(`/spots/${spotId}`);
                                 }} className='button'>
                                     <span className="submit">
                                         Delete review

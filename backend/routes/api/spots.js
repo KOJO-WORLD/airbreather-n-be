@@ -567,10 +567,11 @@ router.get('/:spotId', async (req, res) => {
 
     spot.previewImage = prevImg.url;
 
+    let ratings = 0;
     if (!reviews.length) {
         spot.avgStarRating = null
     } else {
-        let ratings = 0;
+        // let ratings = 0;
         for (let review of reviews) {
             ratings += review.stars;
         }
