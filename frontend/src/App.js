@@ -8,7 +8,8 @@ import Navigation from "./components/Navigation";
 import AllSpots from './components/Spots/AllSpots';
 
 import SpotDetail from './components/Spots/SpotDetail';
-import AddSpotForm from './components/Spots/AddSpotForm';
+// import AddSpotForm from './components/Spots/AddSpotForm';
+import EditSpotForm from './components/Spots/EditSpotForm';
 // import AddSpotForm from './components/Spots/AddSpotForm';
 
 
@@ -25,8 +26,9 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/"><AllSpots /></Route>
+          <Route path="/spots/:spotId/edit"><EditSpotForm /></Route>
           <Route path="/spots/:spotId"><SpotDetail /></Route>
-          <Route path="/spots"><AddSpotForm /></Route>
+          {/* <Route path="/spots"><AddSpotForm /></Route> */}
         </Switch>
       )}
     </>

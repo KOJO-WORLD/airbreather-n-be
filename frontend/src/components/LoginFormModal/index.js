@@ -15,6 +15,12 @@ function LoginFormModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
+          <div className='signUpLogInTop'>
+            Log in
+          </div>
+          <div className='welcome'>
+            Welcome to airbreatheNbe
+          </div>
           <LoginForm />
         </Modal>
       )}

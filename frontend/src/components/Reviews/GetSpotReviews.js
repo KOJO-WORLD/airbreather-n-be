@@ -31,36 +31,59 @@ const GetSpotReviews = () => {
     if (!reviews) {
         return null;
     }
+    const getMonth = (monthUTC) => {
+        const month = new Date(monthUTC);
+        return month.getUTCMonth() + 1;
+    }
+
+    const getDay = (dayUTC) => {
+        const day = new Date(dayUTC);
+        return day.getUTCDate();
+    }
+
+    const getYear = (yearUTC) => {
+        const year = new Date(yearUTC);
+        return year.getUTCFullYear();
+    }
 
     return (
         <main className='reviewsMain'>
-            <div className='reviewsContainer'>
-                <h2 className='reviewTitle'>Reviews:</h2>
+            {/* <div className='reviewsContainer'> */}
+            <div className='reviewsContent'>
+                {/* <h2 className='reviewTitle'>Reviews:</h2> */}
                 {reviews.map((review) => {
                     return (
                         <div key={review.id}>
-                            <div className='reviewContent'>
-                                <div>{review.stars}/5 stars</div>
-                                <div>{review.review}</div>
-                            </div>
+                            <div className="reviewContent">
+                                <div className="iconUserDate">
+                                    <span><i className="fa-solid fa-circle-user reviewUserIcon"></i></span>
+
+                                    <span className='userDate'>
+                                        <div className="reviewUser">
+                                            User {review.userId}
+                                        </div>
+                                        <div className="reviewDate">{
+                                            getMonth(review.createdAt)}
+                                            /{getDay(review.createdAt)}
+                                            /{getYear(review.createdAt)}
+                                        </div>
+                                    </span>
+                                </div>
+                                <div className='reviewReview'>{review.review}</div>
                             {((sessionUser) && (review.userId === sessionUser.id)) && (
                                 <button onClick={() => {
                                     dispatch(deleteReviewThunk(review.id));
                                     history.push(`/spots/${spotId}`);
-                                }} className='deleteSpot'>
-                                    <span className="text">Delete review</span>
-                                    <span className="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                            <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
-                                            </path>
-                                        </svg>
-                                    </span>
+                                }} className="writeEditDeleteButton deleteReviewButton">
+                                        Delete review
                                 </button>
                             )}
+                            </div>
                         </div>
                     );
                 })}
             </div>
+            {/* </div> */}
         </main>
     );
 };

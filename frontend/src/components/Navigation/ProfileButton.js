@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './Navigation.css';
-import userIcon from './user.png'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -32,17 +31,18 @@ function ProfileButton({ user }) {
 
   return (
     <div className="profile-dropdown">
-      <button onClick={openMenu}>
-        <img src={userIcon} alt="user icon"/>
-        {/* { <a target="_blank" href="https://icons8.com/icon/zXd7HOdmWPxf/user">User</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>} */}
-
+      <button className="profileButton" onClick={openMenu}>
+        <i className="fa-solid fa-bars"></i>
+        <i className="fa-solid fa-circle-user"></i>
       </button>
       {showMenu && (
         <div >
           <div className="text">{user.username}</div>
           <div className="text">{user.email}</div>
           <div>
-            <button className='logout' onClick={logout}>Log Out</button>
+            <button className='button' onClick={logout}>
+              <span className="submit">Log Out</span>
+            </button>
           </div>
         </div>
       )}

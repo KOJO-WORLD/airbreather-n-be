@@ -54,7 +54,7 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
             <label>
                 <input
                     placeholder='review'
-                    className="input"
+                    className="input top"
                     type='text'
                     value={review}
                     required
@@ -63,7 +63,7 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
             <label>
                 <input
                     placeholder='stars'
-                    className="input"
+                    className="input bottom"
                     type='number'
                     min={1}
                     max={5}
@@ -71,21 +71,16 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
                     required
                     onChange={updateStars} />
             </label>
-            <button className='submit' type="submit">
-
-                <span className="circle" aria-hidden="true">
-                    <span className="icon arrow"></span>
-                </span>
-                <span className="button-text">Save</span>
+            <button className='submitForm' type="submit">
+                <span className="submit">Submit</span>
             </button>
-            <button className="cancel" type='button' onClick={(e) => {
+            <button className="cancelForm" type='button' onClick={(e) => {
                 // if (formType === 'Add Spot') setHidden(true);
                 // if (formType === 'Add Spot') setShowModal(false);
                 handleCancelClick(e);
-            }}><span className="circle" aria-hidden="true">
-                    <span className="icon arrow"></span>
-                </span>
-                <span className="button-text">Cancel</span></button>
+            }}>
+                Cancel
+            </button>
         </form>
     );
 };

@@ -36,13 +36,17 @@ function SignupForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul className="list">
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
+      {errors.length ? (<ul className="errors">
+        {errors.map((error, idx) =>
+          <li key={idx}>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            {error}
+          </li>)}
+      </ul>) : '' }
       <div className='container'>
         <label>
           <input
-            className="input"
+            className="input top"
             placeholder="Email"
             type="text"
             value={email}
@@ -92,7 +96,7 @@ function SignupForm() {
         </label>
         <label>
           <input
-            className="input"
+            className="input bottom"
             placeholder="Confirm password"
             type="password"
             value={confirmPassword}
@@ -100,14 +104,11 @@ function SignupForm() {
             required
           />
         </label>
-        <button className='submit' type="submit">
-
-          <span className="circle" aria-hidden="true">
-            <span className="icon arrow"></span>
-          </span>
-          <span className="button-text">Sign Up</span>
-
-        </button>
+        <div className='signupLogInButtonDiv'>
+          <button className='submitForm' type="submit">
+            Continue
+          </button>
+        </div>
       </div>
     </form>
   );

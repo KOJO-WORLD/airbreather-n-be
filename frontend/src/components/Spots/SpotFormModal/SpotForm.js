@@ -72,119 +72,116 @@ const SpotForm = ({ spot, formType, modal }) => {
 
     const handleCancelClick = (e) => {
         e.preventDefault();
-        history.push('/');
+        formType === 'Edit Spot' && history.push(`/spots/${spotId}`);
     };
 
     return (
         <form onSubmit={handleSubmit} className='spotForm'>
-            <label>
-                <input
-                    required
-                    placeholder='name'
-                    className="input"
-                    type='text'
-                    value={name}
-                    maxLength={50}
-                    onChange={updateName} />
-            </label>
-            <label>
-                <input
-                    required
-                    placeholder='address'
-                    className="input"
-                    type='text'
-                    value={address}
-                    onChange={updateAddress} />
-            </label>
-            <label>
-                <input
-                    required
-                    className="input"
-                    placeholder='city'
-                    type='text'
-                    value={city}
-                    onChange={updateCity} />
-            </label>
-            <label>
-                <input
-                    required
-                    placeholder='state'
-                    className="input"
-                    type='text'
-                    value={state}
-                    onChange={updateState} />
-            </label>
-            <label>
-                <input
-                    required
-                    placeholder='country'
-                    className="input"
-                    type='text'
-                    value={country}
-                    onChange={updateCountry} />
-            </label>
-            <label className='spotText'>
-                <input
-                    required
-                    placeholder='latitude'
-                    className="input"
-                    type='number'
-                    value={lat}
-                    onChange={updateLatitude} />
-            </label>
-            <label className='spotText'>
-                <input
-                    required
-                    placeholder='longitude'
-                    className="input"
-                    type='number'
-                    value={lng}
-                    onChange={updateLongitude} />
-            </label>
-            <label>
-                <input
-                    required
-                    placeholder='description'
-                    className="input"
-                    type='text'
-                    value={description}
-                    onChange={updateDescription} />
-            </label>
-            <label className='spotText'>
-                <input
-                    required
-                    placeholder='price'
-                    className="input"
-                    type='number'
-                    min={0}
-                    value={price}
-                    onChange={updatePrice} />
-            </label>
-            <label className='spotText'>
-                <input
-                    required
-                    placeholder=' Preview image URL'
-                    className="input"
-                    type='URL'
-                    value={previewImage}
-                    onChange={updatePreviewImage} />
-            </label>
-            <button className='submit' type="submit">
+            <div className='container'>
 
-                <span className="circle" aria-hidden="true">
-                    <span className="icon arrow"></span>
-                </span>
-                <span className="button-text">Save</span>
-
-            </button>
-            <button className="cancel" type='button' onClick={(e) => {
-                // if (formType === 'Add Spot') setHidden(true);
-                if (formType === 'Add Spot') setShowModal(false);
-                handleCancelClick(e);
-            }}><span className="circle" aria-hidden="true">
-                    <span className="icon arrow"></span>
-                </span>
-                <span className="button-text">Cancel</span></button>
+                <label>
+                    <input
+                        required
+                        placeholder='name'
+                        className="input top"
+                        type='text'
+                        value={name}
+                        maxLength={50}
+                        onChange={updateName} />
+                </label>
+                <label>
+                    <input
+                        required
+                        placeholder='address'
+                        className="input"
+                        type='text'
+                        value={address}
+                        onChange={updateAddress} />
+                </label>
+                <label>
+                    <input
+                        required
+                        className="input"
+                        placeholder='city'
+                        type='text'
+                        value={city}
+                        onChange={updateCity} />
+                </label>
+                <label>
+                    <input
+                        required
+                        placeholder='state'
+                        className="input"
+                        type='text'
+                        value={state}
+                        onChange={updateState} />
+                </label>
+                <label>
+                    <input
+                        required
+                        placeholder='country'
+                        className="input"
+                        type='text'
+                        value={country}
+                        onChange={updateCountry} />
+                </label>
+                <label className='spotText'>
+                    <input
+                        required
+                        placeholder='latitude'
+                        className="input"
+                        type='number'
+                        value={lat}
+                        onChange={updateLatitude} />
+                </label>
+                <label className='spotText'>
+                    <input
+                        required
+                        placeholder='longitude'
+                        className="input"
+                        type='number'
+                        value={lng}
+                        onChange={updateLongitude} />
+                </label>
+                <label>
+                    <input
+                        required
+                        placeholder='description'
+                        className="input"
+                        type='text'
+                        value={description}
+                        onChange={updateDescription} />
+                </label>
+                <label className='spotText'>
+                    <input
+                        required
+                        placeholder='price'
+                        className="input"
+                        type='number'
+                        min={0}
+                        value={price}
+                        onChange={updatePrice} />
+                </label>
+                <label className='spotText'>
+                    <input
+                        required
+                        placeholder=' Preview image URL'
+                        className="input bottom"
+                        type='URL'
+                        value={previewImage}
+                        onChange={updatePreviewImage} />
+                </label>
+                <button className='submitForm' type="submit">
+                    <span>Save</span>
+                </button>
+                <button className="cancelForm" type='button' onClick={(e) => {
+                    // if (formType === 'Add Spot') setHidden(true);
+                    if (formType === 'Add Spot') setShowModal(false);
+                    handleCancelClick(e);
+                }}>
+                    <span>Cancel</span>
+                </button>
+            </div>
         </form>
     );
 };

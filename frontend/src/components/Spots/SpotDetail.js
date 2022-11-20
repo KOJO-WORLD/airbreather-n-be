@@ -3,10 +3,12 @@ import { useParams, NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 // import EditSpotForm from './EditSpotForm';
 import { deleteSpotThunk, getSpotDetailThunk } from '../../store/spots';
-import EditSpotForm from './EditSpotForm';
+// import EditSpotForm from './EditSpotForm';
 import GetSpotReviews from '../Reviews/GetSpotReviews';
 import WriteReviewForm from '../Reviews/WriteReviewForm';
+
 import '../button.css';
+import '../Reviews/reviews.css'
 
 const SpotDetail = () => {
 
@@ -14,25 +16,45 @@ const SpotDetail = () => {
 
     const [hidden, setHidden] = useState(true);
     const [hidden2, setHidden2] = useState(true);
+    // const [avgRating, setAvgRating] = useState(null);
 
     const sessionUser = useSelector(state => state.session.user);
 
     const { spotId } = useParams();
 
+
     const spot = useSelector(state => state.spots[spotId]);
     const reviews = useSelector(state => state.reviews.spotReviewsArr);
-    const reviewsObj = useSelector(state => state.reviews);
-    console.log('REVIEWS ARR in spot detail:', reviews);
-    console.log('REVIEWS OBJECT in spot detail:', reviewsObj);
+
+    // const ownerName = useSelector(state => state.session.user.firstName)
 
     let existingReview;
+    let totalStars = 0;
+    let avgRating = 0;
+    let totalReviews = 0;
 
     if (reviews && sessionUser) {
         for (let review of reviews) {
-            if (review.userId === sessionUser.id) existingReview = true;
+            if (review.userId === sessionUser.id) {
+                existingReview = true;
+            }
         }
     }
 
+    if (reviews) {
+        for (let review of reviews) {
+            totalStars += +review.stars;
+            totalReviews += 1;
+        }
+        avgRating = totalStars / reviews.length;
+    }
+
+    if (avgRating) {
+        let str = avgRating.toString()
+        const arr = str.split('')
+        if (arr.includes('.')) arr.splice(4)
+        avgRating = +arr.join('')
+    }
 
     const dispatch = useDispatch();
 
@@ -41,7 +63,7 @@ const SpotDetail = () => {
 
         dispatch(getSpotDetailThunk(spotId))
 
-    }, [dispatch, spotId, reviewsObj]);
+    }, [dispatch, spotId]);
 
     if (!spot) {
         return null;
@@ -54,68 +76,131 @@ const SpotDetail = () => {
     return (
         // (sessionUser) &&
         <div className="spotMain">
-            <div className="spotDisplay">
-                <img src={spot.previewImage} className='spotImage' alt='preview' />
-                <div className="spotDetail">
-                    <h2 className='spotInfo'>{spot.name} ⭐️{spot.avgRating}</h2>
-                    <div className='spotInfo'>address: {spot.address} {spot.city} {spot.state} {spot.country}</div>
-                    <p className='spotInfo'>price: ${spot.price}/night</p>
-                    <p className='spotInfo'>description: {spot.description}</p>
-                </div>
-            </div>
-            <GetSpotReviews />
-            {
-                ((sessionUser) &&
-                    (spot.ownerId === sessionUser.id)) && (
-                    <div>
-                        <button onClick={() => {
-                            dispatch(deleteSpotThunk(spotId));
-                            history.push('/');
-                        }} className="deleteSpot">
-                            <span className="text">Delete spot</span>
-                            <span className="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
-                                    </path>
-                                </svg>
+            <div>
+                <div className="spotDisplay">
+                    <div className='infoAboveImage'>
+                        <div className='spotName'>
+                            {spot.name}
+                        </div>
+                        <div>
+                            {avgRating ? <span className="spotText">
+                                <i class="fa-solid fa-star"></i>
+                                {avgRating}&nbsp;·&nbsp;
+                            </span> : ''}
+                            <span className='spotText'>
+                                {totalReviews} reviews&nbsp;·&nbsp;
                             </span>
-                        </button>
-                        <NavLink to={`/spots/${spotId}/edit`}>
-                            <button style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()} className='submit'>
-                                <span className="circle" aria-hidden="true">
-                                    <span className="icon arrow"></span>
+                            <span className='spotInfo'>
+                                <span className="spotText">
+                                    {spot.city}, {spot.state}, {spot.country}
                                 </span>
-                                <span className="button-text">Edit spot</span>
-                            </button>
-                        </NavLink>
-                        <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
-                            <EditSpotForm />
+                            </span>
                         </div>
                     </div>
-                )
-            }
-            {
-                ((sessionUser) &&
-                    (spot.ownerId !== sessionUser.id)) && (!existingReview) && (
-                    <>
-                        <button style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }} className='submit'>
-                            <span className="circle" aria-hidden="true">
-                                <span className="icon arrow"></span>
-                            </span>
-                            <span className="button-text">Leave review</span></button>
-                        <div style={{ visibility: hidden2 ? 'hidden' : 'visible' }}>
-
-                            <WriteReviewForm spotId={spotId} hidden={[hidden2, setHidden2]} />
-
-
+                    <img src={spot.previewImage} className='spotImage' alt='preview' />
+                    <div className="infoBelowImage">
+                        <span className="hostedBy">Home hosted by an owner</span>
+                        <div className="guestBedBath">
+                            4 guests&nbsp;·&nbsp;2 bedrooms&nbsp;·&nbsp;3 beds&nbsp;·&nbsp;2 baths
                         </div>
-                    </>
-                )
-            }
-            {/* <Route path={`/spots/${spotId}/edit`}>
-                <EditSpotForm />
-            </Route> */}
-        </div >
+                        <div className="line"></div>
+                        <div className="perksContainer">
+                            <div className='perk'>
+                                <div className='left'>
+                                    <i class="fa-solid fa-desktop icon"></i>
+                                </div>
+                                <div>
+                                    <div>
+                                        Dedicated workspace
+                                    </div>
+                                    <div className="perksGreyed">
+                                        A common area with wifi that's well-suited for working.
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='perk'>
+                                <div className='left'>
+                                    <i class="fa-solid fa-door-open icon"></i>
+                                </div>
+                                <div >
+                                    <div>
+                                        Self check-in
+                                    </div>
+                                    <div className="perksGreyed">
+                                        Check yourself in with the keypad.
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='perk'>
+                                <div className='left'>
+                                    <i class="fa-regular fa-calendar icon"></i>
+                                </div>
+                                <div>
+                                    &nbsp;&nbsp;Free cancellation for 48 hours
+                                </div>
+                            </div>
+                        </div>
+                        {/* <p className='spotInfo'>price: ${spot.price}/night</p> */}
+                        <div className='line'></div>
+                        <p className='spotInfo'>{spot.description}</p>
+                        <div className='line'></div>
+                    </div>
+                </div>
+                {
+                    ((sessionUser) &&
+                        (spot.ownerId === sessionUser.id)) && (
+                        <>
+                            <div className="editDeleteButton">
+                                <span>
+                                    <NavLink to={`/spots/${spotId}/edit`} style={{ textDecoration: 'none' }}>
+                                        <button className="writeEditDeleteButton">
+                                            Edit your home
+                                        </button>
+                                    </NavLink>
+                                </span>
+                                <span>
+                                    <button className="writeEditDeleteButton" onClick={() => {
+                                        dispatch(deleteSpotThunk(spotId));
+                                        history.push('/');
+                                    }}>
+                                        Delete this listing
+                                    </button>
+                                </span>
+                            </div>
+                            <div className="line"></div>
+                        </>
+                    )
+                }
+            </div>
+            <div>
+                {
+                    ((sessionUser) &&
+                        (spot.ownerId !== sessionUser.id)) && (!existingReview) && (
+                        <>
+                            {hidden2 && <button className="writeEditDeleteButton writeReviewButton" onClick={() => { setHidden2(false) }}>
+                                Leave review
+                            </button>}
+                            {!hidden2 && <div className='reviewForm'>
+                                <WriteReviewForm spotId={spotId} hidden={[hidden2, setHidden2]} />
+                            </div>}
+                            <div className="line"></div>
+                        </>
+                    )
+                }
+            </div>
+            <div className="spotText reviewRating">
+                {avgRating ? <span className="reviewRating">
+                    <i class="fa-solid fa-star reviewRatingStar"></i>
+                    {avgRating}&nbsp;·&nbsp;
+                </span> : ''}
+                <span className="reviewRating">
+                    {totalReviews} reviews
+                </span>
+            </div>
+            <div>
+                <GetSpotReviews />
+            </div>
+        </div>
     );
 };
 

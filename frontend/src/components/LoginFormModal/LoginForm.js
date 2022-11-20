@@ -30,39 +30,42 @@ function LoginForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <ul className='list'>
-                <li>{errors[0]}</li>
-            </ul>
+            {errors[0] ? (<ul className='errors'>
+                <li>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    {errors[0]}
+                </li>
+            </ul>) : ''}
             <div className='container'>
-
-                <label>
-                    <input
-                        className="input"
-                        placeholder="Username or Email"
-                        type="text"
-                        value={credential}
-                        onChange={(e) => setCredential(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    <input
-                        className="input"
-                        placeholder="Password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
-                <button className='submit' type="submit">
-
-                    <span className="circle" aria-hidden="true">
-                        <span className="icon arrow"></span>
-                    </span>
-                    <span className="button-text">Log In</span>
-
-                </button>
+                <div>
+                    <label>
+                        <input
+                            className="input top"
+                            placeholder="Username or Email"
+                            type="text"
+                            value={credential}
+                            onChange={(e) => setCredential(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input
+                            className="input bottom"
+                            placeholder="Password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div className='signupLogInButtonDiv'>
+                    <button className='submitForm' type="submit">
+                        Continue
+                    </button>
+                </div>
             </div>
         </form >
     );
