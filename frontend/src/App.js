@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 // import LoginFormPage from './components/LoginFormModal/index';
 // import SignupFormPage from "./components/SignupFormPage/index";
 import * as sessionActions from "./store/session";
-import Navigation from "./components/Navigation";
+import NavigationBar from "./components/Navigation";
 import AllSpots from './components/Spots/AllSpots';
 
 import SpotDetail from './components/Spots/SpotDetail';
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <NavigationBar isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
           <Route exact path="/"><AllSpots /></Route>

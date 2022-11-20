@@ -8,7 +8,11 @@ function LoginFormModal() {
 
   return (
     <>
-      <button className='button' onClick={() => setShowModal(true)}>
+      <button className='button' onClick={(e) => {
+        e.preventDefault();
+        setShowModal(true);
+        console.log("show modal button click", showModal);
+      }}>
         <span>
           Log In
         </span>

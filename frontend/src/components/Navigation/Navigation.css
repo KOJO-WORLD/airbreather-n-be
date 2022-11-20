@@ -37,8 +37,14 @@
 }
 
 .profile-dropdown {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: space-evenly; */
+}
+
+.dropdown-menu {
+    /* display: flex;
+    flex-direction: column; */
     /* justify-content: space-evenly; */
 }
 
