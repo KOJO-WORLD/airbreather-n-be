@@ -148,26 +148,26 @@ const SpotDetail = () => {
                 {
                     ((sessionUser) &&
                         (spot.ownerId === sessionUser.id)) && (
-                        <div>
-                            <button onClick={() => {
+                        <div className="editDeleteButton">
+                            <span>
+                                <NavLink to={`/spots/${spotId}/edit`} style={{ textDecoration: 'none' }}>
+                                    <button className="writeEditDeleteButton">
+                                        Edit your home
+                                    </button>
+                                </NavLink>
+                            </span>
+                            <span>
+                            <button className="writeEditDeleteButton" onClick={() => {
                                 dispatch(deleteSpotThunk(spotId));
                                 history.push('/');
-                            }} className="button">
-                                <span className="submit">Delete spot</span>
+                            }}>
+                                Delete this listing
                             </button>
-                            <NavLink to={`/spots/${spotId}/edit`} style={{ textDecoration: 'none' }}>
-                                {/* <button className="button" style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>
-                                <span className="submit"> */}
-                                Edit spot
-                                {/* </span>
-                            </button> */}
-                            </NavLink>
-                            {/* <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
-                            <EditSpotForm />
-                        </div> */}
+                            </span>
                         </div>
                     )
                 }
+                <div className="line"></div>
             </div >
             <div>
                 {
