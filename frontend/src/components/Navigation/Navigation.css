@@ -14,6 +14,7 @@
     align-items: center;
     margin: 0px 40px 0px 40px;
     border-color: rgba(189, 189, 189, 0.775);
+    background: transparent;
 }
 
 .profileButton:hover {

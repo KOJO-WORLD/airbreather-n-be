@@ -5,10 +5,51 @@
     border-radius: 20px;
     font-size: 14px;
     font-weight: 600;
+    background: transparent;
 }
 
 .addHomeButton:hover {
     background-color: rgba(233, 233, 233, 0.389);
+}
+
+.signupLogInButtonDiv {
+padding-top: 10px;
+}
+
+.submitForm {
+    background-image: linear-gradient(50deg, rgb(230, 30, 77), rgb(215, 4, 102), rgb(189, 30, 89));
+    color: white;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    font-family: Phantomsans, sans-serif;
+    font-size: medium;
+    margin: 10px 0px 10px 0px;
+    /* font-weight: large; */
+    /* color: rgb(255, 56, 92); */
+}
+
+.cancelForm {
+    background-color: rgba(227, 227, 227, 0.462);
+    color: rgb(22, 22, 22);
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    font-family: Phantomsans, sans-serif;
+    font-size: medium;
+    /* margin-top: 10px; */
+    /* font-weight: large; */
+    /* color: rgb(255, 56, 92); */
+
+}
+
+button {
+    /* position: relative;
+    display: inline-block; */
+    cursor: pointer;
+    border: 0;
+    /* vertical-align: middle; */
+    /* background: transparent; */
 }
 
 
@@ -17,9 +58,9 @@
 
 /* ================= login / sign up ================= */
 
-.button {
+/* .button {
     height: 30%;
-    /* align-items: center; */
+    align-items: center;
     background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border-radius: 8px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
@@ -35,12 +76,12 @@
     padding: 3px;
     text-decoration: none;
     transition: all .3s;
-}
+} */
 
 
-.button span {
+/* .button span {
     background-color: rgb(255, 255, 255);
-    /* padding: 16px 24px; */
+    padding: 16px 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,18 +98,10 @@
 
 .button:active {
     transform: scale(0.9);
-}
+} */
 
-button {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    border: 0;
-    vertical-align: middle;
-    background: transparent;
-}
 
-button.submit {
+/* button.submit {
     font-family: sans-serif;
     width: 12rem;
     height: auto;
@@ -92,11 +125,11 @@ button.submit .button-text {
 
 button:hover .button-text {
     color: #fff;
-}
+} */
 
 /* ================= demo ================= */
 
-.demo {
+/* .demo {
     height: 30%;
     font-size: 100%;
     padding: 0.7em 2.7em;
@@ -115,4 +148,4 @@ button:hover .button-text {
    .demo:hover {
     color: #1b6efdee;;
     box-shadow: inset 0 0 10px rgba(27, 166, 253, 0.6), 0 0 9px 3px rgba(27, 46, 253, 0.2);
-   }
+   } */

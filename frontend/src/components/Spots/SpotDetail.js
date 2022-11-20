@@ -32,6 +32,11 @@ const SpotDetail = () => {
             if (review.userId === sessionUser.id) {
                 existingReview = true;
             }
+        }
+    }
+
+    if (reviews) {
+        for (let review of reviews) {
             totalStars += +review.stars;
         }
         avgRating = totalStars / reviews.length;
@@ -73,7 +78,6 @@ const SpotDetail = () => {
                     <p className='spotInfo'>description: {spot.description}</p>
                 </div>
             </div>
-            <GetSpotReviews />
             {
                 ((sessionUser) &&
                     (spot.ownerId === sessionUser.id)) && (
@@ -85,15 +89,15 @@ const SpotDetail = () => {
                             <span className="submit">Delete spot</span>
                         </button>
                         <NavLink to={`/spots/${spotId}/edit`} style={{ textDecoration: 'none' }}>
-                            <button className="button" style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>
-                                <span className="submit">
+                            {/* <button className="button" style={{ visibility: hidden ? 'visible' : 'hidden' }} onClick={() => showForm()}>
+                                <span className="submit"> */}
                                     Edit spot
-                                </span>
-                            </button>
+                                {/* </span>
+                            </button> */}
                         </NavLink>
-                        <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
+                        {/* <div style={{ visibility: hidden ? 'hidden' : 'visible' }}>
                             <EditSpotForm />
-                        </div>
+                        </div> */}
                     </div>
                 )
             }
@@ -115,9 +119,7 @@ const SpotDetail = () => {
                     </>
                 )
             }
-            {/* <Route path={`/spots/${spotId}/edit`}>
-                <EditSpotForm />
-            </Route> */}
+            <GetSpotReviews />
         </div >
     );
 };

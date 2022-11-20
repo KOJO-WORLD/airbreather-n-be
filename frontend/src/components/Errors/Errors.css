@@ -1,18 +1,7 @@
-.list {
-    padding: 30px;
+.errors {
+    /* padding: 30px; */
     margin: 0;
     list-style-type: none;
     font-family:Arial, Helvetica, sans-serif;
-    color: rgb(124, 124, 124);
-    display: flex;
-    justify-content: center;
-    max-width: 500px;
-    /* list-style-image: 😯 */
+    color: rgb(193, 53, 21);
 }
-
-/* .err {
-
-    background: 😯;
-    height: 20px;
-    width: 20px;
-} */

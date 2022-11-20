@@ -30,7 +30,6 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <ProfileButton user={sessionUser} onClick={() => {}}/>
         <LoginFormModal />
         <SignupFormModal />
         <button className='demo' onClick={(e) => {
