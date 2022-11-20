@@ -8,6 +8,7 @@ import GetSpotReviews from '../Reviews/GetSpotReviews';
 import WriteReviewForm from '../Reviews/WriteReviewForm';
 
 import '../button.css';
+import '../Reviews/reviews.css'
 
 const SpotDetail = () => {
 
@@ -148,43 +149,53 @@ const SpotDetail = () => {
                 {
                     ((sessionUser) &&
                         (spot.ownerId === sessionUser.id)) && (
-                        <div className="editDeleteButton">
-                            <span>
-                                <NavLink to={`/spots/${spotId}/edit`} style={{ textDecoration: 'none' }}>
-                                    <button className="writeEditDeleteButton">
-                                        Edit your home
+                        <>
+                            <div className="editDeleteButton">
+                                <span>
+                                    <NavLink to={`/spots/${spotId}/edit`} style={{ textDecoration: 'none' }}>
+                                        <button className="writeEditDeleteButton">
+                                            Edit your home
+                                        </button>
+                                    </NavLink>
+                                </span>
+                                <span>
+                                    <button className="writeEditDeleteButton" onClick={() => {
+                                        dispatch(deleteSpotThunk(spotId));
+                                        history.push('/');
+                                    }}>
+                                        Delete this listing
                                     </button>
-                                </NavLink>
-                            </span>
-                            <span>
-                            <button className="writeEditDeleteButton" onClick={() => {
-                                dispatch(deleteSpotThunk(spotId));
-                                history.push('/');
-                            }}>
-                                Delete this listing
-                            </button>
-                            </span>
-                        </div>
+                                </span>
+                            </div>
+                            <div className="line"></div>
+                        </>
                     )
                 }
-                <div className="line"></div>
-            </div >
+            </div>
             <div>
                 {
                     ((sessionUser) &&
                         (spot.ownerId !== sessionUser.id)) && (!existingReview) && (
                         <>
-                            <button className="button" style={{ visibility: hidden2 ? 'visible' : 'hidden' }} onClick={() => { setHidden2(false) }}>
-                                <span className="submit">
-                                    Leave review
-                                </span>
-                            </button>
-                            {!hidden2 && <div>
+                            {hidden2 && <button className="writeEditDeleteButton writeReviewButton" onClick={() => { setHidden2(false) }}>
+                                Leave review
+                            </button>}
+                            {!hidden2 && <div className='reviewForm'>
                                 <WriteReviewForm spotId={spotId} hidden={[hidden2, setHidden2]} />
                             </div>}
+                            <div className="line"></div>
                         </>
                     )
                 }
+            </div>
+            <div className="spotText reviewRating">
+                {avgRating ? <span className="reviewRating">
+                    <i class="fa-solid fa-star reviewRatingStar"></i>
+                    {avgRating}&nbsp;·&nbsp;
+                </span> : ''}
+                <span className="reviewRating">
+                    {totalReviews} reviews
+                </span>
             </div>
             <div>
                 <GetSpotReviews />

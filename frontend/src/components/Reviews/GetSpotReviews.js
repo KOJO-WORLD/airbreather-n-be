@@ -48,36 +48,42 @@ const GetSpotReviews = () => {
 
     return (
         <main className='reviewsMain'>
-            <div className='reviewsContainer'>
-                <div className='reviewsContent'>
+            {/* <div className='reviewsContainer'> */}
+            <div className='reviewsContent'>
+                {/* <h2 className='reviewTitle'>Reviews:</h2> */}
+                {reviews.map((review) => {
+                    return (
+                        <div key={review.id}>
+                            <div className="reviewContent">
+                                <div className="iconUserDate">
+                                    <span><i className="fa-solid fa-circle-user reviewUserIcon"></i></span>
 
-                    <h2 className='reviewTitle'>Reviews:</h2>
-                    {reviews.map((review) => {
-                        return (
-                            <div key={review.id}>
-                                <div className='reviewContent'>
-                                    <div>{
-                                        getMonth(review.createdAt)}
-                                        /{getDay(review.createdAt)}
-                                        /{getYear(review.createdAt)}
-                                    </div>
-                                    <div>{review.review}</div>
+                                    <span className='userDate'>
+                                        <div className="reviewUser">
+                                            User {review.userId}
+                                        </div>
+                                        <div className="reviewDate">{
+                                            getMonth(review.createdAt)}
+                                            /{getDay(review.createdAt)}
+                                            /{getYear(review.createdAt)}
+                                        </div>
+                                    </span>
                                 </div>
-                                {((sessionUser) && (review.userId === sessionUser.id)) && (
-                                    <button onClick={() => {
-                                        dispatch(deleteReviewThunk(review.id));
-                                        history.push(`/spots/${spotId}`);
-                                    }} className='button'>
-                                        <span className="submit">
-                                            Delete review
-                                        </span>
-                                    </button>
-                                )}
+                                <div className='reviewReview'>{review.review}</div>
+                            {((sessionUser) && (review.userId === sessionUser.id)) && (
+                                <button onClick={() => {
+                                    dispatch(deleteReviewThunk(review.id));
+                                    history.push(`/spots/${spotId}`);
+                                }} className="writeEditDeleteButton deleteReviewButton">
+                                        Delete review
+                                </button>
+                            )}
                             </div>
-                        );
-                    })}
-                </div>
+                        </div>
+                    );
+                })}
             </div>
+            {/* </div> */}
         </main>
     );
 };
