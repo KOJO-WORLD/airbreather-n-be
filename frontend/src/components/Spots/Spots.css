@@ -4,26 +4,26 @@ main {
 }
 
 /*------------- spot details --------------*/
-.spotMain {
+/* .spotMain {
     width: 90%;
-    display: inline;
-}
+    margin: auto;
+} */
 
 .spotDisplay {
     /* border: 15px green dotted; */
-    width: 50%;
+    width: 55%;
     height: 99%;
-    display: flex;
-    flex-flow: column;
+    /* display: flex;
+    flex-flow: column; */
     margin: auto;
 }
 
 .spotImage {
     border-radius: 15px;
     object-fit: contain;
-    width: 84%;
-    height: 101%;
-    margin: auto;
+    width: 100%;
+    /* height: 101%; */
+    /* margin: auto; */
 }
 
 .spotDetail {
@@ -34,11 +34,23 @@ main {
     align-items: center;
 }
 
-.spotInfo {
+.spotName {
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    margin: 15px 0px 10px 2px;
+}
+
+.infoAboveImage {
+    width: 84%;
+    margin-bottom: 15px;
+}
+
+.infoBelowImage {
     font-family: Phantomsans, sans-serif;
-    width: 12rem;
     height: auto;
-    color: rgba(116, 116, 116, 0.845)
+    color: rgb(0, 0, 0);
+    padding-top: 47px;
 }
 
 .spotsContainer {
@@ -72,6 +84,13 @@ main {
     font-size: 11px;
 }
 
+.icon {
+    font-size: 20px;
+    width: 40px;
+    display: flex;
+    text-align: center;
+}
+
 .spotDetailsList {
     list-style-type: none;
     list-style-position: outside;
@@ -80,9 +99,33 @@ main {
 }
 
 .spotText {
+    font-size: 14px;
     font-family: Phantomsans, sans-serif;
     color: rgb(34, 34, 34);
     padding-bottom: 2;
+}
+
+.hostedBy {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    margin: 15px 0px 10px 2px;
+    /* border-bottom: 1px solid rgba(198, 198, 198, 0.645); */
+}
+
+.line {
+    padding: 13px;
+    border-bottom: 1px solid rgba(198, 198, 198, 0.645);
+}
+
+.perk {
+    margin: 15px 0px 15px 0px;
+}
+
+.perksGreyed {
+    color: #717171;
+    font-size: 14px;
+    margin-top: 7px;
 }
 
 .junkText {
@@ -104,4 +147,15 @@ main {
 .right {
     float: right;
     margin-left: auto;
+}
+
+.perksContainer {
+    margin-top: 17px;
+    display: flex;
+    flex-direction: column;
+}
+
+.guestBedBath {
+    padding-top: 8px;
+    font-weight: lighter;
 }
