@@ -34,46 +34,50 @@ function ProfileButton({ user, setLogin, setShowModal }) {
   const password = 'password'
 
   return (
-    <div className="profile-dropdown">
+    <div className="profileButtonAndDropdown">
       <button className="profileButton" onClick={openMenu}>
         <i className="fa-solid fa-bars"></i>
         <i className="fa-solid fa-circle-user"></i>
       </button>
       {showMenu && (user ?
-        <div >
-          <div className="text">{user.username}</div>
-          <div className="text">{user.email}</div>
+        <div className='dropDownLoggedIn'>
+          <div className="credential">{user.username}</div>
+          <div className="credential">{user.email}</div>
+          <div className="divider"/>
           <div>
-            <button className='button' onClick={logout}>
+            <button className='logSignDemoButton' onClick={logout}>
               Log Out
             </button>
           </div>
         </div>
         :
-        <div className="profile-dropdown">
+        <div className='dropDownLoggedOut'>
           <div>
-            <button onClick={() => {
+            <button className='logSignDemoButton' onClick={() => {
+              setLogin(false)
+              setShowModal(true)
+            }}>
+              Sign up
+            </button>
+          </div>
+          <div>
+            <button className='logSignDemoButton' onClick={() => {
               setLogin(true)
               setShowModal(true)
             }}>
               Log in
             </button>
           </div>
+          <div className="divider"/>
           <div>
-            <button onClick={() => {
-              setLogin(false)
-              setShowModal(true)
+            <button className='logSignDemoButton' onClick={(e) => {
+              e.preventDefault();
+              dispatch(login({ credential, password }));
             }}>
-              Sign up
-            </button>
-            <button onClick={(e) => {
-          e.preventDefault();
-          dispatch(login({ credential, password }));
-          }}>
               Log in as demo user
             </button>
           </div>
-        </ div>
+        </div>
       )}
     </div>
   );
