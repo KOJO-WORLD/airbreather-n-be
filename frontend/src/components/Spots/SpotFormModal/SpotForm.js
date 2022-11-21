@@ -56,18 +56,21 @@ const SpotForm = ({ spot, formType, modal }) => {
             description,
             price,
             previewImage: previewImage,
-            avgRating: spot.avgRating,
+            // avgRating: spot.avgRating,
             ownerId: sessionUser.id
         };
+
+        console.log('payload', payload)
 
         if (formType === "Add Spot") {
             dispatch(addSpotThunk(payload));
             // setHidden(true);
             setShowModal(false);
             history.push(`/`);
-        } else
+        } else {
             dispatch(editSpotThunk(payload, spotId));
-        history.push(`/spots/${spotId}`);
+            history.push(`/spots/${spotId}`);
+        }
     };
 
     const handleCancelClick = (e) => {
