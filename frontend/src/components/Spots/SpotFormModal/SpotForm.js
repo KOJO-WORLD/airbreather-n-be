@@ -67,7 +67,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             history.push(`/`);
         } else
             dispatch(editSpotThunk(payload, spotId));
-        history.push(`/`);
+        history.push(`/spots/${spotId}`);
     };
 
     const handleCancelClick = (e) => {
