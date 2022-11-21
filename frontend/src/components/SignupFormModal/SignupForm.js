@@ -8,7 +8,7 @@ import '../input.css'
 // import exMark from '../Errors/exMark.png'
 import '../Errors/Errors.css';
 
-function SignupForm() {
+function SignupForm({ setShowModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -26,6 +26,7 @@ function SignupForm() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ email, username, firstName, lastName, password }))
+        .then(() => setShowModal(false))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -42,7 +43,7 @@ function SignupForm() {
             <i className="fa-solid fa-circle-exclamation"></i>
             {error}
           </li>)}
-      </ul>) : '' }
+      </ul>) : ''}
       <div className='container'>
         <label>
           <input

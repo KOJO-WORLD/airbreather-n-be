@@ -2,6 +2,11 @@
     padding: 24px;
 }
 
+.addSpot {
+    overflow: scroll;
+    max-height: 570px;
+}
+
 .input {
     border-width: 1px;
     border-color: rgba(104, 104, 104, 0.388);

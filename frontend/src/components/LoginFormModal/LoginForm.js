@@ -8,7 +8,7 @@ import '../input.css';
 // import exMark from '../Errors/exMark.png'
 import '../Errors/Errors.css';
 
-function LoginForm() {
+function LoginForm({ setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [credential, setCredential] = useState('');
@@ -21,6 +21,7 @@ function LoginForm() {
         e.preventDefault();
         setErrors([]);
         return dispatch(sessionActions.login({ credential, password }))
+            .then(() => setShowModal(false))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data) setErrors(Object.values(data));

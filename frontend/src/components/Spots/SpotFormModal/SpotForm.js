@@ -77,7 +77,7 @@ const SpotForm = ({ spot, formType, modal }) => {
 
     return (
         <form onSubmit={handleSubmit} className='spotForm'>
-            <div className='container'>
+            <div className='container addSpot'>
 
                 <label>
                     <input
