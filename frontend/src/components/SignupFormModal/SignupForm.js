@@ -39,7 +39,7 @@ function SignupForm() {
       {errors.length ? (<ul className="errors">
         {errors.map((error, idx) =>
           <li key={idx}>
-            <i class="fa-solid fa-circle-exclamation"></i>
+            <i className="fa-solid fa-circle-exclamation"></i>
             {error}
           </li>)}
       </ul>) : '' }

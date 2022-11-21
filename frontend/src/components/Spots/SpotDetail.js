@@ -84,7 +84,7 @@ const SpotDetail = () => {
                         </div>
                         <div>
                             {avgRating ? <span className="spotText">
-                                <i class="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
                                 {avgRating}&nbsp;·&nbsp;
                             </span> : ''}
                             <span className='spotText'>
@@ -107,7 +107,7 @@ const SpotDetail = () => {
                         <div className="perksContainer">
                             <div className='perk'>
                                 <div className='left'>
-                                    <i class="fa-solid fa-desktop icon"></i>
+                                    <i className="fa-solid fa-desktop icon"></i>
                                 </div>
                                 <div>
                                     <div>
@@ -120,7 +120,7 @@ const SpotDetail = () => {
                             </div>
                             <div className='perk'>
                                 <div className='left'>
-                                    <i class="fa-solid fa-door-open icon"></i>
+                                    <i className="fa-solid fa-door-open icon"></i>
                                 </div>
                                 <div >
                                     <div>
@@ -133,7 +133,7 @@ const SpotDetail = () => {
                             </div>
                             <div className='perk'>
                                 <div className='left'>
-                                    <i class="fa-regular fa-calendar icon"></i>
+                                    <i className="fa-regular fa-calendar icon"></i>
                                 </div>
                                 <div>
                                     &nbsp;&nbsp;Free cancellation for 48 hours
@@ -190,7 +190,7 @@ const SpotDetail = () => {
             </div>
             <div className="spotText reviewRating">
                 {avgRating ? <span className="reviewRating">
-                    <i class="fa-solid fa-star reviewRatingStar"></i>
+                    <i className="fa-solid fa-star reviewRatingStar"></i>
                     {avgRating}&nbsp;·&nbsp;
                 </span> : ''}
                 <span className="reviewRating">

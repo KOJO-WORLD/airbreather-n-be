@@ -32,7 +32,7 @@ function LoginForm() {
         <form onSubmit={handleSubmit}>
             {errors[0] ? (<ul className='errors'>
                 <li>
-                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <i className="fa-solid fa-circle-exclamation"></i>
                     {errors[0]}
                 </li>
             </ul>) : ''}

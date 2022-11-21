@@ -45,7 +45,7 @@ const AllSpots = () => {
                                                     {spot.city}, {spot.state}
                                                 </div>
                                                 <div className="spotText right">
-                                                    <i class="fa-solid fa-star"></i>
+                                                    <i className="fa-solid fa-star"></i>
                                                     {spot.avgRating}
                                                 </div>
                                             </div>
@@ -54,7 +54,7 @@ const AllSpots = () => {
                                             </div>
                                             <div className="junkText"> mar 28 - apr 2</div>
                                             <div className="spotText price">
-                                                ${spot.price} night
+                                                <span style={{fontSize: "17px"}}>${spot.price}</span> night
                                             </div>
                                         </div>
                                     </div>
