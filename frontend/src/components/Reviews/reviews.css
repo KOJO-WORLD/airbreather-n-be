@@ -35,6 +35,7 @@
 
 .reviewRating {
     padding-top: 45px;
+    padding-bottom: 45px;
     font-size: 20px;
 }
 
@@ -45,7 +46,7 @@
 .reviewContent {
     font-family: Phantomsans, sans-serif;
     color: rgba(29, 29, 29, 0.845);
-    margin: 40px 0px 40px 0px;
+    margin: -5px 0px 40px 0px;
     font-size: 16px;
 }
 

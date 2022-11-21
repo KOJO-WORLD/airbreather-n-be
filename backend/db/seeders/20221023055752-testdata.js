@@ -219,7 +219,7 @@ module.exports = {
       {
         spotId: 6,
         userId: 1,
-        review: 'Great place to rough house',
+        review: 'Great place to ruff house',
         stars: 4
       }
     ]);
