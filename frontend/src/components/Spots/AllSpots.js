@@ -44,10 +44,12 @@ const AllSpots = () => {
                                                 <div className="spotText">
                                                     {spot.city}, {spot.state}
                                                 </div>
+                                                {spot.avgRating &&
                                                 <div className="spotText right">
                                                     <i className="fa-solid fa-star"></i>
                                                     {spot.avgRating}
                                                 </div>
+                                                }
                                             </div>
                                             <div className="junkText">
                                                 Added 11 weeks ago

@@ -25,8 +25,8 @@ const SpotForm = ({ spot, formType, modal }) => {
     const [city, setCity] = useState(spot.city);
     const [state, setState] = useState(spot.state);
     const [country, setCountry] = useState(spot.country);
-    const [lat, setLatitude] = useState(spot.latitude);
-    const [lng, setLongitude] = useState(spot.longitude);
+    // const [lat, setLatitude] = useState(spot.latitude);
+    // const [lng, setLongitude] = useState(spot.longitude);
     const [description, setDescription] = useState(spot.description);
     const [price, setPrice] = useState(spot.price);
     const [previewImage, setPreviewImage] = useState(spot.previewImage);
@@ -36,8 +36,8 @@ const SpotForm = ({ spot, formType, modal }) => {
     const updateCity = (e) => setCity(e.target.value);
     const updateState = (e) => setState(e.target.value);
     const updateCountry = (e) => setCountry(e.target.value);
-    const updateLatitude = (e) => setLatitude(e.target.value);
-    const updateLongitude = (e) => setLongitude(e.target.value);
+    // const updateLatitude = (e) => setLatitude(e.target.value);
+    // const updateLongitude = (e) => setLongitude(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
     const updatePrice = (e) => setPrice(e.target.value);
     const updatePreviewImage = (e) => setPreviewImage(e.target.value);
@@ -51,8 +51,8 @@ const SpotForm = ({ spot, formType, modal }) => {
             city,
             state,
             country,
-            lat,
-            lng,
+            lat: 1,
+            lng: 1,
             description,
             price,
             previewImage: previewImage,
@@ -125,7 +125,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                         value={country}
                         onChange={updateCountry} />
                 </label>
-                <label className='spotText'>
+                {/* <label className='spotText'>
                     <input
                         required
                         placeholder='latitude'
@@ -142,7 +142,7 @@ const SpotForm = ({ spot, formType, modal }) => {
                         type='number'
                         value={lng}
                         onChange={updateLongitude} />
-                </label>
+                </label> */}
                 <label>
                     <input
                         required
