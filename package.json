@@ -28,5 +28,6 @@
   "bugs": {
     "url": "https://github.com/Trevor-Walton-Moore/API-project/issues"
   },
-  "homepage": "https://github.com/Trevor-Walton-Moore/API-project#readme"
+  "homepage": "https://github.com/Trevor-Walton-Moore/API-project#readme",
+  "devDependencies": {}
 }

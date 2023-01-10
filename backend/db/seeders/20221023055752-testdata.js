@@ -1,6 +1,12 @@
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
+
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     /**
@@ -14,7 +20,10 @@ module.exports = {
     */
 
     // Users /////////////////////////////////////////////////////
-    await queryInterface.bulkInsert('Users', [
+
+    options.tableName = 'Users';
+
+    await queryInterface.bulkInsert(options, [
       {
         username: 'user1',
         email: 'user1@email.com',
@@ -39,7 +48,10 @@ module.exports = {
     ]);
 
     // // Spots /////////////////////////////////////////////////////
-    await queryInterface.bulkInsert('Spots', [
+
+    options.tableName = 'Spots';
+
+    await queryInterface.bulkInsert(options, [
       {
         ownerId: 1,
         address: '123 address St',
@@ -115,7 +127,10 @@ module.exports = {
     ]);
 
     // // SpotImages //////////////////////////////////////////////////////
-    await queryInterface.bulkInsert('SpotImages', [
+
+    options.tableName = 'SpotImages';
+
+    await queryInterface.bulkInsert(options, [
       {
         spotId: 1,
         url: 'https://www.truenorthloghomes.com/wp-content/uploads/2018/03/Front2-min-300x300.jpg',
@@ -149,7 +164,10 @@ module.exports = {
     ]);
 
     // // Reviews //////////////////////////////////////////////////////
-    await queryInterface.bulkInsert('Reviews', [
+
+    options.tableName = 'Reviews';
+
+    await queryInterface.bulkInsert(options, [
       {
         spotId: 1,
         userId: 3,
@@ -225,7 +243,10 @@ module.exports = {
     ]);
 
     // // ReviewImages //////////////////////////////////////////////////////
-    await queryInterface.bulkInsert('ReviewImages', [
+
+    options.tableName = 'ReviewImages';
+
+    await queryInterface.bulkInsert(options, [
       {
         reviewId: 1,
         url: 'review1.com',
@@ -244,7 +265,10 @@ module.exports = {
       }]);
 
     // // Bookings /////////////////////////////////////////////////////
-    await queryInterface.bulkInsert('Bookings', [
+
+    options.tableName = 'Bookings';
+
+    await queryInterface.bulkInsert(options, [
       {
         spotId: 1,
         userId: 1,
@@ -279,11 +303,17 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Bookings', {});
-    await queryInterface.bulkDelete('ReviewImages', {});
-    await queryInterface.bulkDelete('Reviews', {});
-    await queryInterface.bulkDelete('SpotImages', {});
-    await queryInterface.bulkDelete('Spots', {});
-    await queryInterface.bulkDelete('Users', {});
+    options.tableName = 'Bookings';
+    await queryInterface.bulkDelete(options);
+    options.tableName = 'ReviewImages';
+    await queryInterface.bulkDelete(options);
+    options.tableName = 'Reviews';
+    await queryInterface.bulkDelete(options);
+    options.tableName = 'SpotImages';
+    await queryInterface.bulkDelete(options);
+    options.tableName = 'Spots';
+    await queryInterface.bulkDelete(options);
+    options.tableName = 'Users';
+    await queryInterface.bulkDelete(options);
   }
 };
