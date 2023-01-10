@@ -11,7 +11,7 @@ module.exports = {
 
     options.tableName = 'Users';
 
-    return queryInterface.bulkInsert('Users', [
+    return queryInterface.bulkInsert(options, [
       {
         email: 'demo@user.io',
         username: 'Demo-lition',
