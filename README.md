@@ -16,7 +16,7 @@ Technologies used:
 * Redux
 * SQL
 * Postgress
-* Heroku
+* Render
 
 Wiki Links:
 
