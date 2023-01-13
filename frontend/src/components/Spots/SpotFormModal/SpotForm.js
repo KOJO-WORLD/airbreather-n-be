@@ -60,7 +60,7 @@ const SpotForm = ({ spot, formType, modal }) => {
             ownerId: sessionUser.id
         };
 
-        console.log('payload', payload)
+        // console.log('payload', payload)
 
         if (formType === "Add Spot") {
             dispatch(addSpotThunk(payload));
