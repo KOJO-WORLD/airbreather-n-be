@@ -1,0 +1,17 @@
+.reservationsTitle {
+    margin-top: 34px;
+    margin-left: 10px;
+    font-family: sans-serif;
+    font-size: 35px;
+    font-weight: lighter;
+    /* color: rgba(67, 67, 67, 0.872); */
+}
+
+.reservationText {
+    font-family: Phantomsans, sans-serif;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    width: 280;
+    padding-bottom: 2;
+    font-size: 14.5px;
+}

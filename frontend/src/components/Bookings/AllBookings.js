@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { getUserBookingsThunk } from '../../store/bookings';
 // import { writeReviewThunk } from '../../store/reviews';
 
-import "../Spots/Spots.css"
+import '../Spots/Spots.css'
+import './Bookings.css'
 
 // import SpotDetail from './SpotDetail';
 // import AddSpotForm from './AddSpotForm';
@@ -27,48 +28,75 @@ const AllBookings = () => {
         dispatch(getUserBookingsThunk());
     }, [dispatch, sessionUser?.id]);
 
-    // if (!spots) {
-    //     return null;
-    // }
+    // const getDateInfo = (date) => {
+
+    //     const dateObj = new Date(date);
+    //     const dateToStr = dateObj.toDateString();
+    //     const monthStr = dateToStr.slice(3, 7);
+    //     const day = (dateObj.getDate());
+    //     const year = (dateObj.getFullYear());
+    //   }
+
+    const getDay = (date) => {
+        const dateObj = new Date(date);
+        return dateObj.getDate();
+    }
+
+    const getMonthStr = (date) => {
+        const dateObj = new Date(date);
+        const dateToStr = dateObj.toDateString();
+        return dateToStr.slice(3, 7);
+    }
+
+    const getYear = (date) => {
+        const dateObj = new Date(date);
+        return dateObj.getFullYear();
+    }
 
     return (
         <main clasname="main">
             <div>
-                hiiiiiiiiii
-                <div className='spotsContainer'>
-                    {bookings.map((booking) => {
-                        return (
-                            <NavLink key={booking.id} to={`/spots/${booking.spotId}`} className="spotLink">
-                                <div className='spotParent'>
-                                    <img className='prevImg' src={booking?.Spot?.previewImage} alt='preview'></img>
-                                    <div className='textContainer'>
-                                        <div className="spotDetailsList">
-                                            <div>
-                                                <div className="spotText">
-                                                    {booking.Spot.city}, {booking.Spot.state}
-                                                </div>
-                                                {/* {booking.Spot.avgRating &&
+                {bookings ?
+                    <div>
+                        <div className='reservationsTitle'>Reservations</div>
+                        <div className='spotsContainer'>
+                            {bookings.map((booking) => {
+                                return (
+                                    <NavLink key={booking.id} to={`/spots/${booking.spotId}`} className="spotLink">
+                                        <div className='spotParent'>
+                                            <img className='prevImg' src={booking?.Spot?.previewImage} alt='preview'></img>
+                                            <div className='textContainer'>
+                                                <div className="spotDetailsList">
+                                                    <div>
+                                                        <div className="spotText">
+                                                            {booking.Spot.city}, {booking.Spot.state}
+                                                        </div>
+                                                        {/* {booking.Spot.avgRating &&
                                                 <div className="spotText right">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    {booking.Spot.avgRating}
+                                                <i className="fa-solid fa-star"></i>
+                                                {booking.Spot.avgRating}
                                                 </div>
-                                                } */}
+                                            } */}
+                                                    </div>
+                                                    <div className="reservationText">
+                                                        {`${getMonthStr(booking.startDate)}
+                                                    ${getDay(booking.startDate)}
+                                                    ${getYear(booking.startDate)} -
+                                                    ${getMonthStr(booking.endDate)}
+                                                    ${getDay(booking.endDate)}
+                                                    ${getYear(booking.endDate)}`}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="junkText">
-                                                Reservation:
-                                            </div>
-                                            <div className="junkText"> Start Date {`${booking.startDate}`}</div>
-                                            <div className="junkText"> End Date {`${booking.endDate}`}</div>
-                                            {/* <div className="spotText price">
-                                                <span style={{fontSize: "17px"}}>${booking.Spot.price}</span> night
-                                            </div> */}
                                         </div>
-                                    </div>
-                                </div>
-                            </NavLink>
-                        );
-                    })}
-                </div>
+                                    </NavLink>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    :
+                    <div>no bookings</div>
+                }
             </div>
         </main>
     );
