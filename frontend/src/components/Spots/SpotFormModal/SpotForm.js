@@ -45,6 +45,10 @@ const SpotForm = ({ spot, formType, modal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (!sessionUser) {
+            return alert('You must be logged in to add a spot!')
+        }
+
         const payload = {
             name,
             address,

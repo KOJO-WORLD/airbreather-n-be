@@ -14,8 +14,9 @@ Technologies used:
 * Express.js
 * React
 * Redux
+* SQL
 * Postgress
-* Heroku
+* Render
 
 Wiki Links:
 

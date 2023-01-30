@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Modal } from '../../../context/Modal';
 import AddSpotForm from '../AddSpotForm';
 import '../../button.css';
