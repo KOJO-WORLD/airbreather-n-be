@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import { login } from '../../store/session';
 import './Navigation.css';
@@ -43,6 +44,12 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         <div className='dropDownLoggedIn'>
           <div className="credential">{user.username}</div>
           <div className="credential">{user.email}</div>
+          <div className="divider"/>
+          <div>
+          <NavLink className='logSignDemoButton' to='reservations'>
+              Reservations
+            </NavLink>
+          </div>
           <div className="divider"/>
           <div>
             <button className='logSignDemoButton' onClick={logout}>
