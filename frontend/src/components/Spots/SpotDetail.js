@@ -6,6 +6,7 @@ import { deleteSpotThunk, getSpotDetailThunk } from '../../store/spots';
 // import EditSpotForm from './EditSpotForm';
 import GetSpotReviews from '../Reviews/GetSpotReviews';
 import WriteReviewForm from '../Reviews/WriteReviewForm';
+import BookingForm from '../Bookings/BookingForm';
 
 import '../button.css';
 import '../Reviews/reviews.css'
@@ -144,6 +145,9 @@ const SpotDetail = () => {
                         <div className='line'></div>
                         <p className='spotInfo'>{spot.description}</p>
                         <div className='line'></div>
+                    </div>
+                    <div>
+                        <BookingForm/>
                     </div>
                 </div>
                 {

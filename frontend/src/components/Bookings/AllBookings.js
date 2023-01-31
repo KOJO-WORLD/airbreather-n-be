@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getUserBookingsThunk } from '../../store/bookings';
+import { getUserBookingsThunk, deleteBookingThunk } from '../../store/bookings';
 // import { writeReviewThunk } from '../../store/reviews';
 
 import '../Spots/Spots.css'
@@ -15,27 +15,23 @@ const AllBookings = () => {
 
     const sessionUser = useSelector(state => state.session.user);
     const bookings = useSelector(state => {
-        if (!state.bookings.bookingsArr) return null;
-        return state.bookings.bookingsArr.map((bookingObj) => bookingObj);
+        if (!state.bookings?.bookingsArr) return null;
+        return state.bookings?.bookingsArr.map((bookingObj) => bookingObj);
     });
 
+    // const [bookings, setBookings] = useState('')
+    // console.log('bookingsState', bookingsSate)
     console.log('bookings', bookings)
-
-
-    // const reviews = useSelector(state => state.reviews.spotReviewsArr);
 
     useEffect(() => {
         dispatch(getUserBookingsThunk());
     }, [dispatch, sessionUser?.id]);
 
-    // const getDateInfo = (date) => {
-
-    //     const dateObj = new Date(date);
-    //     const dateToStr = dateObj.toDateString();
-    //     const monthStr = dateToStr.slice(3, 7);
-    //     const day = (dateObj.getDate());
-    //     const year = (dateObj.getFullYear());
-    //   }
+    // useEffect(() => {
+    //     if (bookingsSate?.length > 0) {
+    //         setBookings(bookingsSate)
+    //     }
+    // }, [bookings])
 
     const getDay = (date) => {
         const dateObj = new Date(date);
@@ -53,43 +49,57 @@ const AllBookings = () => {
         return dateObj.getFullYear();
     }
 
+    const handleDeleteBooking = (bookingId) => {
+        dispatch(deleteBookingThunk(bookingId))
+    }
+
     return (
         <main clasname="main">
             <div>
-                {bookings ?
+                {bookings?.length ?
                     <div>
                         <div className='reservationsTitle'>Reservations</div>
                         <div className='spotsContainer'>
                             {bookings.map((booking) => {
                                 return (
-                                    <NavLink key={booking.id} to={`/spots/${booking.spotId}`} className="spotLink">
-                                        <div className='spotParent'>
-                                            <img className='prevImg' src={booking?.Spot?.previewImage} alt='preview'></img>
-                                            <div className='textContainer'>
-                                                <div className="spotDetailsList">
-                                                    <div>
-                                                        <div className="spotText">
-                                                            {booking.Spot.city}, {booking.Spot.state}
-                                                        </div>
-                                                        {/* {booking.Spot.avgRating &&
+                                    <div>
+
+                                        <NavLink key={booking.id} to={`/spots/${booking.spotId}`} className="spotLink">
+                                            <div className='spotParent'>
+                                                <img className='prevImg' src={booking?.Spot?.previewImage} alt='preview'></img>
+                                                <div className='textContainer'>
+                                                    <div className="spotDetailsList">
+                                                        <div>
+                                                            <div className="bookingSpotName">
+                                                                {booking.Spot.name}
+                                                            </div>
+                                                            <div className="spotText">
+                                                                {booking.Spot.city}, {booking.Spot.state}
+                                                            </div>
+                                                            {/* {booking.Spot.avgRating &&
                                                 <div className="spotText right">
                                                 <i className="fa-solid fa-star"></i>
                                                 {booking.Spot.avgRating}
                                                 </div>
                                             } */}
-                                                    </div>
-                                                    <div className="reservationText">
-                                                        {`${getMonthStr(booking.startDate)}
+                                                        </div>
+                                                        <div className="reservationText">
+                                                            {`${getMonthStr(booking.startDate)}
                                                     ${getDay(booking.startDate)}
                                                     ${getYear(booking.startDate)} -
                                                     ${getMonthStr(booking.endDate)}
                                                     ${getDay(booking.endDate)}
                                                     ${getYear(booking.endDate)}`}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </NavLink>
+                                        </NavLink>
+                                        <button className='addHomeButton'
+                                            onClick={() => handleDeleteBooking(booking.id)}>
+                                            Cancel Reservation
+                                        </button>
+                                    </div>
                                 );
                             })}
                         </div>

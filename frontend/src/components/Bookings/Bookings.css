@@ -7,6 +7,15 @@
     /* color: rgba(67, 67, 67, 0.872); */
 }
 
+.bookingSpotName {
+    font-family: Phantomsans, sans-serif;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    font-size: 20px;
+    width: 280;
+    padding-bottom: 2;
+}
+
 .reservationText {
     font-family: Phantomsans, sans-serif;
     color: rgb(0, 0, 0);

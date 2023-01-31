@@ -46,7 +46,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
           <div className="credential">{user.email}</div>
           <div className="divider"/>
           <div>
-          <NavLink className='logSignDemoButton' to='reservations'>
+          <NavLink className='logSignDemoButton' to='/reservations'>
               Reservations
             </NavLink>
           </div>
