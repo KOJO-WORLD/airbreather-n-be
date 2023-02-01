@@ -35,8 +35,7 @@ const BookingForm = () => {
             startDate,
             endDate
         };
-        dispatch(createBookingThunk(payload, spotId));
-        history.push(`/spots/${spotId}`);
+        dispatch(createBookingThunk(payload));
     };
 
     return (
@@ -44,6 +43,7 @@ const BookingForm = () => {
             <div className='container addSpot'>
 
                 <label>
+                    check-in
                     <input
                         required
                         placeholder='check-in'
@@ -53,6 +53,7 @@ const BookingForm = () => {
                         onChange={updateStartDate} />
                 </label>
                 <label>
+                check-out
                     <input
                         required
                         placeholder='check-out'

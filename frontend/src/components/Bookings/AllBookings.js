@@ -1,19 +1,25 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { getUserBookingsThunk, deleteBookingThunk } from '../../store/bookings';
-// import { writeReviewThunk } from '../../store/reviews';
+import { NavLink, useHistory } from 'react-router-dom';
+import { getUserBookingsThunk, deleteBookingThunk, editBookingThunk } from '../../store/bookings';
+import { Modal } from '../../context/Modal';
+import EditBookingForm from './EditBookingModal/EditBookingForm';
 
 import '../Spots/Spots.css'
 import './Bookings.css'
-
-// import SpotDetail from './SpotDetail';
-// import AddSpotForm from './AddSpotForm';
+import '../Navigation/Navigation.css'
 
 const AllBookings = () => {
     const dispatch = useDispatch();
 
+    const [showModal, setShowModal] = useState(false);
+    const [bookingIdState, setBookingIdState] = useState('');
+
+    const history = useHistory();
+
     const sessionUser = useSelector(state => state.session.user);
+
+    if (!sessionUser) history.push('/')
     const bookings = useSelector(state => {
         if (!state.bookings?.bookingsArr) return null;
         return state.bookings?.bookingsArr.map((bookingObj) => bookingObj);
@@ -21,7 +27,7 @@ const AllBookings = () => {
 
     // const [bookings, setBookings] = useState('')
     // console.log('bookingsState', bookingsSate)
-    console.log('bookings', bookings)
+    // console.log('bookings', bookings)
 
     useEffect(() => {
         dispatch(getUserBookingsThunk());
@@ -53,6 +59,11 @@ const AllBookings = () => {
         dispatch(deleteBookingThunk(bookingId))
     }
 
+    const handleEditBookingModal = (bookingId) => {
+        setBookingIdState(bookingId);
+        setShowModal(true);
+    }
+
     return (
         <main clasname="main">
             <div>
@@ -62,7 +73,7 @@ const AllBookings = () => {
                         <div className='spotsContainer'>
                             {bookings.map((booking) => {
                                 return (
-                                    <div>
+                                    <div key={booking.id}>
 
                                         <NavLink key={booking.id} to={`/spots/${booking.spotId}`} className="spotLink">
                                             <div className='spotParent'>
@@ -95,6 +106,17 @@ const AllBookings = () => {
                                                 </div>
                                             </div>
                                         </NavLink>
+                                        <button className='addHomeButton'
+                                            onClick={() => {handleEditBookingModal(booking.id)}}>
+                                            Edit Reservation
+                                        </button>
+
+                                        {showModal && <Modal onClose={() => setShowModal(false)}>
+                                            {<EditBookingForm setShowModal={setShowModal}
+                                            bookingId={bookingIdState}
+                                            />}
+                                        </Modal>}
+
                                         <button className='addHomeButton'
                                             onClick={() => handleDeleteBooking(booking.id)}>
                                             Cancel Reservation

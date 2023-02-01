@@ -23,27 +23,6 @@ function Navigation({ isLoaded }) {
 
   const sessionUser = useSelector(state => state.session.user);
 
-  // let sessionLinks;
-  // if (sessionUser) {
-  //   sessionLinks = (
-  //     <div className='bar-right'>
-  //       <SpotFormModal />
-  //       <ProfileButton user={sessionUser} />
-  //     </div>
-  //   );
-  // } else {
-  //   sessionLinks = (
-  //     <>
-  //       <LoginForm />
-  //       <SignupForm />
-  //       <button className='demo' onClick={(e) => {
-  //         e.preventDefault();
-  //         dispatch(login({ credential, password }));
-  //       }}>Demo</button>
-  //     </>
-  //   );
-  // }
-
   return (
     <div className='bar'>
       <NavLink exact to="/" className="nvlnk">

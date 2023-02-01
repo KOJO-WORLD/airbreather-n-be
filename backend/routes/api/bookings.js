@@ -126,7 +126,14 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
             })
         }
     }
+
+    const spot = await Spot.findByPk(findBooking.spotId)
+
+    console.log('spot in edit booking route: ', spot)
+
     const editBooking = await findBooking.update({ startDate, endDate })
+
+    editBooking.dataValues.Spot = spot
 
     res.json(editBooking)
 });

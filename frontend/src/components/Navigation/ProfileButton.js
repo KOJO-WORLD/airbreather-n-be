@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import { login } from '../../store/session';
 import './Navigation.css';
 
 function ProfileButton({ user, setLogin, setShowModal }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -29,6 +30,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/')
   };
 
   const credential = 'Demo-lition'
@@ -44,13 +46,15 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         <div className='dropDownLoggedIn'>
           <div className="credential">{user.username}</div>
           <div className="credential">{user.email}</div>
-          <div className="divider"/>
+          <div className="divider" />
           <div>
-          <NavLink className='logSignDemoButton' to='/reservations'>
-              Reservations
+            <NavLink to='/reservations'>
+              <button className='logSignDemoButton'>
+                Reservations
+              </button>
             </NavLink>
           </div>
-          <div className="divider"/>
+          <div className="divider" />
           <div>
             <button className='logSignDemoButton' onClick={logout}>
               Log Out
@@ -75,7 +79,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
               Log in
             </button>
           </div>
-          <div className="divider"/>
+          <div className="divider" />
           <div>
             <button className='logSignDemoButton' onClick={(e) => {
               e.preventDefault();

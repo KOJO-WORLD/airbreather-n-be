@@ -415,7 +415,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
             newBooking.dataValues.Spot = checkSpot
 
-            // console.log('``~~~~~~~~~~~~~~~~~```~~~~~~````~~~ new Booking', newBooking.dataValues)
+            // console.log('``~~~~~~~~~~~~~~~~~```~~~~~~````~~~ new Booking spot', checkSpot)
 
             res.json(newBooking);
         }

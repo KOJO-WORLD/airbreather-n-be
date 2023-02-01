@@ -69,7 +69,7 @@ export const getAllSpotsThunk = () => async dispatch => {
 };
 
 export const getSpotDetailThunk = (spotId) => async dispatch => {
-  console.log('thunkung false spot??', spotId)
+  // console.log('thunkung false spot??', spotId)
   const response = await fetch(`/api/spots/${spotId}`)
 
   if (response.ok) {
