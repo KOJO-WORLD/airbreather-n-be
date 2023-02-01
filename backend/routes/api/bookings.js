@@ -80,6 +80,14 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
         });
     }
 
+    if (Date.parse(startDate) < currDate || Date.parse(endDate) < currDate) {
+        res.status(403);
+        return res.json({
+            "message": "Reservation must be made for future dates",
+            "statusCode": 403
+        });
+    }
+
     const checkBookings = await Booking.findAll({
         where: {
             spotId: findBooking.spotId
@@ -144,7 +152,7 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
         Date.parse(booking.endDate) >= currDate) {
         res.status(403)
         return res.json({
-            "message": "Reservations that have been started can't be deleted",
+            "message": "Reservations that have started can't be deleted",
             "statusCode": 403
         })
     }

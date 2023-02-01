@@ -11,11 +11,12 @@ import '../Navigation/Navigation.css'
 
 const AllBookings = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [showModal, setShowModal] = useState(false);
     const [bookingIdState, setBookingIdState] = useState('');
+    const [errors, setErrors] = useState([]);
 
-    const history = useHistory();
 
     const sessionUser = useSelector(state => state.session.user);
 
@@ -56,7 +57,15 @@ const AllBookings = () => {
     }
 
     const handleDeleteBooking = (bookingId) => {
-        dispatch(deleteBookingThunk(bookingId))
+        setErrors([]);
+        dispatch(deleteBookingThunk(bookingId)).then()
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data) {
+                    setErrors(Object.values(data));
+                    // setTimeout(() => setErrors(''), 5000)
+                }
+            });
     }
 
     const handleEditBookingModal = (bookingId) => {
@@ -106,17 +115,22 @@ const AllBookings = () => {
                                                 </div>
                                             </div>
                                         </NavLink>
+                                        {errors[0] ? (<ul className='deleteBookingErrors'>
+                                            <li>
+                                                <i className="fa-solid fa-circle-exclamation"></i>
+                                                {errors[0]}
+                                            </li>
+                                        </ul>) : ''}
                                         <button className='addHomeButton'
-                                            onClick={() => {handleEditBookingModal(booking.id)}}>
+                                            onClick={() => { handleEditBookingModal(booking.id) }}>
                                             Edit Reservation
                                         </button>
 
                                         {showModal && <Modal onClose={() => setShowModal(false)}>
                                             {<EditBookingForm setShowModal={setShowModal}
-                                            bookingId={bookingIdState}
+                                                bookingId={bookingIdState}
                                             />}
                                         </Modal>}
-
                                         <button className='addHomeButton'
                                             onClick={() => handleDeleteBooking(booking.id)}>
                                             Cancel Reservation
