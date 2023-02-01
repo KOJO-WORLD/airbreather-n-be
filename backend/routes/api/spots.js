@@ -361,6 +361,15 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
     const { startDate, endDate } = req.body;
 
+    const currDate = new Date
+    if (Date.parse(startDate) < currDate || Date.parse(endDate) < currDate) {
+        res.status(403);
+        return res.json({
+            "message": "Reservation must be made for future dates",
+            "statusCode": 403
+        });
+    }
+
     // console.log('****************************************************** startDate and endDate: ', startDate, endDate)
 
     const checkBookings = await Booking.findAll({
@@ -376,7 +385,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
             res.status(403);
             return res.json({
-                "message": "Sorry, this spot is already booked for the specified dates",
+                "message": "Sorry, this reservation conflicts with an existing reservation",
                 "statusCode": 403,
                 "errors": {
                     "startDate": "Start date conflicts with an existing booking",
@@ -399,10 +408,10 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         if (startDate.valueOf() >= endDate.valueOf()) {
             res.status(400);
             return res.json({
-                "message": "Validation error",
+                "message": "Check-out cannot come before check-in",
                 "statusCode": 400,
                 "errors": {
-                    "endDate": "endDate cannot be on or before startDate"
+                    "endDate": "Check-out cannot come before check-in"
                 }
             })
         } else {

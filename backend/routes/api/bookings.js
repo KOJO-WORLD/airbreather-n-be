@@ -9,26 +9,6 @@ const { Spot, SpotImage, Booking, sequelize } = require('../../db/models');
 
 const router = express.Router();
 
-// const validateSignup = [
-//     check('email')
-//         .exists({ checkFalsy: true })
-//         .isEmail()
-//         .withMessage('Please provide a valid email.'),
-//     check('username')
-//         .exists({ checkFalsy: true })
-//         .isLength({ min: 4 })
-//         .withMessage('Please provide a username with at least 4 characters.'),
-//     check('username')
-//         .not()
-//         .isEmail()
-//         .withMessage('Username cannot be an email.'),
-//     check('password')
-//         .exists({ checkFalsy: true })
-//         .isLength({ min: 6 })
-//         .withMessage('Password must be 6 characters or more.'),
-//     handleValidationErrors
-// ];
-
 router.get('/current', requireAuth, async (req, res) => {
 
     const userId = req.user.id
@@ -76,11 +56,8 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     if (startDate.valueOf() > endDate.valueOf()) {
         res.status(400)
         return res.json({
-            "message": "Validation error",
-            "statusCode": 400,
-            "errors": {
-                "endDate": "endDate cannot come before startDate"
-            }
+            "message": "Check-out cannot come before check-in",
+            "statusCode": 400
         })
     }
 
@@ -89,7 +66,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     if (!findBooking) {
         res.status(404);
         return res.json({
-            "message": "Booking couldn't be found",
+            "message": "Reservation couldn't be found",
             "statusCode": 404
         });
     }
@@ -98,7 +75,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     if (Date.parse(findBooking.endDate) < currDate) {
         res.status(403);
         return res.json({
-            "message": "Past bookings can't be modified",
+            "message": "Past reservations can't be modified",
             "statusCode": 403
         });
     }
@@ -117,7 +94,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
 
             res.status(403);
             return res.json({
-                "message": "Sorry, this spot is already booked for the specified dates",
+                "message": "Sorry, this reservation conflicts with an existing reservation",
                 "statusCode": 403,
                 "errors": {
                     "startDate": "Start date conflicts with an existing booking",
@@ -156,7 +133,7 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
     if (!booking) {
         res.status(404)
         return res.json({
-            "message": "Booking couldn't be found",
+            "message": "Reservation couldn't be found",
             "statusCode": 404
         });
     }
@@ -167,7 +144,7 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
         Date.parse(booking.endDate) >= currDate) {
         res.status(403)
         return res.json({
-            "message": "Bookings that have been started can't be deleted",
+            "message": "Reservations that have been started can't be deleted",
             "statusCode": 403
         })
     }
