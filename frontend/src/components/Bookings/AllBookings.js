@@ -63,7 +63,7 @@ const AllBookings = () => {
                 const data = await res.json();
                 if (data) {
                     setErrors(Object.values(data));
-                    // setTimeout(() => setErrors(''), 5000)
+                    setTimeout(() => setErrors(''), 5000)
                 }
             });
     }
@@ -75,7 +75,7 @@ const AllBookings = () => {
 
     return (
         <main clasname="main">
-            <div>
+            <div className='bookingContainer'>
                 {bookings?.length ?
                     <div>
                         <div className='reservationsTitle'>Reservations</div>
@@ -120,21 +120,25 @@ const AllBookings = () => {
                                                 <i className="fa-solid fa-circle-exclamation"></i>
                                                 {errors[0]}
                                             </li>
-                                        </ul>) : ''}
-                                        <button className='addHomeButton'
-                                            onClick={() => { handleEditBookingModal(booking.id) }}>
-                                            Edit Reservation
-                                        </button>
+                                        </ul>) : <li className='errorPlaceholder'>
+                                                <i className="fa-solid fa-circle-exclamation deleteBookingErrors"></i>
+                                            </li>}
+                                        <div className='bookingButtons'>
+                                            <button className='addHomeButton'
+                                                onClick={() => { handleEditBookingModal(booking.id) }}>
+                                                Edit Reservation
+                                            </button>
 
-                                        {showModal && <Modal onClose={() => setShowModal(false)}>
-                                            {<EditBookingForm setShowModal={setShowModal}
-                                                bookingId={bookingIdState}
-                                            />}
-                                        </Modal>}
-                                        <button className='addHomeButton'
-                                            onClick={() => handleDeleteBooking(booking.id)}>
-                                            Cancel Reservation
-                                        </button>
+                                            {showModal && <Modal onClose={() => setShowModal(false)}>
+                                                {<EditBookingForm setShowModal={setShowModal}
+                                                    bookingId={bookingIdState}
+                                                />}
+                                            </Modal>}
+                                            <button className='addHomeButton'
+                                                onClick={() => handleDeleteBooking(booking.id)}>
+                                                Cancel Reservation
+                                            </button>
+                                        </div>
                                     </div>
                                 );
                             })}
