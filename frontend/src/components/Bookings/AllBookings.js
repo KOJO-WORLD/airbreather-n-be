@@ -96,12 +96,6 @@ const AllBookings = () => {
                                                             <div className="spotText">
                                                                 {booking.Spot.city}, {booking.Spot.state}
                                                             </div>
-                                                            {/* {booking.Spot.avgRating &&
-                                                <div className="spotText right">
-                                                <i className="fa-solid fa-star"></i>
-                                                {booking.Spot.avgRating}
-                                                </div>
-                                            } */}
                                                         </div>
                                                         <div className="reservationText">
                                                             {`${getMonthStr(booking.startDate)}

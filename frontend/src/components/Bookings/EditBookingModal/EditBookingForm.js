@@ -43,33 +43,47 @@ function EditBookingForm({ setShowModal, bookingId }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            {errors[0] ? (<ul className='errors'>
-                <li>
-                    <i className="fa-solid fa-circle-exclamation"></i>
-                    {errors[0]}
-                </li>
-            </ul>) : ''}
-            <label>
-                    <input
-                        required
-                        placeholder='check-in'
-                        className="input top"
-                        type='date'
-                        value={startDate}
-                        onChange={updateStartDate} />
-                </label>
-                <label>
-                    <input
-                        required
-                        placeholder='check-out'
-                        className="input top"
-                        type='date'
-                        value={endDate}
-                        onChange={updateEndDate} />
-                </label>
-                <button className='submitForm' type="submit">
-                    <span>Create Reservation</span>
+            <div className='editBookingModal'>
+                <div className='editBookingDates'>
+                    {errors[0] ? (<ul className='editBookingErrors'>
+                        <li>
+                            <i className="fa-solid fa-circle-exclamation"></i>
+                            {errors[0]}
+                        </li>
+                    </ul>) : <li className='editBookingErrorPlaceholder'>
+                        <i className="fa-solid fa-circle-exclamation deleteBookingErrors"></i>
+                    </li>}
+                    <div className='editBookingInputs'>
+                        <label>
+                            <div className='editBookingLabel'>
+                                Check-in
+                            </div>
+                            <input
+                                required
+                                placeholder='check-in'
+                                className="editInputLeft"
+                                type='date'
+                                value={startDate}
+                                onChange={updateStartDate} />
+                        </label>
+                        <label>
+                            <div className='editBookingLabel'>
+                                Check-out
+                            </div>
+                            <input
+                                required
+                                placeholder='check-out'
+                                className="editInputRight"
+                                type='date'
+                                value={endDate}
+                                onChange={updateEndDate} />
+                        </label>
+                    </div>
+                </div>
+                <button className='submitEditBooking' type="submit">
+                    <span>Submit</span>
                 </button>
+            </div>
         </form >
     );
 }

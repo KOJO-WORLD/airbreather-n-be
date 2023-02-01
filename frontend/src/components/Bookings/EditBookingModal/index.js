@@ -15,9 +15,6 @@ function EditBookingModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <div className='signUpLogInTop'>
-            Log in
-          </div>
           <EditBookingForm />
         </Modal>
       )}

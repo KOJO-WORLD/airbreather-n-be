@@ -47,8 +47,95 @@
     font-size: 12.3px;
 }
 
+.editBookingErrors {
+    /* position: relative; */
+    /* bottom: -47px; */
+    /* padding-top: 20px; */
+    padding: 0;
+    margin: -34px auto 10px auto;
+    /* margin: 0; */
+    /* width: 280px; */
+    list-style-type: none;
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(193, 53, 21);
+    font-size: 16px;
+}
+
 .errorPlaceholder {
     visibility: hidden;
     margin-bottom: -10px;
     height: 22px;
+}
+
+.editBookingErrorPlaceholder {
+    visibility: hidden;
+    margin-bottom: -20px;
+    height: 22px;
+}
+
+.editBookingModal {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.editBookingDates {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.editBookingInputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.editBookingLabel {
+    font-family: sans-serif;
+    margin-left: 14px;
+}
+
+.editInputLeft {
+    border-width: 1px;
+    border-color: rgba(104, 104, 104, 0.388);
+    height: 55px;
+    width: 100%;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.editInputRight {
+    border-width: 1px;
+    border-color: rgba(104, 104, 104, 0.388);
+    height: 55px;
+    width: 100%;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.editInputLeft:focus {
+    outline-color: rgb(21, 21, 21);
+}
+
+.editInputRight:focus {
+    outline-color: rgb(21, 21, 21);
+}
+
+.submitEditBooking {
+    background-image: linear-gradient(50deg, rgb(230, 30, 77), rgb(215, 4, 102), rgb(189, 30, 89));
+    color: white;
+    width: 339px;
+    height: 48px;
+    border-radius: 8px;
+    font-family: Phantomsans, sans-serif;
+    font-size: medium;
+    margin: 16px auto 40px auto;
 }
