@@ -53,26 +53,26 @@ const BookingForm = () => {
                 </li>
             </ul>) : ''}
             <div className='container addSpot'>
-                <label>
-                    check-in
-                    <input
-                        required
-                        placeholder='check-in'
-                        className="input top"
-                        type='date'
-                        value={startDate}
-                        onChange={updateStartDate} />
-                </label>
-                <label>
-                    check-out
-                    <input
-                        required
-                        placeholder='check-out'
-                        className="input top"
-                        type='date'
-                        value={endDate}
-                        onChange={updateEndDate} />
-                </label>
+                <div className='createBooking'>
+                    <label className='createBookingLabel'>
+                        check-in
+                        <input
+                            className="createInputLeft"
+                            required
+                            type='date'
+                            value={startDate}
+                            onChange={updateStartDate} />
+                    </label>
+                    <label className='createBookingLabel'>
+                        check-out
+                        <input
+                            className="createInputRight"
+                            required
+                            type='date'
+                            value={endDate}
+                            onChange={updateEndDate} />
+                    </label>
+                </div>
                 <button className='submitForm' type="submit">
                     <span>Create Reservation</span>
                 </button>

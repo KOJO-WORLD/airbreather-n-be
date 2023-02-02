@@ -59,9 +59,8 @@ function EditBookingForm({ setShowModal, bookingId }) {
                                 Check-in
                             </div>
                             <input
-                                required
-                                placeholder='check-in'
                                 className="editInputLeft"
+                                required
                                 type='date'
                                 value={startDate}
                                 onChange={updateStartDate} />
@@ -71,9 +70,8 @@ function EditBookingForm({ setShowModal, bookingId }) {
                                 Check-out
                             </div>
                             <input
-                                required
-                                placeholder='check-out'
                                 className="editInputRight"
+                                required
                                 type='date'
                                 value={endDate}
                                 onChange={updateEndDate} />

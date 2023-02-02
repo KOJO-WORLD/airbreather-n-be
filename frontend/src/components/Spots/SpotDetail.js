@@ -149,6 +149,7 @@ const SpotDetail = () => {
                     <div>
                         <BookingForm/>
                     </div>
+                    <div className="line"></div>
                 </div>
                 {
                     ((sessionUser) &&

@@ -97,6 +97,11 @@
     margin-left: 14px;
 }
 
+.createBookingLabel {
+    font-family: sans-serif;
+    width: 100%;
+}
+
 .editInputLeft {
     border-width: 1px;
     border-color: rgba(104, 104, 104, 0.388);
@@ -121,11 +126,43 @@
     border-bottom-right-radius: 8px;
 }
 
+.createInputLeft {
+    border-width: 1px;
+    border-color: rgba(104, 104, 104, 0.388);
+    height: 55px;
+    width: 100%;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.createInputRight {
+    border-width: 1px;
+    border-color: rgba(104, 104, 104, 0.388);
+    height: 55px;
+    width: 100%;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 .editInputLeft:focus {
     outline-color: rgb(21, 21, 21);
 }
 
 .editInputRight:focus {
+    outline-color: rgb(21, 21, 21);
+}
+
+.createInputLeft:focus {
+    outline-color: rgb(21, 21, 21);
+}
+
+.createInputRight:focus {
     outline-color: rgb(21, 21, 21);
 }
 
@@ -138,4 +175,10 @@
     font-family: Phantomsans, sans-serif;
     font-size: medium;
     margin: 16px auto 40px auto;
+}
+
+.createBooking {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
