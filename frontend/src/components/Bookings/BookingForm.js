@@ -46,12 +46,15 @@ const BookingForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className='spotForm'>
-            {errors[0] ? (<ul className='errors'>
+            <div className='reserveTitle'> Reserve</div>
+            {errors[0] ? (<ul className='createBookingErrors'>
                 <li>
                     <i className="fa-solid fa-circle-exclamation"></i>
                     {errors[0]}
                 </li>
-            </ul>) : ''}
+            </ul>) : <li className='createBookingErrorPlaceholder'>
+                        <i className="fa-solid fa-circle-exclamation deleteBookingErrors"></i>
+                    </li>}
             <div className='container addSpot'>
                 <div className='createBooking'>
                     <label className='createBookingLabel'>
