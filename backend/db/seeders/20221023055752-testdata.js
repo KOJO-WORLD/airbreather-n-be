@@ -249,19 +249,19 @@ module.exports = {
     await queryInterface.bulkInsert(options, [
       {
         reviewId: 1,
-        url: 'review1.com',
+        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675393465/AirBreathe%27n%27Be/reviewImages/attractive-elderly-man-taking-a-selfie-thumb-up-everything-is-cool-free-photo_bljokg.jpg',
       },
       {
         reviewId: 2,
-        url: 'review2.com',
+        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675393293/AirBreathe%27n%27Be/reviewImages/depositphotos_32568703-stock-photo-keep-up-the-great-work_qlffjt.webp',
       },
       {
         reviewId: 3,
-        url: 'review3.com',
+        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675393293/AirBreathe%27n%27Be/reviewImages/397-3977706_3-istock-man-with-thumbs-up-png_ewldne.jpg',
       },
       {
         reviewId: 4,
-        url: 'review4.com',
+        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675393293/AirBreathe%27n%27Be/reviewImages/person-2385787_1280_bvd88e.jpg',
       }]);
 
     // // Bookings /////////////////////////////////////////////////////
