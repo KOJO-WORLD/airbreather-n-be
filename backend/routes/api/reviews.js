@@ -9,18 +9,6 @@ const { Spot, User, SpotImage, Review, ReviewImage, Booking, sequelize } = requi
 
 const router = express.Router();
 
-
-// const validateLogin = [
-//     check('credential')
-//         .exists({ checkFalsy: true })
-//         .notEmpty()
-//         .withMessage('Please provide a valid email or username.'),
-//     check('password')
-//         .exists({ checkFalsy: true })
-//         .withMessage('Please provide a password.'),
-//     handleValidationErrors
-// ];
-
 // Add an Image to a Review based on the Review's id
 router.post('/:reviewId/images', async (req, res) => {
 

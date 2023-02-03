@@ -257,7 +257,7 @@ module.exports = {
       },
       {
         reviewId: 3,
-        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675393293/AirBreathe%27n%27Be/reviewImages/397-3977706_3-istock-man-with-thumbs-up-png_ewldne.jpg',
+        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675402514/AirBreathe%27n%27Be/reviewImages/360_F_342851651_BV9SYWnoTPSu3kq6e82zG7H8eEt20wd1_nda74b.jpg',
       },
       {
         reviewId: 4,

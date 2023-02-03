@@ -55,29 +55,42 @@ const GetSpotReviews = () => {
                     return (
                         <div key={review.id}>
                             <div className="reviewContent">
-                                <div className="iconUserDate">
-                                    <span><i className="fa-solid fa-circle-user reviewUserIcon"></i></span>
+                                <div className='reviewFlex'>
+                                    <div>
 
-                                    <span className='userDate'>
-                                        <div className="reviewUser">
-                                            User {review.userId}
+                                        <div className="iconUserDate">
+                                            <span><i className="fa-solid fa-circle-user reviewUserIcon"></i></span>
+
+                                            <span className='userDate'>
+                                                <div className="reviewUser">
+                                                    User {review.userId}
+                                                </div>
+                                                <div className="reviewDate">{
+                                                    getMonth(review.createdAt)}
+                                                    /{getDay(review.createdAt)}
+                                                    /{getYear(review.createdAt)}
+                                                </div>
+                                            </span>
                                         </div>
-                                        <div className="reviewDate">{
-                                            getMonth(review.createdAt)}
-                                            /{getDay(review.createdAt)}
-                                            /{getYear(review.createdAt)}
-                                        </div>
-                                    </span>
+                                        <div className='reviewReview'>{review.review}</div>
+                                    {((sessionUser) && (review.userId === sessionUser.id)) && (
+                                        <button onClick={() => {
+                                            dispatch(deleteReviewThunk(review.id));
+                                            history.push(`/spots/${spotId}`);
+                                        }} className="writeEditDeleteButton deleteReviewButton">
+                                            Delete review
+                                        </button>
+                                    )}
+                                    </div>
+                                    {review.ReviewImages &&
+                                        Object.values(review.ReviewImages.map(reviewImage => {
+                                            return <div key={reviewImage.id}
+                                                className='reviewImageContainer'>
+                                                <img src={reviewImage.url} className='spotImage' alt='review' />
+                                            </div>
+                                        }))
+                                    }
                                 </div>
-                                <div className='reviewReview'>{review.review}</div>
-                            {((sessionUser) && (review.userId === sessionUser.id)) && (
-                                <button onClick={() => {
-                                    dispatch(deleteReviewThunk(review.id));
-                                    history.push(`/spots/${spotId}`);
-                                }} className="writeEditDeleteButton deleteReviewButton">
-                                        Delete review
-                                </button>
-                            )}
                             </div>
                         </div>
                     );

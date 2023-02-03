@@ -20,21 +20,23 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
 
     const [review, setReview] = useState(writeReview.review);
     const [stars, setStars] = useState(writeReview.stars);
+    const [reviewImage, setReviewImage] = useState('');
 
     const updateReview = (e) => setReview(e.target.value);
     const updateStars = (e) => setStars(e.target.value);
+    const updateReviewImage = (e) => setReviewImage(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const payload = {
+        const review = {
             spotId: spotId.spotId,
             review,
             stars,
             userId: sessionUser.id
         };
 
-        dispatch(writeReviewThunk(payload));
+        dispatch(writeReviewThunk(review));
 
         setHidden2(true);
         history.push(`/spots/${spotId.spotId}`);
@@ -59,6 +61,15 @@ const ReviewForm = ({ writeReview, hidden, spotId }) => {
                     value={review}
                     required
                     onChange={updateReview} />
+            </label>
+            <label>
+                <input
+                    placeholder='image'
+                    className="input"
+                    type='url'
+                    value={stars}
+                    required
+                    onChange={updateReviewImage} />
             </label>
             <label>
                 <input
