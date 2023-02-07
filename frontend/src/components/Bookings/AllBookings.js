@@ -139,7 +139,7 @@ const AllBookings = () => {
                         </div>
                     </div>
                     :
-                    <div>no bookings</div>
+                    <div className='reservationsTitle'>No Reservations</div>
                 }
             </div>
         </main>
