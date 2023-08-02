@@ -94,11 +94,13 @@ const initialState = {
 
 const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
+
     case GET_SPOTS:
       const allSpots = {};
       action.spots.forEach(spot => {
         allSpots[spot.id] = spot;
       });
+      
       return {
         ...allSpots,
         spotsArr: (action.spots)
@@ -116,10 +118,10 @@ const spotsReducer = (state = initialState, action) => {
         ...state,
         [action.spot.id]: action.spot
       };
+
       let createSpotsArr = Object.values(newState).slice(0, -1);
       newState.spotsArr = createSpotsArr;
       delete newState[undefined]
-
       return newState;
 
     case UPDATE:
@@ -127,6 +129,7 @@ const spotsReducer = (state = initialState, action) => {
         ...state,
         [action.spot.id]: action.spot
       };
+
       let updateSpotsArr = Object.values(updateState);
       updateState.spotsArr = updateSpotsArr.slice(0, -2);
       delete updateState[undefined];
