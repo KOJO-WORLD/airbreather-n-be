@@ -69,7 +69,6 @@ export const getAllSpotsThunk = () => async dispatch => {
 };
 
 export const getSpotDetailThunk = (spotId) => async dispatch => {
-  // console.log('thunkung false spot??', spotId)
   const response = await fetch(`/api/spots/${spotId}`)
 
   if (response.ok) {
@@ -111,7 +110,7 @@ const spotsReducer = (state = initialState, action) => {
         };
         return newState;
       }
-      
+
     case CREATE:
       let newState = {
         ...state,

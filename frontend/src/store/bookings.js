@@ -41,12 +41,10 @@ export const createBookingThunk = (payload) => async (dispatch) => {
 };
 
 export const getUserBookingsThunk = () => async dispatch => {
-    // console.log('bout to fetch all user bookings')
     const response = await fetch(`/api/bookings/current`)
 
     if (response.ok) {
         const userBookings = await response.json();
-        // console.log('userBookings res, ', userBookings)
         dispatch(getUserBookings(userBookings))
     }
 }
@@ -85,7 +83,6 @@ const bookingsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_USER_BOOKINGS:
             const bookings = {};
-            // console.log('action.bookings: ', action.bookings.Bookings)
             action.bookings.Bookings.forEach(booking => {
                 bookings[booking.id] = booking;
             });
@@ -108,17 +105,13 @@ const bookingsReducer = (state = initialState, action) => {
                 ...state,
                 [action.booking.id]: action.booking
             };
-            console.log('action.booking in update reducer: ', action.booking)
             let updateBookingsArr = Object.values(updateState);
-            console.log('updated bookings Array: ', updateBookingsArr)
             updateState.bookingsArr = updateBookingsArr.slice(0, -1);
-            console.log('updated state @ bookings Array: ', updateState.bookingsArr)
             delete updateState[undefined];
             return updateState;
 
         case DELETE:
             const deletedState = { ...state };
-            // console.log('action.bookingId', action.bookingId)
             delete deletedState[action.bookingId]
             delete deletedState.bookingsArr[action.bookingId]
             let bookingsArr = Object.values(deletedState).slice(0, -1);
