@@ -104,23 +104,14 @@ const spotsReducer = (state = initialState, action) => {
         ...allSpots,
         spotsArr: (action.spots)
       };
-    case GET_ONE:
-      if (!state[action.spot.id]) {
+
+    case GET_ONE: {
         let newState = {
-          ...state,
           [action.spot.id]: action.spot
         };
-        let spotsArr = newState.spots.map(id => newState[id]);
-        spotsArr.push(action.spots);
-        newState.spotsArr = (action.spots);
         return newState;
-      } else return {
-        ...state,
-        [action.spots]: {
-          ...state[action.spots],
-          ...action.spots
-        }
-      };
+      }
+      
     case CREATE:
       let newState = {
         ...state,
@@ -131,6 +122,7 @@ const spotsReducer = (state = initialState, action) => {
       delete newState[undefined]
 
       return newState;
+
     case UPDATE:
       const updateState = {
         ...state,
@@ -140,6 +132,7 @@ const spotsReducer = (state = initialState, action) => {
       updateState.spotsArr = updateSpotsArr.slice(0, -2);
       delete updateState[undefined];
       return updateState;
+
     case DELETE:
       const deletedState = { ...state };
       delete deletedState[action.spotId]
