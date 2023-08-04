@@ -13,6 +13,10 @@ import '../Reviews/reviews.css'
 
 const SpotDetail = () => {
 
+    useEffect(() => {
+        window.scrollTo(0,0);
+     }, []);
+
     const history = useHistory();
 
     const [hidden, setHidden] = useState(true);
