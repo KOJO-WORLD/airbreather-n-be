@@ -43,7 +43,7 @@ module.exports = {
         email: 'demo1@demail.com',
         hashedPassword: 'password',
         firstName: 'Demo',
-        lastName: 'Usah'
+        lastName: 'Licious'
       }
     ]);
 
@@ -161,7 +161,7 @@ module.exports = {
       },
       // 6
       {
-        ownerId: 2,
+        ownerId: 3,
         address: '321 Palace Ave',
         city: 'Mission Viejo',
         state: 'California',
@@ -186,7 +186,7 @@ module.exports = {
       },
       // 7
       {
-        ownerId: 2,
+        ownerId: 4,
         address: '322 Palace Ave',
         city: 'Beverly Hills',
         state: 'California',
@@ -206,7 +206,7 @@ module.exports = {
       },
       // 8
       {
-        ownerId: 2,
+        ownerId: 5,
         address: '321 Palace Ave',
         city: 'Los Angeles',
         state: 'California',
@@ -224,7 +224,7 @@ module.exports = {
       },
       // 9
       {
-        ownerId: 2,
+        ownerId: 6,
         address: '321 Palace Ave',
         city: 'Los Angeles',
         state: 'California',
@@ -245,7 +245,7 @@ module.exports = {
       },
       // 10
       {
-        ownerId: 2,
+        ownerId: 1,
         address: '321 Palace Ave',
         city: 'Whittier',
         state: 'California',
@@ -282,7 +282,7 @@ module.exports = {
       },
       // 12
       {
-        ownerId: 2,
+        ownerId: 3,
         address: '321 Palace Ave',
         city: 'Beverly Hills',
         state: 'California',
@@ -302,7 +302,7 @@ module.exports = {
       },
       // 13
       {
-        ownerId: 1,
+        ownerId: 4,
         address: '123 address St',
         city: 'Beverly Hills',
         state: 'California',
@@ -322,7 +322,7 @@ module.exports = {
       },
       // 14
       {
-        ownerId: 2,
+        ownerId: 5,
         address: '456 address Ave',
         city: 'Beverly Hills',
         state: 'California',
@@ -342,7 +342,7 @@ module.exports = {
       },
       // 15
       {
-        ownerId: 3,
+        ownerId: 6,
         address: '789 address Blvd',
         city: 'Beverly Hills',
         state: 'California',
@@ -405,7 +405,7 @@ module.exports = {
       },
       // 18
       {
-        ownerId: 2,
+        ownerId: 3,
         address: '321 Palace Ave',
         city: 'Beverly Hills',
         state: 'California',
@@ -428,7 +428,7 @@ module.exports = {
       },
       // 19
       {
-        ownerId: 2,
+        ownerId: 4,
         address: '322 Palace Ave',
         city: 'Los Angeles',
         state: 'California',
@@ -452,7 +452,7 @@ module.exports = {
       },
       // 20
       {
-        ownerId: 2,
+        ownerId: 5,
         address: '321 Palace Ave',
         city: 'Los Angeles',
         state: 'California',
@@ -471,7 +471,7 @@ module.exports = {
       },
       // 21
       {
-        ownerId: 2,
+        ownerId: 6,
         address: '321 Palace Ave',
         city: 'Los Angeles',
         state: 'California',
@@ -489,7 +489,7 @@ module.exports = {
       },
       // 22
       {
-        ownerId: 2,
+        ownerId: 1,
         address: '321 Palace Ave',
         city: 'Pasadena',
         state: 'California',
@@ -532,7 +532,7 @@ module.exports = {
       },
       // 24
       {
-        ownerId: 2,
+        ownerId: 3,
         address: '321 Palace Ave',
         city: 'Los Angeles',
         state: 'California',
@@ -554,7 +554,7 @@ module.exports = {
       },
       // 25
       {
-        ownerId: 2,
+        ownerId: 4,
         address: '321 Palace Ave',
         city: 'Mission Viejo',
         state: 'California',
@@ -574,7 +574,7 @@ module.exports = {
       },
       // 26
       {
-        ownerId: 2,
+        ownerId: 5,
         address: '321 Palace Ave',
         city: 'Costa Mesa',
         state: 'California',
@@ -595,7 +595,7 @@ module.exports = {
       },
       // 27
       {
-        ownerId: 2,
+        ownerId: 6,
         address: '321 Palace Ave',
         city: 'Burbank',
         state: 'California',
@@ -612,7 +612,7 @@ module.exports = {
       },
       // 28
       {
-        ownerId: 2,
+        ownerId: 1,
         address: '321 Palace Ave',
         city: 'Fullerton',
         state: 'California',
@@ -657,7 +657,7 @@ module.exports = {
       },
       // 30
       {
-        ownerId: 2,
+        ownerId: 3,
         address: '321 Palace Ave',
         city: 'Pomona',
         state: 'California',
@@ -836,77 +836,1705 @@ module.exports = {
     options.tableName = 'Reviews';
 
     await queryInterface.bulkInsert(options, [
+      // Spot 1
+      {
+        spotId: 1,
+        userId: 2,
+        review: "This was my 2nd time staying at this house and it was just as great as the first time. My kids love staying here and having the beach as our backyard. The host is very responsive to any issues or questions. We hope to be back soon!",
+        stars: 5
+      },
       {
         spotId: 1,
         userId: 3,
-        review: 'amazing',
+        review: "We had an amazing vacation at this spot! The view was incredible, and the house had everything we needed. The host was friendly and provided excellent service. Highly recommended!",
         stars: 5
+      },
+      {
+        spotId: 1,
+        userId: 5,
+        review: "The house was perfect and exactly what we were hoping for. The host was very accommodating and made sure we had a comfortable stay. The beachfront location was a bonus. We'll definitely return!",
+        stars: 5
+      },
+      {
+        spotId: 1,
+        userId: 6,
+        review: "Such a cozy spot with stunning ocean views! The host was very welcoming and made sure we had everything we needed. We enjoyed our stay and will come back for sure.",
+        stars: 4
       },
       {
         spotId: 1,
         userId: 2,
-        review: 'very golden',
-        stars: 5
+        review: "Had a great time at this spot! The house was clean and spacious, and the host was very helpful with local recommendations. Would definitely recommend to others.",
+        stars: 4
       },
       {
         spotId: 1,
         userId: 3,
-        review: 'a little too golden',
-        stars: 3
+        review: "Our stay at this spot was fantastic! The place was beautifully decorated and had all the comforts of home. The owner was friendly and provided great local tips. We had a wonderful time and would book again without hesitation.",
+        stars: 5
       },
+      {
+        spotId: 1,
+        userId: 5,
+        review: "Great spot with stunning views! The house was spacious and clean. The host was very helpful and responsive to our questions. We had an unforgettable vacation here.",
+        stars: 5
+      },
+      {
+        spotId: 1,
+        userId: 4,
+        review: "We had an unforgettable stay at this spot. The host was very friendly and attentive to our needs. The house was clean and comfortable. The beach access was a huge plus!",
+        stars: 5
+      },
+      {
+        spotId: 1,
+        userId: 5,
+        review: "A perfect beachfront retreat! The house was well-appointed and had everything we needed. The host was fantastic and provided great recommendations for local activities.",
+        stars: 5
+      },
+
+      // Spot 2
       {
         spotId: 2,
         userId: 1,
-        review: 'very gross, we loved it',
+        review: "This home was spectacular and absolutely lived up to the description. It was pristinely clean, had all the amenities someone could hope for. The views from every floor of the home were breathtaking, leaving you in constant awe. Tommy was an amazing host and went above and beyond to ensure our stay was spectacular. We will absolutely be back. This location, home, and host are at the top of our all-time favorite stays.",
         stars: 5
       },
       {
         spotId: 2,
-        userId: 2,
-        review: 'no',
-        stars: 1
+        userId: 3,
+        review: "Our stay at this spot was fantastic! The place was beautifully decorated and had all the comforts of home. The owner was friendly and provided great local tips. We had a wonderful time and would book again without hesitation.",
+        stars: 5
       },
+      {
+        spotId: 2,
+        userId: 5,
+        review: "Great spot with stunning views! The house was spacious and clean. The host was very helpful and responsive to our questions. We had an unforgettable vacation here.",
+        stars: 5
+      },
+      // Spot 3
       {
         spotId: 3,
         userId: 1,
-        review: 'Are you Laura Palmer?',
+        review: "Amazing location and amenities. Hosts were very helpful and accommodating. Just an overall wonderful experience.",
         stars: 4
       },
       {
         spotId: 3,
         userId: 2,
-        review: 'Are you Laura Palmer?',
-        stars: 3
+        review: "We had a fantastic time at this spot. The house was lovely and had everything we needed. The owner was friendly and made us feel welcome. The location was perfect for exploring the area.",
+        stars: 5
       },
       {
         spotId: 3,
-        userId: 3,
-        review: 'Are you Laura Palmer?',
-        stars: 1
+        userId: 6,
+        review: "The spot was even better than we expected. The host was very attentive and made sure we had a comfortable stay. The views were stunning, and we had a great time relaxing by the pool.",
+        stars: 5
       },
+      // Spot 4
       {
         spotId: 4,
         userId: 1,
-        review: 'I can turn my head 180 degrees lol',
-        stars: 3
+        review: "We had a wonderful time at this spot. The host was friendly and accommodating. The house was clean and cozy. The location was excellent for exploring the nearby attractions.",
+        stars: 4
+      },
+      {
+        spotId: 4,
+        userId: 2,
+        review: "Beautiful property with stunning views! The host was attentive and made sure we had a comfortable stay. We enjoyed every moment and would love to visit again.",
+        stars: 5
       },
       {
         spotId: 4,
         userId: 3,
-        review: "WHO wouldn't want to stay here?",
+        review: "We loved our stay at this spot. The house had a great layout and everything we needed. The owner was very helpful and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 4,
+        userId: 5,
+        review: "The spot was perfect for a relaxing getaway. The host was very accommodating and made us feel welcome. The amenities were top-notch.",
+        stars: 5
+      },
+      {
+        spotId: 4,
+        userId: 6,
+        review: "We had a fantastic time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 4,
+        userId: 4,
+        review: "This spot was perfect for a family vacation. The host was great, and the house had everything we needed. The pool area was our favorite spot to relax!",
+        stars: 5
+      },
+      {
+        spotId: 4,
+        userId: 2,
+        review: "We had a great stay at this spot. The house was comfortable and had stunning views. The host was accommodating and provided excellent recommendations.",
+        stars: 4
+      },
+      // Spot 5
+      {
+        spotId: 5,
+        userId: 1,
+        review: "What an amazing spot! The house was beautifully decorated and had everything we needed. The host was very helpful and made sure we had a wonderful stay.",
         stars: 5
       },
       {
         spotId: 5,
+        userId: 3,
+        review: "We loved our time at this spot. The host was attentive and made us feel at home. The location was perfect for exploring the nearby attractions.",
+        stars: 5
+      },
+      {
+        spotId: 5,
+        userId: 6,
+        review: "A great spot for a relaxing getaway. The house was clean and well-equipped. The host was friendly and provided excellent service.",
+        stars: 4
+      },
+      {
+        spotId: 5,
+        userId: 1,
+        review: "What an amazing spot! The house was beautifully decorated and had everything we needed. The host was very helpful and made sure we had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 5,
+        userId: 3,
+        review: "We loved our time at this spot. The host was attentive and made us feel at home. The location was perfect for exploring the nearby attractions.",
+        stars: 5
+      },
+      {
+        spotId: 5,
+        userId: 6,
+        review: "A great spot for a relaxing getaway. The house was clean and well-equipped. The host was friendly and provided excellent service.",
+        stars: 4
+      },
+      {
+        spotId: 5,
+        userId: 4,
+        review: "Had a fantastic stay at this spot. The house was spacious and had breathtaking views. The host was attentive and made sure we had everything we needed.",
+        stars: 5
+      },
+      // Spot 6
+      {
+        spotId: 6,
         userId: 2,
-        review: "Spent the best week of my life here. If you see this, I love you Spencer",
+        review: "We had an amazing time at this spot. The house was spacious and had all the amenities we needed. The host was very responsive and provided helpful tips.",
         stars: 5
       },
       {
         spotId: 6,
-        userId: 1,
-        review: 'Great place to ruff house',
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 6,
+        userId: 5,
+        review: "We had a wonderful stay at this spot. The house was well-maintained and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 6,
+        userId: 6,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
         stars: 4
+      },
+      {
+        spotId: 6,
+        userId: 2,
+        review: "We had an amazing time at this spot. The house was spacious and had all the amenities we needed. The host was very responsive and provided helpful tips.",
+        stars: 5
+      },
+      {
+        spotId: 6,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 6,
+        userId: 5,
+        review: "We had a wonderful stay at this spot. The house was well-maintained and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 6,
+        userId: 6,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 6,
+        userId: 1,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 7
+      {
+        spotId: 7,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 7,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 7,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 7,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 7,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 7,
+        userId: 3,
+        review: "We had a fantastic time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 7,
+        userId: 2,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 7,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 7,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 7,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 8
+      {
+        spotId: 8,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 8,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 8,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 8,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 8,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      // Spot 9
+      {
+        spotId: 9,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 9,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 9,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 9,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 9,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 9,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 9,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 9,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 9,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 9,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 10
+      {
+        spotId: 10,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 10,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 10,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 10,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 10,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 10,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 10,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 10,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 10,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 10,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 11
+      {
+        spotId: 11,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 11,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 11,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 11,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 11,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 11,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 11,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 11,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 11,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 11,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 12
+      {
+        spotId: 12,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 12,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 12,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 12,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 12,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 12,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 12,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 12,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 12,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 12,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 13
+      {
+        spotId: 13,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 13,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 13,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 13,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 13,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 13,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 13,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 13,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 13,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 13,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 14
+      {
+        spotId: 14,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 14,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 14,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 14,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 14,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 14,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 14,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 14,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 14,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 14,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 15
+      {
+        spotId: 15,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 15,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 15,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 15,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 15,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 15,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 15,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 15,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 15,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 15,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 16
+      {
+        spotId: 16,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 16,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 16,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 16,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 16,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 16,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 16,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 16,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 16,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 16,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 17
+      {
+        spotId: 17,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 17,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 17,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 17,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 17,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 17,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 17,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 17,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 17,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 17,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 18
+      {
+        spotId: 18,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 18,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 18,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 18,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 18,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 18,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 18,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 18,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 18,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 18,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 19
+      {
+        spotId: 19,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 19,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 19,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 19,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 19,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 19,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 19,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 19,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 19,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 19,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 20
+      {
+        spotId: 20,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 20,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 20,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 20,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 20,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 20,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 20,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 20,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 20,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 20,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 21
+      {
+        spotId: 21,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 21,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 21,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 21,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 21,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 21,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 21,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 21,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 21,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 21,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 22
+      {
+        spotId: 22,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 22,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 22,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 22,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 22,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 22,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 22,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 22,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 22,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 22,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 23
+      {
+        spotId: 23,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 23,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 23,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 23,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 23,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 23,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 23,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 23,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 23,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 23,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 24
+      {
+        spotId: 24,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 24,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 24,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 24,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 24,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 24,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 24,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 24,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 24,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 24,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 25
+      {
+        spotId: 25,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 25,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 25,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 25,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 25,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 25,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 25,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 25,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 25,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 25,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 26
+      {
+        spotId: 26,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 26,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 26,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 26,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 26,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 26,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 26,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 26,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 26,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 26,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 27
+      {
+        spotId: 27,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 27,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 27,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 27,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 27,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 27,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 27,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 27,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 27,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 27,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 28
+      {
+        spotId: 28,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 28,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 28,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 28,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 28,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 28,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 28,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 28,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 28,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 28,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 29
+      {
+        spotId: 29,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 29,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 29,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 30
+      {
+        spotId: 30,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 30,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 30,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 30,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 30,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 3,
+        review: "We had an amazing time at this spot. The house was spacious and well-maintained. The host was responsive and provided helpful information about the area.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 4,
+        review: "This spot was perfect for our family vacation. The host was friendly and accommodating. The house had beautiful ocean views and was very clean.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 6,
+        review: "We had a wonderful stay at this spot. The house was well-equipped and had everything we needed. The host was fantastic and made us feel welcome.",
+        stars: 5
+      },
+      {
+        spotId: 29,
+        userId: 1,
+        review: "The spot was just what we needed for a peaceful getaway. The host was attentive and made sure we had a comfortable stay. Highly recommended!",
+        stars: 4
+      },
+      {
+        spotId: 29,
+        userId: 3,
+        review: "This spot exceeded our expectations. The host was friendly and provided excellent service. The house was clean and had stunning ocean views.",
+        stars: 5
+      },
+      // Spot 30
+      {
+        spotId: 30,
+        userId: 2,
+        review: "We had a fantastic time at this spot. The house was well-equipped and had a beautiful garden. The host was helpful and made us feel at home.",
+        stars: 5
+      },
+      {
+        spotId: 30,
+        userId: 4,
+        review: "This spot was perfect for a quiet retreat. The host was accommodating and provided great recommendations for local activities. We had a wonderful stay.",
+        stars: 5
+      },
+      {
+        spotId: 30,
+        userId: 5,
+        review: "Had a great time at this spot. The house was clean and comfortable. The host was friendly and ensured we had a pleasant stay. Would come back again.",
+        stars: 4
+      },
+      {
+        spotId: 30,
+        userId: 6,
+        review: "We loved our stay at this spot. The house had a rustic charm and beautiful surroundings. The host was very welcoming and provided excellent service.",
+        stars: 5
+      },
+      {
+        spotId: 30,
+        userId: 1,
+        review: "A wonderful spot to relax and unwind. The host was attentive and made us feel at home. The house was cozy and had all the amenities we needed.",
+        stars: 5
       }
     ]);
 
@@ -915,22 +2543,21 @@ module.exports = {
     options.tableName = 'ReviewImages';
 
     await queryInterface.bulkInsert(options, [
-      {
-        reviewId: 1,
-        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675393465/AirBreathe%27n%27Be/reviewImages/attractive-elderly-man-taking-a-selfie-thumb-up-everything-is-cool-free-photo_bljokg.jpg',
-      },
-      {
-        reviewId: 2,
-        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675393293/AirBreathe%27n%27Be/reviewImages/depositphotos_32568703-stock-photo-keep-up-the-great-work_qlffjt.webp',
-      },
-      {
-        reviewId: 3,
-        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675402514/AirBreathe%27n%27Be/reviewImages/360_F_342851651_BV9SYWnoTPSu3kq6e82zG7H8eEt20wd1_nda74b.jpg',
-      },
-      {
-        reviewId: 4,
-        url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1675393293/AirBreathe%27n%27Be/reviewImages/person-2385787_1280_bvd88e.jpg',
-      }]);
+      { reviewId: 1, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691132888/AirBreathe%27n%27Be/reviewImages/ecf81df8-b460-4e9a-b1da-bae9656629c3_q9mxks.webp' },
+      { reviewId: 21, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691132967/AirBreathe%27n%27Be/reviewImages/691a7574-6af4-4e55-8bcf-e6aee34c7bce_uxn9r5.webp' },
+      { reviewId: 41, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133054/AirBreathe%27n%27Be/reviewImages/80d77ec5-66b1-4a4f-8167-d8b7513ee549_kh9r09.webp' },
+      { reviewId: 61, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133116/AirBreathe%27n%27Be/reviewImages/01123ac9-8820-418a-9ec2-8a129efdfc3b_lb5viz.webp' },
+      { reviewId: 81, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133116/AirBreathe%27n%27Be/reviewImages/60493bf0-3ab3-4fe8-bf3d-d8c6761f20ef_r9lxq3.webp' },
+      { reviewId: 101, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133229/AirBreathe%27n%27Be/reviewImages/b2ec62c9-a781-4675-8ac4-87e3296ff87a_woplb2.webp' },
+      { reviewId: 121, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133229/AirBreathe%27n%27Be/reviewImages/fe1d229d-f78d-442d-bd00-c989a66c928f_i6eslb.webp' },
+      { reviewId: 141, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133296/AirBreathe%27n%27Be/reviewImages/117e1a9d-1c90-4dc5-838d-f3db0bd1f99c_djoyhm.webp' },
+      { reviewId: 161, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133337/AirBreathe%27n%27Be/reviewImages/0dd613eb-21d5-4955-adb3-a48d05834ed5_yswdtd.webp' },
+      { reviewId: 181, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133408/AirBreathe%27n%27Be/reviewImages/56939070-6bf5-46f6-9ae5-dc708c6155d9_p4juze.webp' },
+      { reviewId: 201, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133451/AirBreathe%27n%27Be/reviewImages/a3fb3acb-3005-47f8-a499-09cc81f48320_nog3ck.webp' },
+      { reviewId: 221, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133519/AirBreathe%27n%27Be/reviewImages/394c91ba-8586-444c-bfaa-e43ae11ee6f8_r7mykp.webp' },
+      { reviewId: 241, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133523/AirBreathe%27n%27Be/reviewImages/b4e9d671-e5ff-4248-8c65-50e4ad8ca822_lajj9m.webp' },
+      { reviewId: 261, url: 'https://res.cloudinary.com/dfrj03hsi/image/upload/v1691133564/AirBreathe%27n%27Be/reviewImages/17ff8219-73e7-4928-8193-c332f9a2eb41_z2k0ko.webp' }
+    ]);
 
     // // Bookings /////////////////////////////////////////////////////
 
