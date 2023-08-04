@@ -27,8 +27,6 @@ const AllBookings = () => {
     });
 
     // const [bookings, setBookings] = useState('')
-    // console.log('bookingsState', bookingsSate)
-    // console.log('bookings', bookings)
 
     useEffect(() => {
         dispatch(getUserBookingsThunk());

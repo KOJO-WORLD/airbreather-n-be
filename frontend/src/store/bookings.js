@@ -50,7 +50,6 @@ export const getUserBookingsThunk = () => async dispatch => {
 }
 
 export const editBookingThunk = (payload, bookingId) => async (dispatch) => {
-    console.log('edit booking thunk booking id', bookingId)
     const response = await csrfFetch(`/api/bookings/${bookingId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },

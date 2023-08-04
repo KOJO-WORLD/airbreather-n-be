@@ -125,8 +125,6 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
         spot.previewImage = null
     } else spot.dataValues.previewImage = img.url;
 
-    console.log('spot in edit booking route: ', spot)
-
     const editBooking = await findBooking.update({ startDate, endDate })
 
     editBooking.dataValues.Spot = spot

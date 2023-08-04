@@ -11,8 +11,6 @@ import '../../Errors/Errors.css';
 function EditBookingForm({ setShowModal, bookingId }) {
     const dispatch = useDispatch();
 
-    // console.log('spot id: ', spotId)
-
     const sessionUser = useSelector(state => state.session.user);
 
     const [startDate, setStartDate] = useState('');

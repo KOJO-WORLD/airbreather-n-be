@@ -370,8 +370,6 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         });
     }
 
-    // console.log('****************************************************** startDate and endDate: ', startDate, endDate)
-
     const checkBookings = await Booking.findAll({
         where: {
             spotId: req.params.spotId
@@ -423,8 +421,6 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
             })
 
             newBooking.dataValues.Spot = checkSpot
-
-            // console.log('``~~~~~~~~~~~~~~~~~```~~~~~~````~~~ new Booking spot', checkSpot)
 
             res.json(newBooking);
         }
