@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     lat: DataTypes.DOUBLE,
     lng: DataTypes.DOUBLE,
     name: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.STRING(2048),
     price: DataTypes.DECIMAL
   }, {
     sequelize,
