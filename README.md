@@ -4,7 +4,7 @@ airbreatheNbe is a website clone of AirBnB.
 
 Live site: [airbreatheNbe](https://airbreathenbe-wc16.onrender.com/)
 
-![image](https://user-images.githubusercontent.com/106632610/203016310-a3ad7d1a-431f-4ef9-bf68-4078d5dc11c0.png)
+![1673471336377](https://github.com/KOJO-WORLD/airbreather-n-be/assets/161630680/9693f0d5-2760-4225-b9cf-79fdac7d85fd)
 
 Technologies used:
 * JavaScript
@@ -20,11 +20,11 @@ Technologies used:
 
 Wiki Links:
 
-[Features](https://github.com/Trevor-Walton-Moore/API-project/wiki/Features)
+[Features](https://github.com/KOJO-WORLD/API-project/wiki/Features)
 
-[Database Schema](https://github.com/Trevor-Walton-Moore/API-project/wiki/Database-Schema)
+[Database Schema](https://github.com/KOJO-WORLD/API-project/wiki/Database-Schema)
 
-[Backend Routes](https://github.com/Trevor-Walton-Moore/API-project/wiki/Backend-Routes)
+[Backend Routes](https://github.com/KOJO-WORLD/API-project/wiki/Backend-Routes)
 
 
 
