@@ -18,14 +18,6 @@ Technologies used:
 * Postgress
 * Render
 
-Wiki Links:
-
-[Features](https://github.com/KOJO-WORLD/API-project/wiki/Features)
-
-[Database Schema](https://github.com/KOJO-WORLD/API-project/wiki/Database-Schema)
-
-[Backend Routes](https://github.com/KOJO-WORLD/API-project/wiki/Backend-Routes)
-
 
 
 To experience airbreatheNbe, click the live link, then the profile button in the top-right corner to explore as a demo user!
